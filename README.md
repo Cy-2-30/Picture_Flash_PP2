@@ -137,7 +137,6 @@ Developers: Andrew, Arron, Dee, Jamie, Martin
 #### Python Libraries
 - [OS](https://docs.python.org/3/library/os.html)
 - [Date time](https://docs.python.org/3/library/datetime.html)
-- [Unittest](https://docs.python.org/3/library/unittest.html)
 
 
 ## Features
