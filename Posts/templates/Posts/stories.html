@@ -12,37 +12,34 @@
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">These are our stories!</h1>
             <p class="lead">Here are some stories from Women in Tech.</p>
-            <a href="{% url 'newstory' %}">share your story</a>
+            <a class="text-decoration-none home-cards-a" href="{% url 'newstory' %}"><button type="button" class="btn btn-lg px-4 me-md-2 grow">Share Your Story</button></a>
+            <button type="button" class="btn btn-lg px-4 me-md-2 grow"><a class="text-decoration-none home-cards-a"
+                    href="{% url 'newstory' %}">Share Your Story</a></button>
         </div>
     </div>
 </div>
-<!-- cards -->
-<div class="container">
-    <div class="row justify-content-center mt-3">
-        <div class="col-8">
-            <div class="card-body bg-light">
-                {% for story in stories %}
-                <div class="card shadow p-3 mb-5 rounded h-90">
-                    <div class="card-body">
-                        <h5 class="card-title">{{story.author}}</h5>
-                        <p class="card-text">{{story.text}}</p>
-                        <a class="text-muted" href="{{story.link}}">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                        </a><i>
-                        
-                        {% if request.user.is_staff %}
-                            <form action="{% url 'delete_story' story.id %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="delete">
-    </form>
-     {% endif %}
-    
-                    </div>
+<!-- stories -->
+<section class="container-fluid mt-5" id="cards">
+    <div class="row">
+        {% for story in stories %}
+        <div class="col-sm-4 pb-5">
+            <div class="card careers-card shadow p-3 mb-5 rounded h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{story.author}}</h5>
+                    <p class="card-text">{{story.text}}</p>
+                    <a class="text-muted" href="{{story.link}}">LinkedIn</a>
+
+                    {% if request.user.is_staff %}
+                    <form action="{% url 'delete_story' story.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-sm btn-danger btn">Delete</button>
+                    </form>
+                    {% endif %}
+
                 </div>
-                {% endfor %}
             </div>
         </div>
+        {% endfor %}
     </div>
-</div>
-
+</section>
 {% endblock %}

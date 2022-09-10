@@ -25,6 +25,11 @@ h3 {
     margin: 50px 24%;
 }
 
+h4 {
+    font-size: 130%;
+    text-align: left;
+}
+
 /* header */
 
 .logo {
@@ -192,3 +197,8 @@ footer {
     color: #272343;
 }
 
+/* Team logo on about us page  */
+
+.team-logo {
+    margin: 0 auto;
+}

@@ -1,9 +1,25 @@
 # WITCH
 
-
 ![cover image](readme/image-am-i-responsive.PNG)  
+Developers: **Andrew, Arron, Dee, Jamie, Martin**
 
-Developers: Andrew, Arron, Dee, Jamie, Martin
+## Introduction
+### **WITCH** - _Women's Information Technology Careers Hub_
+Our team wanted to create an application that empowers women who might be thinking of starting in tech but come up against some of the common stigmas associated with the industry. Tech is all too often seen as a male domain and this can cause hesitancy and imposter syndrome to set in. Not anymore! **WITCH** helps those seeking a start in tech to find a career path that suits them, as well as helpful resources to get them on their way. Those working in tech can use the site to help others by sharing their stories from the inside!
+If you would like to try our application you can click the live link here:
+[Github](https://witch-kodefox.herokuapp.com/)
+
+If you would like to test our administration functionality, we have set up an account for you:
+* _Username: judgeaccount_
+* _Password: judgepassword123_
+
+# Main features
+* Twitter feed - all the live feeds from #gendergap would display on our home page.
+* Careers information - this is a page would display all the various career paths available within tech.
+* Educational information - this page would provide the links to educational resources and opportunities available for women.
+* Stories posted by women in tech - real experience of women and thier challenges within the tech industry. 
+* Admin functionality - our admin page is where we create, read, update, approve and delete database.
+
 
 [Deployed Site](https://witch-kodefox.herokuapp.com/)  
 (Note: Ctrl + click to open in a new tab)    
@@ -35,56 +51,56 @@ Developers: Andrew, Arron, Dee, Jamie, Martin
 ## Project Goals
 
 ### User Goals
-- I can access educational resources
-- I can view available career paths in The Tech Industry
-- I can view inspirational stories from women in The Tech Industry
-- I can visit the about us to learn about the Team
+- I can access educational resources.
+- I can view available career paths in The Tech Industry.
+- I can view inspirational stories from women in the Tech Industry.
+- I can visit the **about us** to learn about the Team.
 
 ### Site Owner Goals
-- To help close The Gender Gap
-- To provide information and resources for Women interested in a career in Tech 
-- To provide inspiring stories from women currently in the Tech Industry
-- To highlight the various career paths available in the Tech Industry
+- To help close The Gender Gap.
+- To provide information and resources for Women interested in a career in Tech.
+- To provide inspiring stories from women currently in the Tech Industry.
+- To highlight the various career paths available in the Tech Industry.
 
 [Back to Top](<#table-of-content>)
 ## User Experience
 
 ### Target Audience
-- The target audience for is women interested in a career in the tech industry.
+- The target audience is for women interested in a career in the tech industry.
 
 ### User Requirments and Expectations
-- A site to inform the User to career choices in Tech
-- Various articles and resources
-- Information on various courses available
-- Links to additional information
+- A site to inform the User about career choices in Tech.
+- Various articles and resources.
+- Information on various courses available.
+- Links to additional information.
 
 
 [Back to Top](<#table-of-content>)  
 ## User Stories
 
 ### User
-1. As a User I can navigate across the site so that I can move to each feature of the site easily
-2. As a User I can view articles so that I can learn more about a career in tech
-3. As a User I can access links to courses so that I can see what options I have for a career in tech
-4. As a User I can view a list of resources so that I can learn more toward a career in tech
-5. As a User I can access links to courses so that I can see what options I have for a career in tech
-6. As a User I can view all the blog posts so that I can see what I may be interested in reading
-7. As a User I can use a navbar, footer, and social icons so that I can navigate the site, access menus, and access socials
+1. As a User I can navigate across the site so that I can move to each feature of the site easily.
+2. As a User I can view articles so that I can learn more about a career in tech.
+3. As a User I can access links to courses so that I can see what options I have for a career in tech.
+4. As a User I can view a list of resources so that I can learn more toward a career in tech.
+5. As a User I can access links to courses so that I can see what options I have for a career in tech.
+6. As a User I can view all the blog posts so that I can see what I may be interested in reading.
+7. As a User I can use a navbar, footer, and social icons so that I can navigate the site, access menus, and access socials.
  
 ### Admin/Authorised User
-8. As an Admin/Authorised User I can access the backend so that I can create, read, update and delete database items
-9. As an Admin/Authorised User I can create career path in the database so that I can add more paths as new ones appear
-10. As an Admin/Authorised User I can edit existing career paths so that I can keep information up to date
-11. As an Admin/Authorised User I can delete career path so that I can keep the career section up to date
-12. As an Admin/Authorised User I can create a blog post so that I can add additional information and articles
-13. As an Admin/Authorised User I can edit the blog post so that I can fix any typos or update information
-14. As an Admin/Authorised User I can delete a blog post so that I can clean up old posts to keep information current
-15. As an Admin/User I can approve pending blog posts so that I can make sure all content posted is safe
+8. As an Admin/Authorised User I can access the backend so that I can create, read, update and delete database items.
+9. As an Admin/Authorised User I can create career path in the database so that I can add more paths as new ones appear.
+10. As an Admin/Authorised User I can edit existing career paths so that I can keep information up to date.
+11. As an Admin/Authorised User I can delete career path so that I can keep the career section up to date.
+12. As an Admin/Authorised User I can create a blog post so that I can add additional information and articles.
+13. As an Admin/Authorised User I can edit the blog post so that I can fix any typos or update information.
+14. As an Admin/Authorised User I can delete a blog post so that I can clean up old posts to keep information current.
+15. As an Admin/User I can approve pending blog posts so that I can make sure all content posted is safe.
 
 ### Site Owner
-16. As a Site Owner I can validate data entered into my site so that all submitted data is correct to avoid errors
-17. As a Site Owner I can provide a contact us page so that users can get in touch with my business
-18. As a Site Owner I can provide a fully responsive site for my customers so that they have a good user experience
+16. As a Site Owner I can validate data entered into my site so that all submitted data is correct to avoid errors.
+17. As a Site Owner I can provide a **contact us** page so that users can get in touch with my business.
+18. As a Site Owner I can provide a fully responsive site for my customers so that they have a good _user experience_.
  
 [Back to Top](<#table-of-content>)
 ## Technical Design
@@ -181,6 +197,13 @@ Developers: Andrew, Arron, Dee, Jamie, Martin
 
 ## Testing
 
+* We have tested the website on Chrome, Firefox and Safari and found it to function as expected across the browser types.
+* We have tested the site at different screen sizes using Chrome Developer Tools. The site is responsive and works well on mobile devices. 
+* We have given the site to users for feedback on the experience. They have reported a good experience.
+* We have confirmed that the links work on every page.
+* We have tested the back-end features by logging into the site and posting/deleting to the database.
+
+
 ### Manual Testing
 
 <details><summary>View manual testing</summary>
@@ -192,11 +215,12 @@ Developers: Andrew, Arron, Dee, Jamie, Martin
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|  |   |  |  |
-|  |  |  |  |
+|Add a story|Complete form and submit|Story adds to stories page|Story is added as expected|
+|Navbar|Click links|Direction to page|Navigation is successful|
+|Education page|View links to educational resources|Redirection to resource|Success|
 <details><summary>Images</summary>
-<img src="">
-<img src="">
+![Screenshot 2022-09-10 at 15 52 02](https://user-images.githubusercontent.com/98256205/189488888-8049b391-f037-497b-8ac5-4b7c91483686.png)
+
 </details>
 </details>
 
@@ -207,11 +231,11 @@ Site Owner
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-|  |  |  |  |
+|Responsivness|Site viewport is resized|Good view on mobile|Site is responsive|
+|Validation|Form data entered|Errors are displayed where applicable|Success|
 
 <details><summary>Images</summary>
-<img src="">
-<img src="">
+
 </details>
 
 ### Automated Testing
@@ -258,8 +282,11 @@ Site Owner
 
 | **Bug** | **Fix** |
 | ----------- | ----------- |
-| We had an issue accessing the backend via the admin login returning a csrf error | We fixed it by adding CSRF_TRUSTED_ORIGINS to settings.py |
+| We had an issue accessing the backend via the admin login. It returned a csrf error | We fixed it by adding CSRF_TRUSTED_ORIGINS to settings.py | 
+| **Bug** | **Fix** |
+|Our logo on login.html is not displaying. We think this is due to an incorrectly specified static file directory's. We ran out of time debugging this and have added it to our **To do list**.  | Still to be fixed  |
 | Bug I had | I fixed it by... |
+
 
 
 [Back to Top](<#table-of-content>)
@@ -312,5 +339,8 @@ You can clone the repository by following these steps:
 - Deloitte
 - Trust in Soda
 - Code Institute
+- Kat, Sandra, Kera, Eve, and Abi for sharing their stories.
+- The careers team -  Jade, Megan and Jane (the legend)
+- The Hackteam - Gwen, Alissa, Gaff and Anthony
 
 [Back to Top](<#table-of-content>)
