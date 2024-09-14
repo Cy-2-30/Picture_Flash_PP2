@@ -18,7 +18,7 @@
     <body>
         <!--MENU-->
         <nav>
-            <div class="destop_menu"></div>
+            <div class="desktop_menu"></div>
                 <a href="#home" aria-label="Link to landing page">Home</a>
                 <a href="#about" aria-label="Link to about us page">About Us</a>
                 <a href="#game" aria-label="Link to game page">Game</a>
@@ -35,6 +35,61 @@
             </div>
         </nav>
 
+        <!--LANDING SECTION--> 
+        <div id="home">
+            <img>
+        </div>  
+        
+        <!--ABOUT US SECTION-->
+        <div id="about">
+            <h1>About The Game</h1>
+            <div class="content_flow">
+                <div id="history">
+                    <img>
+                    <p></p>
+                </div>
+                <div id="rules"></div>
+                    <img>
+                    <p></p>
+                </div>
+                <div id="instructions"></div>
+                    <img>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <!--GAME SECTION-->
+        <div id="game">
+            <div id="game_info">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div id="game_board"></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!--CONTACT SECTION-->
+        <div id="contact">
+            <h1></h1>
+            <form>
+                <fieldset>
+                    <legend>Give us your feedback.</legend>
+                    <label class="hide-label" for="names">Names: </label><br>
+                    <input type="text" id="names" name="names" placeholder="James Smith">
+                    <label class="hide-label" for="email">Email: </label><br>
+                    <input type="text" id="email" name="email" placeholder="email@example.ie">
+                    <label class="hide-label" for="message_heading">Message Heading:</label><br>
+                    <input class="msg-heading" type="text" id="message_heading" name="message_heading" placeholder="Message Heading">
+                    <textarea  id="feedback" name="feedback" maxlength="500" placeholder="What is on your mind..."></textarea><br>
+                    <button class="btn" type="reset" value="Reset">Reset</button>
+                    <button class="btn" type="submit" value="Submit">Submit</button>
+                </fieldset>
+            </form>
+        </div>
 
         <!--FOOTER WITH SOCIAL MEDIA ICONS-->
         <footer>
