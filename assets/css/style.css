@@ -42,8 +42,8 @@ a{
 
 #desktop_menu,
 #game,
-#about,
-#contact{
+#home,
+#about{
     display: none;
 }
 
@@ -62,12 +62,13 @@ img{
 
 h1{
     font-size: 1.90rem;
+    text-align: center;
     padding: 0.5rem;
 }
 
 #home img{
-    height: 15.525rem;
-    width: 17.5rem;
+    height: 50vh;
+    width: 90vw;
 }
 
 footer{
@@ -77,7 +78,64 @@ footer{
     padding: 1rem;
 }
 
+#about .content_flow{
+    height: 90vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 
+.content_flow p{
+    padding: 0 0 1rem 0;
+}
+
+article,
+form{
+    padding: 1rem;
+}
+
+h2{
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+
+#rules ul {
+    list-style-type: circle;
+    padding-inline-start: 1rem;
+}
+
+fieldset{
+    height: 50vh;
+    padding: 0.8rem;
+}
+
+legend{
+    font-size: 1.2rem;
+}
+
+label{
+    visibility: hidden;
+}
+
+input,
+textarea,
+button{
+    margin: 0.3rem;
+}
+
+textarea{
+    margin-left: 0.270rem;
+}
+
+input,
+textarea{
+    width: 75vw;
+}
+
+button{
+    margin-left: 2rem;
+    width: 20vw;
+}
 
 /*
 #game{
