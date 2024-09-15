@@ -18,15 +18,16 @@
     <body>
         <!--MENU-->
         <nav>
-            <div class="desktop_menu"></div>
+            <div id="desktop_menu">
                 <a href="#home" aria-label="Link to landing page">Home</a>
                 <a href="#about" aria-label="Link to about us page">About Us</a>
                 <a href="#game" aria-label="Link to game page">Game</a>
                 <a href="#contact" aria-label="Link to contact page">Contact Us</a>
             </div>
+
             <div id="dropdown_menu">
                 <div>
-                    <i class="fa fa-bars" aria-hidden="true"></i>
+                    <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
                 </div>
                 <a href="#home" aria-label="Link to landing page">Home</a>
                 <a href="#about" aria-label="Link to about us page">About Us</a>
@@ -36,36 +37,44 @@
         </nav>
 
         <!--LANDING SECTION--> 
-        <div id="home">
-            <img>
-        </div>  
+        <section id="home">
+            <h1>Picture Memory Game</h1>
+            <img src="assets/pictures/back-school-background.jpg">
+        </section>  
         
         <!--ABOUT US SECTION-->
-        <div id="about">
+        <section id="about">
             <h1>About The Game</h1>
             <div class="content_flow">
                 <div id="history">
                     <h2>Concentration "Card Game"</h2>
                     <img>
-                    <p>The original game used to be played as a round game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.</p>
+                    <p>
+                        The original game used to be played as a round game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.
+                    </p>
                     
-                    <p>Concentration can be played with any number of players or as a solitaire or patience game. It is a particularly good game for young children, though adults may find it challenging and stimulating as well. The scheme is often used in quiz shows (in fact, several game shows have used its name in their titles) and can be employed as an educational game. </p>
+                    <p>
+                        Concentration can be played with any number of players or as a solitaire or patience game. It is a particularly good game for young children, though adults may find it challenging and stimulating as well. The scheme is often used in quiz shows (in fact, several game shows have used its name in their titles) and can be employed as an educational game. 
+                    </p>
                 </div>
                 <div id="rules"></div>
                     <h2>Game Rules</h2>
                     <img>
-                    <p>Any deck of playing cards may be used, although there are also commercial sets of cards with images. The rules given here are for a standard deck of 52 cards, which are normally laid face down in four rows of 13 cards each.[2] The two jokers may be included for a total of six rows of nine cards each.
+                    <p>
+                        Any deck of playing cards may be used, although there are also commercial sets of cards with images. The rules given here are for a standard deck of 52 cards, which are normally laid face down in four rows of 13 cards each.[2] The two jokers may be included for a total of six rows of nine cards each.
 
                         Additional packs can be used for added interest. Standard rules need not be followed: the cards can be spread out anywhere, such as all around a room.
                         
                         In turn, each player chooses two cards and turns them face up. If they are of the same rank and color (e.g. six of hearts and six of diamonds, queen of clubs and queen of spades, or both jokers, if used) then that player wins the pair and plays again. If they are not of the same rank and color, they are turned face down again and play passes to the player on the left. Rules can be changed here too: it can be agreed before the game starts that matching pairs be any two cards of the same rank, a color-match being unnecessary, or that the match must be both rank and card suit.
                         
-                        The game ends when the last pair has been picked up. The winner is the person with the most pairs. There may be a tie for first place. </p>
+                        The game ends when the last pair has been picked up. The winner is the person with the most pairs. There may be a tie for first place.
+                    </p>
                 </div>
                 <div id="instructions"></div>
                     <h2>How To Play</h2>
                     <img>
-                    <p>Any deck of playing cards may be used, although there are also commercial sets of cards with images. The rules given here are for a standard deck of 52 cards, which are normally laid face down in four rows of 13 cards each.[2] The two jokers may be included for a total of six rows of nine cards each.
+                    <p>
+                        Any deck of playing cards may be used, although there are also commercial sets of cards with images. The rules given here are for a standard deck of 52 cards, which are normally laid face down in four rows of 13 cards each.[2] The two jokers may be included for a total of six rows of nine cards each.
 
                         Additional packs can be used for added interest. Standard rules need not be followed: the cards can be spread out anywhere, such as all around a room.
                         
@@ -74,22 +83,22 @@
                         The game ends when the last pair has been picked up. The winner is the person with the most pairs. There may be a tie for first place. </p>
 
                         <p>
-                            Over the course of the game, it becomes known where certain cards are located, and so upon turning up one card, players with good memory will be able to remember where they have already seen its pair.
+                        Over the course of the game, it becomes known where certain cards are located, and so upon turning up one card, players with good memory will be able to remember where they have already seen its pair.
 
-It is common for many players to think they know where pairs are and to turn over the one they are sure of first, then be stumped finding its mate. A better strategy is to turn over a less certain card first, so that if wrong, one knows not to bother turning a more certain card over.
+                        It is common for many players to think they know where pairs are and to turn over the one they are sure of first, then be stumped finding its mate. A better strategy is to turn over a less certain card first, so that if wrong, one knows not to bother turning a more certain card over.
 
-An ideal strategy can be developed if we assume that players have perfect memory. For the One Flip variation below, this strategy is fairly simple. Before any turn in the game, there are t cards still in play, and n cards still in play but of known value. The current player should flip over an unknown card. If this card matches one of the known cards, the match is next chosen. Less obviously, if the card does not match any known card, one of the n known cards should still be chosen to minimize the information provided to other players. The mathematics follow:
+                        An ideal strategy can be developed if we assume that players have perfect memory. For the One Flip variation below, this strategy is fairly simple. Before any turn in the game, there are t cards still in play, and n cards still in play but of known value. The current player should flip over an unknown card. If this card matches one of the known cards, the match is next chosen. Less obviously, if the card does not match any known card, one of the n known cards should still be chosen to minimize the information provided to other players. The mathematics follow:
 
-If a remaining unknown card is chosen randomly, there is a 1/(t−1−n) chance of getting a match, but also a n/(t−1−n) chance of providing opponents with the information needed to make a match.[5]
+                        If a remaining unknown card is chosen randomly, there is a 1/(t−1−n) chance of getting a match, but also a n/(t−1−n) chance of providing opponents with the information needed to make a match.[5]
 
-There are some exceptions to this rule that apply on the fringe cases, where n = 0 or 1 or towards the end of the game. 
-                        </p>
+                        There are some exceptions to this rule that apply on the fringe cases, where n = 0 or 1 or towards the end of the game. 
+                    </p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!--GAME SECTION-->
-        <div id="game">
+        <section id="game">
             <div id="game_info">
                 <div></div>
                 <div></div>
@@ -99,10 +108,10 @@ There are some exceptions to this rule that apply on the fringe cases, where n =
             <div id="game_board"></div>
             <div></div>
             <div></div>
-        </div>
+        </section>
 
         <!--CONTACT SECTION-->
-        <div id="contact">
+        <section id="contact">
             <h1></h1>
             <form>
                 <fieldset>
@@ -118,27 +127,27 @@ There are some exceptions to this rule that apply on the fringe cases, where n =
                     <button class="btn" type="submit" value="Submit">Submit</button>
                 </fieldset>
             </form>
-        </div>
+        </section>
 
         <!--FOOTER WITH SOCIAL MEDIA ICONS-->
         <footer>
             <a href="https://www.facebook.com/login.php/" aria-label="Opens Faceboonk on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
             </a>
             <a href="https://www.instagram.com/" aria-label="Opens instagram on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
             </a>
             <a href="https://www.youtube.com/" aria-label="Opens youtube on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                <i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>
             </a>
             <a href="https://www.twitch.tv/" aria-label="Opens twitch on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-twitch" aria-hidden="true"></i>
+                <i class="fa fa-twitch fa-2x" aria-hidden="true"></i>
             </a>
             <a href="https://x.com/?lang=en" aria-label="Opens twitter on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
             </a>
             <a href="https://slack.com/intl/en-ie/" aria-label="Opens slack on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-slack" aria-hidden="true"></i>
+                <i class="fa fa-slack fa-2x" aria-hidden="true"></i>
             </a>
         </footer>
         

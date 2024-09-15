@@ -16,3 +16,82 @@ CSS HSL
 --white-smoke: hsla(0, 0%, 96%, 1);
 --night: hsla(0, 0%, 4%, 1);
 */
+
+*{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.142rem;
+    min-height: 100vh;
+}
+
+nav{
+    padding: 0.10rem;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 0.10rem;
+}
+
+#desktop_menu,
+#game,
+#about,
+#contact{
+    display: none;
+}
+
+#dropdown_menu{
+    display: flex;
+    flex-direction: column;
+}
+
+#dropdown_menu a{
+    display: block;
+}
+
+img{
+    padding: 1rem;
+}
+
+h1{
+    font-size: 1.90rem;
+    padding: 0.5rem;
+}
+
+#home img{
+    height: 15.525rem;
+    width: 17.5rem;
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+    padding: 1rem;
+}
+
+
+
+/*
+#game{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#game_board{
+    display: grid;
+    gap: 0.625rem;
+    padding: 1.24rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+}
+/*
