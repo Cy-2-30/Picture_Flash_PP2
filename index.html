@@ -117,33 +117,34 @@
         <section id="game">
             <div id="game_setup">
                 <h2>Game Mode Setup</h2>
-                <div class="game_mode">
-                    <input type="radio" name="single_p game_mode" value="single" id="single_player">
-                    <label for="single_player">Play Alone</label>
-                <div class="game_mode">
-                    <input type="radio" name="play_computer game_mode" value="computer" id="play_computer">
+                <div>
+                    <input type="radio" name="game_mode" value="single" id="single_player">
+                    <label for="single_player" checked>Play Alone</label>
+                <div>
+                    <input type="radio" name="game_mode" value="computer" id="play_computer">
                     <label for="play_computer">Play with Computer</label>
                 </div>
-                <div class="game_mode">
-                    <input type="radio" name="one_more_player game_mode" value="another_player" id="one_more_player">
+                <div>
+                    <input type="radio" name="game_mode" value="another_player" id="one_more_player">
                     <label for="one_more_player">Play with Another Player</label>
                 </div>
                 
+                <div class="player_name_input">
+                    <div id="player1_names">
+                        <label for="player1_name">Player 1 Name:</label>
+                        <input type="text" id="player1_name" placeholder="Enter Player 1 Name">
+                    </div>
 
-                <div id="player1_names" class="names">
-                    <label for="player1_name">Player 1 Name:</label>
-                    <input type="text" id="player1_name" placeholder="Enter Player 1 Name">
+                    <div id="player2_names" style="display: none;">
+                        <label for="player2_name">Player 2 Name:</label>
+                        <input type="text" id="player2_name" placeholder="Enter Player 2 Name">
+                    </div>
                 </div>
-
-                <div id="player2_names" class="names names2" style="display: none;">
-                    <label for="player2_name">Player 2 Name:</label>
-                    <input type="text" id="player2_name" placeholder="Enter Player 2 Name">
-                </div>
-
+                
                 <button id="start_game">Play</button>
             </div>
 
-            <div id="game_info" style="display: block;">
+            <div id="game_info" style="display: none;">
                 <div id="game_status">
                     <span id="current-turn">Turn: Player 1</span>
                     <span id="score">Score: 0</span>
