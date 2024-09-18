@@ -41,7 +41,7 @@ a{
 }
 
 #desktop_menu,
-#game,
+#contact,
 #home,
 #about{
     display: none;
@@ -113,7 +113,7 @@ legend{
     font-size: 1.2rem;
 }
 
-label{
+.hide_label{
     visibility: hidden;
 }
 
@@ -127,29 +127,37 @@ textarea{
     margin-left: 0.270rem;
 }
 
-input,
+.form_input,
 textarea{
     width: 75vw;
 }
 
+
+
 button{
+    border-radius: 0.30rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
     margin-left: 2rem;
     width: 20vw;
 }
 
-/*
-#game{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
 
 #game_board{
     display: grid;
-    gap: 0.625rem;
+    border: 0.10rem solid #0a0a0a;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 25% 25% 25% 25%;
+    gap: 1rem solid #0a0a0a;
+    width: 80vw;
+    max-width: 20rem;
     padding: 1.24rem;
     border-radius: 0.5rem;
     box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
 }
-/*
+
+#game_board div{
+    
+}
+
+

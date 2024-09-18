@@ -115,15 +115,45 @@
 
         <!--GAME SECTION-->
         <section id="game">
-            <div id="game_info">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div id="game_setup">
+                <h2>Game Mode Setup</h2>
+                <div class="game_mode">
+                    <input type="radio" name="single_p" value="single" id="single_player">
+                    <label for="single_player">Play Alone</label>
+                <div class="game_mode">
+                    <input type="radio" name="play_computer" value="computer" id="play_computer">
+                    <label for="play_computer">Play with Computer</label>
+                </div>
+                <div class="game_mode">
+                    <input type="radio" name="one_more_player" value="another_player" id="one_more_player">
+                    <label for="one_more_player">Play with Another Player</label>
+                </div>
+                
+
+                <div id="player1_names" class="names">
+                    <label for="player1_name">Player 1 Name:</label>
+                    <input type="text" id="player1_name" placeholder="Enter Player 1 Name">
+                </div>
+
+                <div id="player2_names" class="names" style="display: none;">
+                    <label for="player2_name">Player 2 Name:</label>
+                    <input type="text" id="player2_name" placeholder="Enter Player 2 Name">
+                </div>
+
+                <button id="start_game">Play</button>
             </div>
-            <div id="game_board"></div>
-            <div></div>
-            <div></div>
+
+            <div id="game_info" style="display: block;">
+                <div id="game_status">
+                    <span id="current-turn">Turn: Player 1</span>
+                    <span id="score">Score: 0</span>
+                    <span id="moves">Moves left: 20</span>
+                    <span id="hints">Hint: 3</span>
+                </div>
+
+                <div id="game_board"></div>
+                <button id="quit_game">Exit</button>
+            </div>
         </section>
 
         <!--CONTACT SECTION-->
@@ -133,11 +163,11 @@
                 <fieldset>
                     <legend>Give us your feedback.</legend>
                     <label class="hide-label" for="names">Names: </label><br>
-                    <input type="text" id="names" name="names" placeholder="James Smith">
+                    <input type="text" id="names" name="names" class="form_input" placeholder="James Smith">
                     <label class="hide-label" for="email">Email: </label><br>
-                    <input type="text" id="email" name="email" placeholder="email@example.ie">
+                    <input type="text" id="email" name="email" class="form_input" placeholder="email@example.ie">
                     <label class="hide-label" for="message_heading">Message Heading:</label><br>
-                    <input class="msg-heading" type="text" id="message_heading" name="message_heading" placeholder="Message Heading">
+                    <input class="msg-heading" type="text" id="message_heading" name="message_heading" class="form_input" placeholder="Message Heading">
                     <textarea  id="feedback" name="feedback" maxlength="500" placeholder="What is on your mind..."></textarea><br>
                     <button class="btn" type="reset" value="Reset">Reset</button>
                     <button class="btn" type="submit" value="Submit">Submit</button>
