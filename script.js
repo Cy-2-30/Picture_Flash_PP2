@@ -49,3 +49,45 @@ function playButton(){
     updateScore();
     updatePlayerMoves();
 }
+
+function updatePlayerTurn(){
+    if(gameMode === 'single'){
+        currentPlayerTurn.textContent = 'Turn: ${player1Name}'; 
+    } else{
+        if (currentPlayerTurn === 1){
+            currentPlayerTurn.textContent = 'Turn: ${player2Name}';
+        }
+    }
+}
+
+gameHint.addEventListener('click', showHint);
+
+function showHint(){
+    console.log('Hint clicked!');
+}
+
+function updateScore(){
+    score.textContent = 'Score: ${scorePoints}';
+}
+
+function updateMovesLeft(){
+    playMoves.textContent = 'Moves left: ${movesLeft}';
+}
+
+// SWITCH BETWEEN TWO PLAYERS
+function switchTurn () {
+    if(gameMode !== 'single'){
+        currentPlayerTurn = currentPlayerTurn === 1 ? 2 : 1;
+        updateMovesLeft();
+    }
+}
+
+// RESET THE GAME STATISTICS
+function resetGame(){
+    score = 0;
+    movesLeft = 20;
+    currentPlayerTurn = 1;
+    updateScorePoints();
+    updateMovesLeft();
+    updatePlayerTurn();
+}
