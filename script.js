@@ -1,11 +1,10 @@
 const gameInfo = document.getElementById('game_info');
 const gameSetup = document.getElementById('game_setup');
 const gameStatus = document.getElementById('game_status');
-const gameMode = document.getElementById('input[name="game_mode"]');
 const gameBoard = document.getElementById('game_board');
 const playerOneNameInput = document.getElementById('player1_names');
 const playerTwoNameInput = document.getElementById('player2_names');
-const playerTwoDiv = document.getElementsByClassName('names2');
+const playerTwoDiv = document.getElementsByID('player2_names');
 const playButton = document.getElementById('start_game');
 const quitButton = document.getElementById('quit_game');
 const playerTurn = document.getElementById('current_turn');
@@ -13,15 +12,16 @@ const playMoves = document.getElementById('moves');
 const gameHint = document.getElementById('hints');
 const score = document.getElementById('score');
 
+const gameModeRadios = document.querySelectorAll('input[name="game_mode"]');
 let player1Name = "";
 let player2Name = "";
-let gameModeDefault = 'single'; // Default to a single player
+let gameMode = 'single'; // Default to a single player
 let currentPlayerTurn = 1;
 let scorePoints = 0;
 let movesLeft = 20;
 
 // EVENT LISTERNER
-gameMode.array.forEach(radio => {
+gameModeRadios.array.forEach(radio => {
     radio.addEventListener('change', updateGameMode);
 });
 
@@ -34,9 +34,9 @@ function updateGameMode(){
     }
 }
 
-playButton.addEventListener('click', playButton);
+playButton.addEventListener('click', playGameButton);
 
-function playButton(){
+function playGameButton(){
     player1Name = playerOneNameInput.value || 'Player 1';
     player2Name = gameMode === 'another_player' ? (playerTwoNameInput.value || 'Player 2') : 'Computer';
 
@@ -50,32 +50,32 @@ function playButton(){
     updatePlayerMoves();
 }
 
-function updatePlayerTurn(){
+function updatePlayersTurn(){
     if(gameMode === 'single'){
-        currentPlayerTurn.textContent = 'Turn: ${player1Name}'; 
+        currentPlayerTurn.textContent = "Turn: ${player1Name}"; 
     } else{
         if (currentPlayerTurn === 1){
-            currentPlayerTurn.textContent = 'Turn: ${player2Name}';
+            currentPlayerTurn.textContent = "Turn: ${player2Name}";
         }
     }
 }
 
 gameHint.addEventListener('click', showHint);
 
-function showHint(){
+function showHints(){
     console.log('Hint clicked!');
 }
 
-function updateScore(){
-    score.textContent = 'Score: ${scorePoints}';
+function updateScorePoints(){
+    score.textContent = "Score: ${scorePoints}";
 }
 
 function updateMovesLeft(){
-    playMoves.textContent = 'Moves left: ${movesLeft}';
+    playMoves.textContent = "Moves left: ${movesLeft}";
 }
 
 // SWITCH BETWEEN TWO PLAYERS
-function switchTurn () {
+function switchTurns () {
     if(gameMode !== 'single'){
         currentPlayerTurn = currentPlayerTurn === 1 ? 2 : 1;
         updateMovesLeft();
