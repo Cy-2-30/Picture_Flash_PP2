@@ -2,7 +2,7 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-// PLAYER DETAILS AND MODE
+    // PLAYER DETAILS AND MODE
     const gameSetupDiv = document.getElementById('game_setup');
     const gameModeDiv = document.getElementById('mode_setup');
     const playerNamesDiv = document.querySelector('.player_name_input');
@@ -54,7 +54,36 @@ document.addEventListener('DOMContentLoaded', () => {
         initGameBoard(); // to create game board initialising function
     });
 
-    
+    function initGameBoard(){
+        //To clear out any content
+        gameBoard.innerHTML = '';
+
+        const gridSize = 4;
+        gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`; 
+        
+        // Loop to create the 4x4 grid tiles
+        for (let i = 0; i < gridSize * gridSize; i++) {
+            const tile = document.createElement('div');
+            tile.classList.add('tile');
+            tile.textContent = '?';  
+            
+            tile.addEventListener('click', () => handleTileClick(tile));
+
+            gameBoard.appendChild(tile);
+    }
+
+    function handleTileClick(tile) {
+        tile.textContent = Math.floor(Math.random() * 16); 
+    }
+
+    document.getElementById('play_game').addEventListener('click', () => {
+        initGameBoard(); 
+    });
+
+    document.getElementById('quit_game').addEventListener('click', () => {
+        gameStatus.style.display = 'none';
+        gameBoard.style.display = 'none';  
+    });
 
 
 }
@@ -104,14 +133,6 @@ function updateScorePoints(){
 
 function updateMovesLeft(){
     playMoves.textContent = "Moves left: ${movesLeft}";
-}
-
-// SWITCH BETWEEN TWO PLAYERS
-function switchTurns () {
-    if(gameMode !== 'single'){
-        currentPlayerTurn = currentPlayerTurn === 1 ? 2 : 1;
-        updateMovesLeft();
-    }
 }
 
 // RESET THE GAME STATISTICS
