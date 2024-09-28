@@ -1,10 +1,59 @@
+// CONTENT DISPLAY FUNCTIONS 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+// PLAYER DETAILS AND MODE
+    const gameSetupDiv = document.getElementById('game_setup');
+    const gameModeDiv = document.getElementById('mode_setup');
+    const playerNamesDiv = document.querySelector('.player_name_input');
+    //const playerTwoDiv = document.getElementsByID('player2_names');
+    // the queryselector for next button will decide which to display
+
+    //const gameModeRadios = document.querySelectorAll('input[name="game_mode"]');
+    // not necessary because we are targeting each indivisually
+    
+    const singlePlayerRadio = document.getElementById('single_player');
+    const playComputerRadio = document.getElementById('play_computer');
+    const oneMorePlayerRadio = document.getElementById('one_more_player');
+
+    const playerOneNameInput = document.getElementById('player1_names');
+    const playerTwoNameInput = document.getElementById('player2_names');
+
+    let player1Name = "";
+    let gameMode = 'single'; // Default for single player
+    let player2Name = 'Computer'; // Default for playing with the computer
+
+    // NEXT BUTTON FUNCTIONS
+    document.querySelector('#mode_setup .next').addEventListener('click', () => {
+        if (singlePlayerRadio.checked) {
+            gameMode = 'single';
+            playerTwoNameInput.style.display = 'none';
+        }else if (playComputerRadio.checked) {
+            gameMode = 'computer';
+        }else if (oneMorePlayerRadio.checked) {
+            gameMode = 'another_player';
+            playerTwoNameInput.style.display = 'block';
+        }
+        
+        gameModeSetup.style.display = 'none';
+        playerNamesDiv.style.display = 'block';
+    });
+
+
+    
+
+
+}
+
+
+/// TO BE CORRECTED !!!!
+// GAME STATS
 const gameInfo = document.getElementById('game_info');
-const gameSetup = document.getElementById('game_setup');
+
 const gameStatus = document.getElementById('game_status');
 const gameBoard = document.getElementById('game_board');
-const playerOneNameInput = document.getElementById('player1_names');
-const playerTwoNameInput = document.getElementById('player2_names');
-const playerTwoDiv = document.getElementsByID('player2_names');
+
+
 const playButton = document.getElementById('start_game');
 const quitButton = document.getElementById('quit_game');
 const playerTurn = document.getElementById('current_turn');
@@ -12,18 +61,16 @@ const playMoves = document.getElementById('moves');
 const gameHint = document.getElementById('hints');
 const score = document.getElementById('score');
 
-const gameModeRadios = document.querySelectorAll('input[name="game_mode"]');
-let player1Name = "";
-let player2Name = "";
-let gameMode = 'single'; // Default to a single player
+// GAME BOARD 
+
 let currentPlayerTurn = 1;
 let scorePoints = 0;
 let movesLeft = 20;
 
 // EVENT LISTERNER
-gameModeRadios.array.forEach(radio => {
-    radio.addEventListener('change', updateGameMode);
-});
+//gameModeRadios.array.forEach(radio => {
+  //  radio.addEventListener('change', updateGameMode);
+//});
 
 function updateGameMode(){
     gameMode = document.querySelector('input[name="game_mode"]:checked').value;
@@ -34,7 +81,7 @@ function updateGameMode(){
     }
 }
 
-playButton.addEventListener('click', playGameButton);
+//playButton.addEventListener('click', playGameButton);
 
 function playGameButton(){
     player1Name = playerOneNameInput.value || 'Player 1';
@@ -91,3 +138,4 @@ function resetGame(){
     updateMovesLeft();
     updatePlayerTurn();
 }
+
