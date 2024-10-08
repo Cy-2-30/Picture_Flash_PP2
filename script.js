@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     // MENU DISPLAY FUNCTIONS 
+    const sections = document.querySelectorAll('section');
+
+    function hideAllSections() {
+        sections.forEach(section => section.style.display = 'none');
+    }
+
+    function showSection(sectionId) {
+        hideAllSections();
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
     const menuIcon = document.getElementById('menu_icon');
     const dropdownMenu = document.getElementById('dropdown_menu');
 
@@ -10,13 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
         menuIcon.style.display = 'none';
       });
 
-    
-   
+    dropdownMenu.addEventListener('click', (event) => {
+        if (event.target.tagName === 'A') {
+            const sectionId = event.target.getAttribute('href').substring(1);
 
+            showSection(sectionId);
+            dropdownMenu.style.display = 'none';
+            menuIcon.style.display = 'block';
+        }
+    });
 
-
-
-    // CONTENT DISPLAY FUNCTIONS 
 
     // PLAYER DETAILS AND MODE
     const gameModeDiv = document.getElementById('mode_setup');
