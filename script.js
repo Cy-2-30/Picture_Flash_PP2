@@ -1,7 +1,23 @@
-// CONTENT DISPLAY FUNCTIONS 
-
-
 document.addEventListener('DOMContentLoaded', () => {
+    // MENU DISPLAY FUNCTIONS 
+    const menuIcon = document.getElementById('menu_icon');
+    const dropdownMenu = document.getElementById('dropdown_menu');
+
+    dropdownMenu.style.display = 'none';
+
+    menuIcon.addEventListener('click', () => {
+        dropdownMenu.style.display = 'block';
+        menuIcon.style.display = 'none';
+      });
+
+    
+   
+
+
+
+
+    // CONTENT DISPLAY FUNCTIONS 
+
     // PLAYER DETAILS AND MODE
     const gameModeDiv = document.getElementById('mode_setup');
     const playerNamesDiv = document.querySelector('.player_name_input');
@@ -72,11 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
             tile.addEventListener('click', () => handleTileClick(tile));
 
             gameBoard.appendChild(tile);
+        };
     }
 
     function handleTileClick(tile) {
         tile.textContent = Math.floor(Math.random() * 16); 
-    }
+    };
 
     document.getElementById('play_game').addEventListener('click', () => {
         initGameBoard(); 
