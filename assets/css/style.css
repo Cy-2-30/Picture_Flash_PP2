@@ -17,6 +17,8 @@ CSS HSL
 --night: hsla(0, 0%, 4%, 1);
 */
 
+
+/*LANDING PAGE STYLING*/
 *{
     font-size: 16px;
     margin: 0;
@@ -102,23 +104,6 @@ h1{
     padding: 0.5rem;
 }
 
-.game_info_img{
-    border-radius: 0.8rem;
-}
-
-.return_btn{
-    color: #0a0a0aff;
-    margin-left: 16rem;
-}
-.return_btn:hover{
-    color: #e54a43ff;
-    border: 0.2rem solid #eedf3cff;
-    border-radius: 1.2rem;
-    font-size: medium;
-    padding: 0.2rem;
-    --fa-animation-duration: 3s;
-}
-
 footer{
     background-color: #474747ff;
     display: flex;
@@ -134,6 +119,25 @@ footer a{
 
 footer a:hover{
     color: #e54a43ff;
+}
+
+
+/*ABOUT PAGE STYLING*/
+.game_info_img{
+    border-radius: 0.8rem;
+}
+
+.return_btn{
+    color: #0a0a0aff;
+    margin-left: 16rem;
+}
+.return_btn:hover{
+    color: #e54a43ff;
+    border: 0.2rem solid #eedf3cff;
+    border-radius: 1.2rem;
+    font-size: medium;
+    padding: 0.2rem;
+    --fa-animation-duration: 3s;
 }
 
 #about .content_flow{
@@ -162,40 +166,76 @@ h2{
     padding-inline-start: 1rem;
 }
 
+
+/*CONTACT PAGE STYLING*/
+.shadow_setup{
+    box-shadow: 0 0.5rem 1rem hsla(0, 0%, 28%, 1);
+}
+
 fieldset{
+    background-color: hsla(3, 76%, 58%, 0.5);
+    border-radius: 0.3rem;
+    border:hsla(3, 76%, 58%, 0.5);
     height: 50vh;
+    width: auto;
     padding: 0.8rem;
 }
 
-legend{
-    font-size: 1.2rem;
+.form_heading{
+    padding-bottom: 0.5rem; 
 }
 
-.hide_label{
-    visibility: hidden;
+.mobile_label{
+    margin-left: 30vw;
+    padding: 0.3rem;
 }
 
 input,
 textarea,
 button{
     margin: 0.3rem;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+input,
+textarea{
+    background-color: transparent;
+    border: transparent;
+    border-bottom: 0.01rem solid hsla(240, 25%, 33%, 1);
+    padding-left: 5rem;
 }
 
 textarea{
-    margin-left: 0.270rem;
-}
-
-.form_input,
-textarea{
+    border: 0.1rem solid hsla(240, 25%, 33%, 1);
+    border-radius: 0.2rem;
     width: 75vw;
+    margin-left: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+input:hover,
+textarea:hover{
+    background-color: hsla(167, 36%, 40%, 0.1);
+}
+
+.form_btn{
+    background-color: #428b7bff;
+    color: #f5f5f5ff;
+    border: 0.1rem dotted #40406aff;
+}
+
+.form_btn:hover{
+    background-color:  #e54a43ff;
+    border: 0.1rem dotted #eedf3cff;
+    color: #474747ff;
+    font-weight: bolder;
 }
 
 
-
+/*GAME PAGE STYLING*/
 button{
     border-radius: 0.30rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-    cursor: pointer;
     margin-left: 2rem;
     width: 20vw;
 }
@@ -204,7 +244,6 @@ button{
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
-
 
 #game_board{
     background-color: #e54a43ff;
@@ -235,6 +274,3 @@ button{
     align-items: center;
     cursor: pointer;
 }
-
-
-

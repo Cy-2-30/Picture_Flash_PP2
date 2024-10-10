@@ -112,7 +112,7 @@
                         The player can try to turn the cards as quick as possible, while the memory is still fresh. The longer you wait, the more you might forget.
                     </p>
                     <a href="#menu_icon" class="return_btn">
-                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <i class="fa-solid fa-house-chimney-crack" aria-hidden="true"></i>
                     </a>
                 </article>
             </div>
@@ -153,7 +153,7 @@
 
             <div id="game_info">
                 <div id="game_status" style="display: block;">
-                    <div class="popup" id="current-turn">Turn: Player 1</div>
+                    <div class="popup" id="current_turn">Turn: Player 1</div>
                     <span id="score">Score: 0</span>
                     <span id="moves">Moves left: 20</span>
                     <span id="hints">Hint: 3 <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
@@ -177,17 +177,17 @@
         <section id="contact">
             <h1>Contacts</h1>
             <form>
-                <fieldset>
-                    <legend>Give us your feedback.</legend>
-                    <label class="hide-label" for="names">Names: </label><br>
+                <fieldset class="shadow_setup">
+                    <h2 class="form_heading">Give us your feedback.</h2>
+                    <label class="mobile_label" for="names">Names: </label><br>
                     <input type="text" id="names" name="names" class="form_input" placeholder="James Smith">
-                    <label class="hide-label" for="email">Email: </label><br>
+                    <label class="mobile_label" for="email">Email: </label><br>
                     <input type="text" id="email" name="email" class="form_input" placeholder="email@example.ie">
-                    <label class="hide-label" for="message_heading">Message Heading:</label><br>
-                    <input class="msg-heading" type="text" id="message_heading" name="message_heading" class="form_input" placeholder="Message Heading">
+                    <label class="mobile_label" for="message_heading">Message Heading:</label><br>
+                    <input class="msg_heading" type="text" id="message_heading" name="message_heading" class="form_input">
                     <textarea  id="feedback" name="feedback" maxlength="500" placeholder="What is on your mind..."></textarea><br>
-                    <button class="btn" type="reset" value="Reset">Reset</button>
-                    <button class="btn" type="submit" value="Submit">Submit</button>
+                    <button class="form_btn shadow_setup" type="reset" value="Reset">Reset</button>
+                    <button class="form_btn shadow_setup" type="submit" value="Submit">Submit</button>
                 </fieldset>
             </form>
         </section>
