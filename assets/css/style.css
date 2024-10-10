@@ -48,11 +48,11 @@ a{
     display: none;
 }
 
-#home {
+#home{
     display: block;
 }
 
-#menu_icon {
+#menu_icon{
     display: block;
     padding-left: 0.5rem; 
 }
@@ -61,7 +61,7 @@ a{
     color: #e54a43ff; 
 }
 
-nav { 
+nav{ 
     background-color: #428b7bff;
     color: #f5f5f5ff;
 }
@@ -86,6 +86,11 @@ nav {
 }
 
 img{
+    height: 50vh;
+    width: 90vw;
+}
+
+#home_img{
     padding: 1rem;
     border-radius: 10rem;
     box-shadow: 0 0 0.625rem hsla(0, 0%, 28%, 0.02);
@@ -97,9 +102,21 @@ h1{
     padding: 0.5rem;
 }
 
-#home img{
-    height: 50vh;
-    width: 90vw;
+.game_info_img{
+    border-radius: 0.8rem;
+}
+
+.return_btn{
+    color: #0a0a0aff;
+    margin-left: 16rem;
+}
+.return_btn:hover{
+    color: #e54a43ff;
+    border: 0.2rem solid #eedf3cff;
+    border-radius: 1.2rem;
+    font-size: medium;
+    padding: 0.2rem;
+    --fa-animation-duration: 3s;
 }
 
 footer{

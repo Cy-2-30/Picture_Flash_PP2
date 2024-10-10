@@ -8,8 +8,9 @@
         <meta name="keywords" content="Games, Memory Game, Picture Flash">
         <!--GOOGLE FONTS-->
 
-        <!--FONTAWESOME ICONS-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--FONTAWESOME ICONS
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
         <!--EXTERNAL STYLING-->
         <link rel="stylesheet" href="assets/css/style.css">
         <title>Picture Flash Memory Game</title>
@@ -40,16 +41,16 @@
         <!--LANDING SECTION--> 
         <section id="home">
             <h1>Picture Memory Game</h1>
-            <img src="assets/pictures/back-school-background.jpg">
+            <img id="home_img" src="assets/pictures/back-school-background.jpg">
         </section>  
         
         <!--ABOUT US SECTION-->
         <section id="about">
-            <h1>About The Game</h1>
             <div class="content_flow">
                 <article id="history">
-                    <h2>Concentration "Card Game"</h2>
-                    <img>
+                    <h1>Memory Game</h1>
+                    <img class="game_info_img" src="assets/pictures/memory.jpg">
+                    <h2>Card Game</h2>
                     <p>
                         The original game is to be played as a round game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. This game is created from the same theory.
                     </p>
@@ -59,13 +60,13 @@
                     </p>
                         
                     <p>
-                        Some of the names the game is know as including Memory, Matching Pairs, Match Match, Match Up, Pelmanism, Pexeso or simply Pairs. 
+                        Some of the names the game is know as including <b>Memory, Matching Pairs, Match Match, Match Up, Pelmanism, Pexeso</b> or simply <b>Pairs</b>. 
                     </p>
                 </article>
 
                 <article id="rules">
                     <h2>Game Rules</h2>
-                    <img>
+                    <img class="game_info_img" src="assets/pictures/rules.jpg">
                     <ul>
                         <li>
                             The game will start with <b>4x4</b> cards to which the player will be given a number of moves to turn the cards and match them. 
@@ -96,7 +97,7 @@
 
                 <article id="instructions">
                     <h2>Tips On How To Play</h2>
-                    <img>
+                    <img class="game_info_img" src="assets/pictures/instruction.jpg">
                     <p>
                         The game theme revolves around "Back To School" them. If the players bares this in mind, it would be easy to remember the pictures flashed. 
                     </p>
@@ -110,6 +111,9 @@
                     <p>
                         The player can try to turn the cards as quick as possible, while the memory is still fresh. The longer you wait, the more you might forget.
                     </p>
+                    <a href="#menu_icon" class="return_btn">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </a>
                 </article>
             </div>
         </section>
@@ -152,13 +156,18 @@
                     <div class="popup" id="current-turn">Turn: Player 1</div>
                     <span id="score">Score: 0</span>
                     <span id="moves">Moves left: 20</span>
-                    <span id="hints">Hint: 3</span>
+                    <span id="hints">Hint: 3 <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                    </span>
                 </div>
                 <div>
                     <div class="popup_win"></div>
                     <div class="popup_lose"></div>
-                    <button id="play_game">Start</button>
-                    <button id="quit_game">Exit</button>
+                    <button id="play_game">Start
+                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                    </button>
+                    <button id="quit_game">Exit
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    </button>
                     <div id="game_board" class="grid"></div> 
                 </div>
             </div>
@@ -186,26 +195,29 @@
         <!--FOOTER WITH SOCIAL MEDIA ICONS-->
         <footer>
             <a href="https://www.facebook.com/login.php/" aria-label="Opens Faceboonk on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
+                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
             </a>
             <a href="https://www.instagram.com/" aria-label="Opens instagram on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
             </a>
             <a href="https://www.youtube.com/" aria-label="Opens youtube on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>
+                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
             </a>
             <a href="https://www.twitch.tv/" aria-label="Opens twitch on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-twitch fa-2x" aria-hidden="true"></i>
+                <i class="fa-brands fa-twitch" aria-hidden="true"></i>
             </a>
             <a href="https://x.com/?lang=en" aria-label="Opens twitter on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
             </a>
             <a href="https://slack.com/intl/en-ie/" aria-label="Opens slack on an outside link in a new window." rel="noopener" target="_blank">
-                <i class="fa fa-slack fa-2x" aria-hidden="true"></i>
+                <i class="fa-brands fa-slack" aria-hidden="true"></i>
             </a>
         </footer>
+    
+    <!--JS FONTAWESOME ICONS SCRIPT-->
+    <script src="https://kit.fontawesome.com/5804c3bb85.js" crossorigin="anonymous"></script>
         
-    <!--JS INTERACTION SCRIPT-->
+    <!--JS GAME INTERACTION SCRIPT-->
     <script src="script.js"></script> 
     </body>
 </html>
