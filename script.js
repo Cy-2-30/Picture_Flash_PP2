@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // MENU DISPLAY FUNCTIONS 
     const sections = document.querySelectorAll('section');
 
+    // SECTION DISPLAY FUNCTIONS TO HIDE ON LOAD AND DISPLAY RELEVANT
     function hideAllSections() {
         sections.forEach(section => section.style.display = 'none');
     }
 
-    // SECTION DISPLAY FUNCTIONS 
     function showSection(sectionId) {
         hideAllSections();
         document.getElementById(sectionId).style.display = 'block';
@@ -36,52 +36,63 @@ document.addEventListener('DOMContentLoaded', () => {
     // GAME FUNCTIONS
     const gameModeDiv = document.getElementById('mode_setup');
     const playerNamesDiv = document.querySelector('.player_name_input');
+    const playerOneNameInput = document.getElementById('player1_names');
+    const playerTwoNameInput = document.getElementById('player2_names');
     const gameInfo = document.getElementById('game_info');
     const gameStatus = document.getElementById('game_status');
     const gameBoard = document.getElementById('game_board');
-    //const playerTwoDiv = document.getElementsByID('player2_names');
-    // the queryselector for next button will decide which to display
-
-    //const gameModeRadios = document.querySelectorAll('input[name="game_mode"]');
-    // not necessary because we are targeting each indivisually
-    
+    const welcomeMsg = document.getElementById('welcome_msg');
     const singlePlayerRadio = document.getElementById('single_player');
     const playComputerRadio = document.getElementById('play_computer');
     const oneMorePlayerRadio = document.getElementById('one_more_player');
-
-    const playerOneNameInput = document.getElementById('player1_names');
-    const playerTwoNameInput = document.getElementById('player2_names');
+    
+    gameModeDiv.style.display = 'block';
+    playerNamesDiv.style.display = 'none';
+    welcomeMsg.style.display = 'none';
+    gameInfo.style.display = 'none';
 
     let player1Name = "";
     let gameMode = 'single'; // Default for single player
     let player2Name = 'Computer'; // Default for playing with the computer
 
     // NEXT BUTTON FUNCTIONS
-    document.querySelector('#mode_setup .next_btn').addEventListener('click', () => {
+    gameModeDiv.querySelector('.next_btn').addEventListener('click', () => {
         if (singlePlayerRadio.checked) {
             gameMode = 'single';
-            playerTwoNameInput.style.display = 'none';
+            playerTwoNameInput.parentElement.style.display = 'none';
         }else if (playComputerRadio.checked) {
             gameMode = 'computer';
-            playerTwoNameInput.style.display = 'none';
+            playerTwoNameInput.parentElement.style.display = 'none';
         }else if (oneMorePlayerRadio.checked) {
             gameMode = 'another_player';
-            playerTwoNameInput.style.display = 'block';
+            playerTwoNameInput.parentElement.style.display = 'block';
         }
         
-        gameModeSetup.style.display = 'none';
+        gameModeDiv.style.display = 'none';
         playerNamesDiv.style.display = 'block';
     });
 
-    document.querySelector('.player_name_input .next').addEventListener('click', () => {
+    playerNamesDiv.querySelector('.next_btn').addEventListener('click', () => {
         // Retrieve player names
-        player1Name = document.getElementById('player1_name').value || 'Player 1';
-        player2Name = (gameMode === 'another_player') ? (document.getElementById('player2_name').value || 'Player 2') : 'Computer';
-        
+        player1Name = playerOneNameInput.value || 'Player 1';
+        if (gameMode === "another_player") {
+            player2Name = playerTwoNameInput.value || "Computer"; 
+        }
+       
         playerNamesDiv.style.display = 'none';
-        gameInfo.style.display = 'block';
+        welcomeMsg.style.display = 'block';
 
         // Set default turn message
+        document.getElementById('welcome').textContent = `Welcome, ${player1Name} and ${player2Name}!`;
+    });
+
+    welcomeMsg.querySelector('.next_btn').addEventListener('click', () => {
+        const player1Turn = document.getElementById('player1_turn').checked; 
+
+        welcomeMsg.style.display = 'none';
+        gameInfo.style.display = 'block';
+
+        const currentTurn = player1Turn ? player1Name : player2Name;
         document.getElementById('current-turn').textContent = `Turn: ${player1Name}`;
        
         // Initialize the game board
