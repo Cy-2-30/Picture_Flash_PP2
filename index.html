@@ -134,10 +134,10 @@
                         <input type="radio" name="game_mode" value="another_player" id="one_more_player">
                         <label for="one_more_player">Play with Another Player</label>
                     </div>
-                    <button class="next" onclick="">Next</button>
+                    <button class="next_btn">Next</button>
                 </div>
 
-                <div class="player_name_input" style="display: block;">
+                <div class="player_name_input" style="display: none;">
                     <div id="player1_names">
                         <label for="player1_name">Player 1 Name:</label>
                         <input type="text" id="player1_name" placeholder="Enter Player 1 Name">
@@ -147,19 +147,29 @@
                         <label for="player2_name">Player 2 Name:</label>
                         <input type="text" id="player2_name" placeholder="Enter Player 2 Name">
                     </div>
-                    <button class="next" onclick="">Next</button>
+                    <button class="next_btn">Next</button>
                 </div>  
+
+                <div id="welcome_msg" style="display: none;">
+                    <h2 id="welcome"></h2>
+                    <h3>Who will play first?</h3>
+                    <input type="radio" name="turn_selection" id="player1_turn">
+                    <label for="player1_turn">Player 1</label>
+                    <input type="radio" name="turn_selection" id="player2_turn">
+                    <label for="player2_turn">Player 2</label>
+                    <button class="next_btn">Start Game</button>
+                </div>
             </div>
 
             <div id="game_info">
-                <div id="game_status" style="display: block;">
+                <div id="game_status" style="display: none;">
                     <div class="popup" id="current_turn">Turn: Player 1</div>
                     <span id="score">Score: 0</span>
                     <span id="moves">Moves left: 20</span>
                     <span id="hints">Hint: 3 <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
                     </span>
                 </div>
-                <div>
+                <div id="playboard" style="display: none;">
                     <div class="popup_win"></div>
                     <div class="popup_lose"></div>
                     <button id="play_game">Start

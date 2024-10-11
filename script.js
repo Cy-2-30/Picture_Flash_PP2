@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => section.style.display = 'none');
     }
 
+    // SECTION DISPLAY FUNCTIONS 
     function showSection(sectionId) {
         hideAllSections();
         document.getElementById(sectionId).style.display = 'block';
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // PLAYER DETAILS AND MODE
+    // GAME FUNCTIONS
     const gameModeDiv = document.getElementById('mode_setup');
     const playerNamesDiv = document.querySelector('.player_name_input');
     const gameInfo = document.getElementById('game_info');
@@ -56,12 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let player2Name = 'Computer'; // Default for playing with the computer
 
     // NEXT BUTTON FUNCTIONS
-    document.querySelector('#mode_setup .next').addEventListener('click', () => {
+    document.querySelector('#mode_setup .next_btn').addEventListener('click', () => {
         if (singlePlayerRadio.checked) {
             gameMode = 'single';
             playerTwoNameInput.style.display = 'none';
         }else if (playComputerRadio.checked) {
             gameMode = 'computer';
+            playerTwoNameInput.style.display = 'none';
         }else if (oneMorePlayerRadio.checked) {
             gameMode = 'another_player';
             playerTwoNameInput.style.display = 'block';

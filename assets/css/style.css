@@ -112,13 +112,15 @@ footer{
     padding: 1rem;
 }
 
-footer a{
+.fa-brands{
     color:  #f5f5f5ff;
-    font-size: x-small;
+    padding: 0.1rem;
 }
 
-footer a:hover{
+.fa-brands:hover{
     color: #e54a43ff;
+    border-bottom: 0.3rem solid #eedf3cff;
+    border-radius: 1rem;
 }
 
 
@@ -137,7 +139,6 @@ footer a:hover{
     border-radius: 1.2rem;
     font-size: medium;
     padding: 0.2rem;
-    --fa-animation-duration: 3s;
 }
 
 #about .content_flow{
