@@ -7,10 +7,9 @@
         <meta name="description" content="Picture Flash Memory Game">
         <meta name="keywords" content="Games, Memory Game, Picture Flash">
         <!--GOOGLE FONTS-->
-
-        <!--FONTAWESOME ICONS
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
         <!--EXTERNAL STYLING-->
         <link rel="stylesheet" href="assets/css/style.css">
         <title>Picture Flash Memory Game</title>
@@ -39,9 +38,9 @@
         </nav>
 
         <!--LANDING SECTION--> 
-        <section id="home">
+        <section id="home" aria-label="Back to school theme.">
             <h1>Picture Memory Game</h1>
-            <img id="home_img" src="assets/pictures/back-school-background.jpg">
+            <img id="home_img" src="assets/pictures/back-school-background.jpg" alt="An image with baack to school stationary">
         </section>  
         
         <!--ABOUT US SECTION-->
@@ -121,7 +120,7 @@
         <!--GAME SECTION-->
         <section id="game">
             <div id="game_setup">
-                <div id="mode_setup" style="display: block;">
+                <div id="mode_setup">
                     <h2>Game Mode Setup</h2>
                     <div>
                         <input type="radio" name="game_mode" value="single" id="single_player">
@@ -137,7 +136,7 @@
                     <button class="next_btn">Next</button>
                 </div>
 
-                <div class="player_name_input" style="display: none;">
+                <div id="player_name_input">
                     <div id="player1_names">
                         <label for="player1_name">Player 1 Name:</label>
                         <input type="text" id="player1_name" placeholder="Enter Player 1 Name">
@@ -147,37 +146,53 @@
                         <label for="player2_name">Player 2 Name:</label>
                         <input type="text" id="player2_name" placeholder="Enter Player 2 Name">
                     </div>
-                    <button class="next_btn">Next</button>
+                    <button class="next_btn" aria-hidden="true">Next</button>
                 </div>  
 
-                <div id="welcome_msg" style="display: none;">
+                <div id="welcome_msg">
                     <h2 id="welcome"></h2>
                     <h3>Who will play first?</h3>
-                    <input type="radio" name="turn_selection" id="player1_turn">
+                    <input type="radio" name="turn_selection" value="one" id="player1_turn">
                     <label for="player1_turn">Player 1</label>
-                    <input type="radio" name="turn_selection" id="player2_turn">
+                    <input type="radio" name="turn_selection" value="two" id="player2_turn">
                     <label for="player2_turn">Player 2</label>
-                    <button class="next_btn">Start Game</button>
+                    <button class="next_btn">Start
+                        <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
 
             <div id="game_info">
-                <div id="game_status" style="display: none;">
-                    <div class="popup" id="current_turn">Turn: Player 1</div>
+                <div id="game_status">
+                    <div id="current_turn">
+                        <i class="fa-solid fa-people-arrows" aria-hidden="true"></i> : Player 1</div>
                     <span id="score">Score: 0</span>
-                    <span id="moves">Moves left: 20</span>
-                    <span id="hints">Hint: 3 <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                    <span id="moves">
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i> : 20</span>
+                    <span id="hints"> 
+                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i> : 3
                     </span>
                 </div>
-                <div id="playboard" style="display: none;">
-                    <div class="popup_win"></div>
-                    <div class="popup_lose"></div>
-                    <button id="play_game">Start
-                        <i class="fa fa-play-circle" aria-hidden="true"></i>
-                    </button>
-                    <button id="quit_game">Exit
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
-                    </button>
+                <div id="playboard">
+                    <div id="results" visibility="hidden">
+                        <div class="popup_win">
+                            <i class="fa-regular fa-face-laugh-wink"></i>
+                        </div>
+                        <div class="popup_lose">
+                            <i class="fa-regular fa-face-sad-tear"></i>
+                        </div>
+                        <button>
+                            <i class="fa-solid fa-person-walking-arrow-loop-left" ria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div id="game_btn">
+                        <button id="play_game">
+                            <i class="fa fa-play-circle" aria-hidden="true"></i>
+                        </button>
+                        <button id="quit_game">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </button>
+                    </div>
                     <div id="game_board" class="grid"></div> 
                 </div>
             </div>

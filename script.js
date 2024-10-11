@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // MENU DISPLAY FUNCTIONS 
+    // MENU AND CONTENT DISPLAY FUNCTIONS 
     const sections = document.querySelectorAll('section');
 
-    // SECTION DISPLAY FUNCTIONS TO HIDE ON LOAD AND DISPLAY RELEVANT
+    // Hide all the contecnt section on load 
     function hideAllSections() {
         sections.forEach(section => section.style.display = 'none');
     }
 
+    // Only display the relevant called section by ID based on the click event
     function showSection(sectionId) {
         hideAllSections();
         document.getElementById(sectionId).style.display = 'block';
@@ -35,10 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // GAME FUNCTIONS
     const gameModeDiv = document.getElementById('mode_setup');
-    const playerNamesDiv = document.querySelector('.player_name_input');
+    const gameInfo = document.getElementById('game_info');
+    const playerNamesDiv = document.getElementById('player_name_input');
     const playerOneNameInput = document.getElementById('player1_names');
     const playerTwoNameInput = document.getElementById('player2_names');
-    const gameInfo = document.getElementById('game_info');
+    const playerTwoDiv = document.getElementById('player2_names');
     const gameStatus = document.getElementById('game_status');
     const gameBoard = document.getElementById('game_board');
     const welcomeMsg = document.getElementById('welcome_msg');
@@ -59,13 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
     gameModeDiv.querySelector('.next_btn').addEventListener('click', () => {
         if (singlePlayerRadio.checked) {
             gameMode = 'single';
-            playerTwoNameInput.parentElement.style.display = 'none';
+            playerTwoDiv.style.display = 'none';
         }else if (playComputerRadio.checked) {
             gameMode = 'computer';
-            playerTwoNameInput.parentElement.style.display = 'none';
+            playerTwoDiv.style.display = 'none';
         }else if (oneMorePlayerRadio.checked) {
             gameMode = 'another_player';
-            playerTwoNameInput.parentElement.style.display = 'block';
+            playerTwoDiv.style.display = 'block';
         }
         
         gameModeDiv.style.display = 'none';
@@ -74,16 +76,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     playerNamesDiv.querySelector('.next_btn').addEventListener('click', () => {
         // Retrieve player names
-        player1Name = playerOneNameInput.value || 'Player 1';
+        player1Name = playerOneNameInput.value || 'Player One';
         if (gameMode === "another_player") {
-            player2Name = playerTwoNameInput.value || "Computer"; 
+            player2Name = playerTwoNameInput.value || "Player Two"; 
+        } else if (gameMode == "single" || gameMode === "computer"){
+            player2Name = "Computer";
         }
        
         playerNamesDiv.style.display = 'none';
         welcomeMsg.style.display = 'block';
 
         // Set default turn message
+
         document.getElementById('welcome').textContent = `Welcome, ${player1Name} and ${player2Name}!`;
+        
     });
 
     welcomeMsg.querySelector('.next_btn').addEventListener('click', () => {
