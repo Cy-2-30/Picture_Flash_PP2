@@ -159,9 +159,7 @@
                             <input type="radio" name="turn_selection" value="two" id="player2_turn" aria-label="Player 2 Turn Selection" tabindex="0">
                             <label for="player2_turn" tabindex="0">Player 2</label>
                     </div>
-                    <button class="next_btn" aria-label="Press to Start Game" tabindex="0">Start
-                        <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
-                    </button>
+                    <button class="next_btn" aria-label="Press to Start Game" tabindex="0">Start</button>
             </div>
 
             <div id="game_info" tabindex="0">
@@ -169,13 +167,13 @@
                     <div id="current_turn" aria-live="polite"  tabindex="0">
                         <i class="fa-solid fa-people-arrows" aria-hidden="true"></i>
                     </div>
-                    <span id="score" tabindex="0">Score: 0
+                    <span id="score" tabindex="0">Score: 
                     </span>
                     <span id="moves" tabindex="0">
-                        <i class="fa-solid fa-heart" aria-hidden="true"></i> : 20
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i> : 
                     </span>
-                    <span id="hints" tabindex="0"> 
-                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i> : 3
+                    <span id="time" tabindex="0"> 
+                        <i class="fa-solid fa-hourglass-start" aria-hidden="true"></i> : 
                     </span>
                 </div>
 
@@ -187,19 +185,25 @@
                         <div class="popup_lose" tabindex="0">
                             <i class="fa-regular fa-face-sad-tear" aria-hidden="true"></i>
                         </div>
-                        <button class="next_btn" aria-label="Press to Continue the Game." tabindex="0">Start
+                        <div id="scoresboard" tabindex="0">
+                            <h2 tabindex="0">Scoreboard</h2>
+                        </div>
+                        <button class="next_btn" aria-label="Press to Continue the Game." tabindex="0">
                             <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
                         </button>
-                        <button class="next_btn" aria-label="Press to Exit the Game." tabindex="0">Start
+                        <button class="next_btn" aria-label="Press to Exit the Game." tabindex="0">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </button>
                     </div>
                     
                     <div id="game_btn">
-                        <button class="next_btn" aria-label="Press to Play the Game." tabindex="0">Start
+                        <button class="next_btn" aria-label="Press to get a hint." tabindex="0">
+                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i> :  
+                        </button>
+                        <button class="next_btn" aria-label="Press to Play the Game." tabindex="0">
                             <i class="fa fa-play-circle" aria-hidden="true"></i>
                         </button>
-                        <button class="next_btn" aria-label="Press to Exit the Game." tabindex="0">Exit
+                        <button class="next_btn" aria-label="Press to Exit the Game." tabindex="0">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </button>
                     </div>

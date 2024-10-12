@@ -97,10 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             // Make sure the player input two different naames
-        if (player1Name.toLowerCase() === player2Name.toLowerCase()) {
-            alert("Player 1 and Player 2 cannot have the same name. Choose different names.");
-            return; 
-        }
+            if (player1Name.toLowerCase() === player2Name.toLowerCase()) {
+                alert("Player 1 and Player 2 cannot have the same name. Choose different names.");
+                return; 
+            }
         } else if (gameMode === "single" || gameMode === "computer") {
             player2Name = "Computer";
         }
@@ -143,28 +143,56 @@ document.addEventListener('DOMContentLoaded', () => {
         initGameBoard(); 
     });
 
+
+    // GAME FUNCTIONS
+    // Decalring variables
+    let currentLevel = 1; 
+    let movesLeft = 8;   
+    let totalScore = 0;
+    let matchedPairs = 0;
+    let flippedCards = [];
+    let timerInterval;
+    let playerTime = 0;  
+
     function initGameBoard(){
+        // Grid size created based on game level 4x4, 6x6 and 8x8
+        const gridSize = currentLevel === 1 ? 4 : currentLevel === 2 ? 6 : 8;
+        movesLeft = currentLevel === 1 ? 8 : currentLevel === 2 ? 12 : 16;
+        gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`; 
+        
         //To clear out any content
         gameBoard.innerHTML = '';
 
-        const gridSize = 4;
-        gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`; 
-        
-        // Loop to create the 4x4 grid tiles
-        for (let i = 0; i < gridSize * gridSize; i++) {
+        const totalTiles = gridSize * gridSize;
+        // There can only be 1 pair of cards per each grid board
+        const cardValues = generateCardPairs(totalTiles / 2);
+        let shuffledCards = shuffle(cardValues);
+
+        // Create the tiles
+        shuffledCards.forEach(value => {
             const tile = document.createElement('div');
             tile.classList.add('tile');
-            tile.textContent = '?';  
-            
-            tile.addEventListener('click', () => handleTileClick(tile));
+            tile.dataset.value = value;
 
-            gameBoard.appendChild(tile);
-        }
+            // Hide the card value
+            tile.textContent = '?';  
+
+            tile.addEventListener('click', () => handleTileClick(tile));
+            gameBoard.appendChild(tile)
+        });
+        
+        matchedPairs = 0; 
+        // Update  the game moves and hint
+        document.getElementById('moves').textContent = `Moves: ${movesLeft}`;
+        document.getElementById('hints').textContent = `Hints: ${hintsLeft}`;
+        // Start the timer
+        startTimer();  
     }
 
     function handleTileClick(tile) {
         tile.textContent = Math.floor(Math.random() * 16); 
     }
+    
 
     //document.getElementById('play_game').addEventListener('click', () => {
       //  initGameBoard(); 

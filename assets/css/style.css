@@ -257,7 +257,7 @@ button{
 
 #game_board{
     background-color: #e54a43ff;
-    border: 0.10rem solid #eedf3cff;
+    border: 0.10rem solid rgb(5, 5, 5);
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 25% 25% 25% 25%;
     height: 75vh;
@@ -270,15 +270,15 @@ button{
 
 .grid {
     display: grid;
-    background-color: #474747ff;
-    gap: 1rem solid #40406aff;
-    max-width: 75vw;
+    background-color: rgb(5, 245, 77);
+    gap: 1rem solid rgb(252, 252, 252);
+    width: 30vw;
     margin: 0 auto;
 }
 
 .tile {
-    background-color: #f5f5f5ff;
-    width: 80vw;
+    background-color: rgb(27, 216, 184);
+    width: 2vw;
     display: flex;
     justify-content: center;
     align-items: center;
