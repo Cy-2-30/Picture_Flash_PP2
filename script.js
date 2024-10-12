@@ -120,12 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
             tile.addEventListener('click', () => handleTileClick(tile));
 
             gameBoard.appendChild(tile);
-        };
+        }
     }
 
     function handleTileClick(tile) {
         tile.textContent = Math.floor(Math.random() * 16); 
-    };
+    }
 
     //document.getElementById('play_game').addEventListener('click', () => {
       //  initGameBoard(); 
