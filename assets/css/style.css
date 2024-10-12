@@ -172,7 +172,8 @@ h2{
 
 
 /*CONTACT PAGE STYLING*/
-.form_shadow_setup{
+.form_shadow_setup,
+#game_board{
     box-shadow: 0.1rem 0.2rem 0.2rem 0.1rem hsla(240, 25%, 33%, 1);
 }
 
@@ -261,8 +262,15 @@ textarea:hover,
 
 /*GAME PAGE STYLING*/
 #game,
-#game div{
+#mode_setup div,
+#player_name_input div,
+#many_playermsg h3,
+#many_playermsg div{
     padding: 1rem;
+}
+
+#many_playermsg h3{
+    padding-right: 3rem;
 }
 
 #game_btn{
@@ -276,8 +284,31 @@ button,
     margin-left: 2rem;
     width: 20vw;
 }
+
+#game_btn span{
+    padding: 0;
+}
+
+#game_btn div{
+    width: 2.5rem;
+    height: 1.7rem;
+    padding: 0.2rem 0.2rem 0 0.4rem;
+}
+
+#game_btn button{
+    width: 3rem;
+    height: 2rem;
+}
   
-/*Syling not applied to be fixed later!!!!*/
+#game_btn i{
+    font-size: small;
+}
+
+#game_btn i:hover{
+    color: #eedf3cff;
+}
+
+/*Styling not applied to be fixed later!!!!*/
 input[type="radio"]:checked::before {
     background-color: #40406aff;
     border: 0.1rem solid #474747ff;
@@ -299,11 +330,12 @@ input[type="radio"]:checked::before {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-bottom: 0.5rem;
 }
 
 #game_heading span, 
 #game_heading i{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bolder;
 }
 
@@ -316,37 +348,42 @@ input[type="radio"]:checked::before {
     font-size: 1.2rem;
 }
 
+#game_btn{
+    padding: 0 0 1rem 0;
+}
+
 .popup {
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
 #game_board{
-    background-color: #e54a43ff;
-    border: 0.10rem solid rgb(5, 5, 5);
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 25% 25% 25% 25%;
-    height: 75vh;
-    width: 80vw;
+    background-color: #428b7bff;
+    border: 0.1rem dotted #40406aff;
+    height: fit-content;
+    width: fit-content;
     max-width: 85rem;
-    padding: 1.24rem;
+    padding: 0.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
 }
 
 .grid {
     display: grid;
-    background-color: rgb(5, 245, 77);
-    gap: 5rem solid rgb(252, 252, 252);
-    width: 30vw;
-    margin: 0 auto;
 }
 
 .tile {
-    background-color: rgb(27, 216, 184);
-    width: 2vw;
+    background-color: #40406aff;
+    width: 20vw;
+    height: 13vh;
+    border: 0.12rem double #f5f5f5ff;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+
+.tile:hover{
+    background-color:  #e54a43ff;
+    border: 0.1rem double #eedf3cff;
+    box-shadow: 0 0.1rem, 0 0.1rem, 0 0.1rem, 0 0.1rem 0.3rem #474747ff;
 }
