@@ -154,6 +154,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerInterval;
     let playerTime = 0;  
 
+    // Shuffle cards before each game
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
     function initGameBoard(){
         // Grid size created based on game level 4x4, 6x6 and 8x8
         const gridSize = currentLevel === 1 ? 4 : currentLevel === 2 ? 6 : 8;
@@ -184,15 +193,33 @@ document.addEventListener('DOMContentLoaded', () => {
         matchedPairs = 0; 
         // Update  the game moves and hint
         document.getElementById('moves').textContent = `Moves: ${movesLeft}`;
-        document.getElementById('hints').textContent = `Hints: ${hintsLeft}`;
+        document.getElementById('hints').textContent = `Hints: 3`; 
         // Start the timer
         startTimer();  
     }
 
+    // TESTING CARD PAIRS
+    function generateCardPairs(numPairs) {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let cardValues = [];
+    
+        for (let i = 0; i < numPairs; i++) {
+            cardValues.push(letters[i], letters[i]); 
+        }
+        return cardValues;
+    }
+
     function handleTileClick(tile) {
-        tile.textContent = Math.floor(Math.random() * 16); 
+        if (tile.textContent === '?') {
+            tile.textContent = tile.dataset.value;
+            movesLeft--;
+            
+            // To check is there is any moves
+            document.getElementById('moves').textContent = `Moves: ${movesLeft}`;
+        }
     }
     
+
 
     //document.getElementById('play_game').addEventListener('click', () => {
       //  initGameBoard(); 
