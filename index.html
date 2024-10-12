@@ -154,56 +154,65 @@
                 <h2 id="welcome" tabindex="0"></h2>
                     <div id="many_playermsg" tabindex="0">
                         <h3  tabindex="0">Who will play first?</h3>
-                            <input type="radio" name="turn_selection" value="one" id="player1_turn" aria-label="Player 1 Turn Selection" tabindex="0">
-                            <label for="player1_turn" tabindex="0">Player 1</label>
-                            <input type="radio" name="turn_selection" value="two" id="player2_turn" aria-label="Player 2 Turn Selection" tabindex="0">
-                            <label for="player2_turn" tabindex="0">Player 2</label>
+                            <div>
+                                <input type="radio" name="turn_selection" value="one" id="player1_turn" aria-label="Player 1 Turn Selection" tabindex="0">
+                                <label for="player1_turn" tabindex="0">Player 1</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="turn_selection" value="two" id="player2_turn" aria-label="Player 2 Turn Selection" tabindex="0">
+                                <label for="player2_turn" tabindex="0">Player 2</label>
+                            </div>                            
                     </div>
                     <button class="next_btn" aria-label="Press to Start Game" tabindex="0">Start</button>
             </div>
 
             <div id="game_info" tabindex="0">
                 <div id="game_status">
-                    <div id="current_turn" aria-live="polite"  tabindex="0">
-                        <i class="fa-solid fa-people-arrows" aria-hidden="true"></i>
+                    <div id="game_heading">
+                        <i class="fa-solid fa-people-arrows" aria-hidden="true"> : </i>
+                        <span id="current_turn" aria-live="polite"  tabindex="0"><span>
                     </div>
-                    <span id="score" tabindex="0">Score: 
-                    </span>
-                    <span id="moves" tabindex="0">
-                        <i class="fa-solid fa-heart" aria-hidden="true"></i> : 
-                    </span>
-                    <span id="time" tabindex="0"> 
-                        <i class="fa-solid fa-hourglass-start" aria-hidden="true"></i> : 
-                    </span>
+                    <div id="game_stats">
+                        <div>
+                            <span id="score" tabindex="0">Score :</span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-heart" aria-hidden="true"> : </i>
+                            <span id="moves" tabindex="0"></span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-hourglass-start" aria-hidden="true"> : </i>
+                            <span id="time" tabindex="0"></span>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="playboard">
                     <div id="results" style="display: none;" tabindex="0">
                         <div class="popup_win" tabindex="0">
-                            <i class="fa-regular fa-face-laugh-wink" aria-hidden="true"></i>
                         </div>
                         <div class="popup_lose" tabindex="0">
-                            <i class="fa-regular fa-face-sad-tear" aria-hidden="true"></i>
                         </div>
                         <div id="scoresboard" tabindex="0">
                             <h2 tabindex="0">Scoreboard</h2>
                         </div>
-                        <button class="next_btn" aria-label="Press to Continue the Game." tabindex="0">
+                        <button class="next_btn game_button" aria-label="Press to Continue the Game." tabindex="0">
                             <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
                         </button>
-                        <button class="next_btn" aria-label="Press to Exit the Game." tabindex="0">
+                        <button class="next_btn game_button" aria-label="Press to Exit the Game." tabindex="0">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </button>
                     </div>
                     
                     <div id="game_btn">
-                        <button class="next_btn" aria-label="Press to get a hint." tabindex="0">
-                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i> :  
-                        </button>
-                        <button class="next_btn" aria-label="Press to Play the Game." tabindex="0">
+                        <div role="button" class="next_btn game_button hint_btn" aria-roledescription="Press to get a hint." tabindex="0">
+                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                            <span id="hints"></span>
+                        </div>
+                        <button class="next_btn game_button" aria-label="Press to Play the Game." tabindex="0">
                             <i class="fa fa-play-circle" aria-hidden="true"></i>
                         </button>
-                        <button class="next_btn" aria-label="Press to Exit the Game." tabindex="0">
+                        <button class="next_btn game_button" aria-label="Press to Exit the Game." tabindex="0">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -217,14 +226,14 @@
         <section id="contact" tabindex="0">
             <h1 tabindex="0">Contacts</h1>
                 <form>
-                    <fieldset class="shadow_setup" tabindex="0">
+                    <fieldset class="form_shadow_setup" tabindex="0">
                         <h2 class="form_heading" tabindex="0">Give us your feedback.</h2>
                             <label class="mobile_label" for="names" tabindex="0">Names: </label><br>
                             <input type="text" id="names" name="names" class="form_input" placeholder="James Smith" tabindex="0">
                             <label class="mobile_label" for="email" tabindex="0">Email: </label><br>
                             <input type="text" id="email" name="email" class="form_input" placeholder="email@example.ie" tabindex="0">
-                            <label class="mobile_label" for="message_heading" tabindex="0">Message Heading:</label><br>
-                            <input class="msg_heading" type="text" id="message_heading" name="message_heading" tabindex="0">
+                            <label class="mobile_label msg_headinglbl" for="message_heading" tabindex="0">Message Heading:</label><br>
+                            <input class="msg_heading form_input" type="text" id="message_heading" name="message_heading" tabindex="0">
                             <textarea  id="feedback" name="feedback" maxlength="500" placeholder="What is on your mind..." tabindex="0"></textarea><br>
                         <button class="form_btn shadow_setup" type="reset" value="Reset" tabindex="0">Reset</button>
                         <button class="form_btn shadow_setup" type="submit" value="Submit" tabindex="0">Submit</button>

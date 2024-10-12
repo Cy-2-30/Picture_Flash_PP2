@@ -172,15 +172,20 @@ h2{
 
 
 /*CONTACT PAGE STYLING*/
-.shadow_setup{
-    box-shadow: 0 0.5rem 1rem hsla(0, 0%, 28%, 1);
+.form_shadow_setup{
+    box-shadow: 0.1rem 0.2rem 0.2rem 0.1rem hsla(240, 25%, 33%, 1);
+}
+
+.shadow_setup,
+.next_btn{
+    box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
 }
 
 fieldset{
     background-color: hsla(3, 76%, 58%, 0.5);
     border-radius: 0.3rem;
     border:hsla(3, 76%, 58%, 0.5);
-    height: 50vh;
+    height: 60vh;
     width: auto;
     padding: 0.8rem;
 }
@@ -194,44 +199,61 @@ fieldset{
     padding: 0.3rem;
 }
 
-input,
+.form_input,
 textarea,
-button{
+button,
+#player_name_input input{
     margin: 0.3rem;
     padding: 0.2rem;
     cursor: pointer;
 }
 
-input,
-textarea{
+.form_input,
+textarea,
+#player_name_input input{
     background-color: transparent;
     border: transparent;
     border-bottom: 0.01rem solid hsla(240, 25%, 33%, 1);
     padding-left: 5rem;
 }
 
+.form_input{
+    width: 65vw;
+}
+
+.msg_headinglbl{
+    margin-left: 20vw;
+}
+
 textarea{
     border: 0.1rem solid hsla(240, 25%, 33%, 1);
     border-radius: 0.2rem;
+    height: 5rem;
     width: 75vw;
     margin-left: 0.8rem;
     padding-left: 0.5rem;
 }
 
-input:hover,
-textarea:hover{
-    background-color: hsla(167, 36%, 40%, 0.1);
+.form_input:hover,
+textarea:hover,
+#player_name_input input:hover{
+    background-color: hsla(240, 25%, 33%, 0.1);
 }
 
-.form_btn{
+.form_btn,
+.next_btn{
     background-color: #428b7bff;
     color: #f5f5f5ff;
     border: 0.1rem dotted #40406aff;
+    margin-top: 1.5rem;
+    margin-left: 3.5rem;
 }
 
-.form_btn:hover{
+.form_btn:hover,
+.next_btn:hover{
     background-color:  #e54a43ff;
     border: 0.1rem dotted #eedf3cff;
+    box-shadow: 0 0.1rem, 0 0.1rem, 0 0.1rem, 0 0.1rem 0.3rem inset hsla(55, 84%, 58%, 1);
     color: #474747ff;
     font-weight: bolder;
 }
@@ -243,11 +265,55 @@ textarea:hover{
     padding: 1rem;
 }
 
+#game_btn{
+    display: flex;
+    flex-direction: row;
+}
 
-button{
+button,
+.next_btn{
     border-radius: 0.30rem;
     margin-left: 2rem;
     width: 20vw;
+}
+  
+/*Syling not applied to be fixed later!!!!*/
+input[type="radio"]:checked::before {
+    background-color: #40406aff;
+    border: 0.1rem solid #474747ff;
+    border-radius: 50%;
+  }
+
+#player_name_input input{
+    background-color: transparent;
+    padding-left: 0.5rem;
+}
+
+#game_stats{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#game_heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#game_heading span, 
+#game_heading i{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+#game_heading i,
+#game_stats i{
+    color: #40406aff;
+}
+
+#game_stats i{
+    font-size: 1.2rem;
 }
 
 .popup {
@@ -271,7 +337,7 @@ button{
 .grid {
     display: grid;
     background-color: rgb(5, 245, 77);
-    gap: 1rem solid rgb(252, 252, 252);
+    gap: 5rem solid rgb(252, 252, 252);
     width: 30vw;
     margin: 0 auto;
 }

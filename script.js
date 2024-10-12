@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // GAME FUNCTIONS
+    // GAME SECTION FUNCTIONS
     // Radio selections variables 
     const gameModeDiv = document.getElementById('mode_setup');
     const singlePlayerRadio = document.getElementById('single_player');
@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameInfo = document.getElementById('game_info');
     const gameStatus = document.getElementById('game_status');
     const gameBoard = document.getElementById('game_board');
+    const playButton = document.querySelector('#game_btn .next_btn[aria-label="Press to Play the Game."]');
+    const hintButton = document.querySelector('#game_btn #hints');
+    const resultsDiv = document.getElementById('results');
+    const popupLoseDiv = document.querySelector('.popup_lose');
+    const popupwinDiv = document.querySelector('.popup_win');
+    const movesDisplay = document.getElementById('moves');
 
     // On section load content to be hidden
     playerNamesDiv.style.display = 'none';
@@ -62,6 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameMode = 'single'; 
     // Default for playing with the computer
     let player2Name = 'Computer'; 
+    let currentLevel = 1; 
+    let movesLeft = 0; 
+    let timer;
 
     // Player mode selection options
     document.querySelector('#mode_setup .next_btn').addEventListener('click', () => {
@@ -143,16 +152,20 @@ document.addEventListener('DOMContentLoaded', () => {
         initGameBoard(); 
     });
 
-
-    // GAME FUNCTIONS
     // Decalring variables
-    let currentLevel = 1; 
-    let movesLeft = 8;   
     let totalScore = 0;
     let matchedPairs = 0;
     let flippedCards = [];
     let timerInterval;
     let playerTime = 0;  
+    let hintsLeft = 3;
+
+    // Moves are based on the grid size
+    const gridSizes = {
+        4: 20,
+        6: 42,
+        8: 72
+    }; 
 
     // Shuffle cards before each game
     function shuffle(array) {
@@ -166,7 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function initGameBoard(){
         // Grid size created based on game level 4x4, 6x6 and 8x8
         const gridSize = currentLevel === 1 ? 4 : currentLevel === 2 ? 6 : 8;
-        movesLeft = currentLevel === 1 ? 8 : currentLevel === 2 ? 12 : 16;
+        movesLeft = gridSizes[gridSize];
+        movesDisplay.textContent = `Moves Left: ${movesLeft}`;
         gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`; 
         
         //To clear out any content
@@ -193,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         matchedPairs = 0; 
         // Update  the game moves and hint
         document.getElementById('moves').textContent = `Moves: ${movesLeft}`;
-        document.getElementById('hints').textContent = `Hints: 3`; 
+        document.getElementById('hints').textContent = ` : ${hintsLeft}`; 
         // Start the timer
         startTimer();  
     }
