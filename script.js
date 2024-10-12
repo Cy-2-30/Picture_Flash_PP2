@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const playComputerRadio = document.getElementById('play_computer');
     const oneMorePlayerRadio = document.getElementById('one_more_player');
     
-    gameModeDiv.style.display = 'block';
     playerNamesDiv.style.display = 'none';
     welcomeMsg.style.display = 'none';
     gameInfo.style.display = 'none';
@@ -58,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let player2Name = 'Computer'; // Default for playing with the computer
 
     // NEXT BUTTON FUNCTIONS
-    gameModeDiv.querySelector('.next_btn').addEventListener('click', () => {
+    document.querySelector('#mode_setup .next_btn').addEventListener('click', () => {
         if (singlePlayerRadio.checked) {
             gameMode = 'single';
             playerTwoDiv.style.display = 'none';
@@ -128,13 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
         tile.textContent = Math.floor(Math.random() * 16); 
     };
 
-    document.getElementById('play_game').addEventListener('click', () => {
-        initGameBoard(); 
-    });
+    //document.getElementById('play_game').addEventListener('click', () => {
+      //  initGameBoard(); 
+    //});
 
-    document.getElementById('quit_game').addEventListener('click', () => {
-        gameStatus.style.display = 'none';
-        gameBoard.style.display = 'none';  
-    });
+   // document.getElementById('quit_game').addEventListener('click', () => {
+     //   gameStatus.style.display = 'none';
+       // gameBoard.style.display = 'none';  
+    //});
 
 });

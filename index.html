@@ -18,54 +18,53 @@
     <body>
         <!--MENU-->
         <header>
-            <nav id="desktop_menu" role="navigation" aria-label="Primary">
+            <nav id="desktop_menu" aria-label="Primary">
                 <a href="#home" aria-label="Link to landing page" tabindex="0">Home</a>
                 <a href="#about" aria-label="Link to about us page" tabindex="0">About Us</a>
                 <a href="#game" aria-label="Link to game page" tabindex="0">Game</a>
                 <a href="#contact" aria-label="Link to contact page" tabindex="0">Contact Us</a>
             </nav>
 
-            <div id="menu_icon" aria-label="Open menu dropdown" tabindex="0">
+            <div id="menu_icon" tabindex="0">
                 <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
             </div>
                 
-            <nav id="dropdown_menu" role="navigation" aria-label="Primary">
+            <nav id="dropdown_menu" aria-label="Primary">
                 <a href="#home" aria-label="Link to landing page" tabindex="0">Home</a>
                 <a href="#about" aria-label="Link to about us page" tabindex="0">About Us</a>
                 <a href="#game" aria-label="Link to game page" tabindex="0">Game</a>
-                <a href="#contact" aria-label="Link to contact page" tabindex="0">Contact Us</a>            </div>
+                <a href="#contact" aria-label="Link to contact page" tabindex="0">Contact Us</a>            
             </nav>
         </header>
 
         <!--LANDING SECTION--> 
         <section id="home" aria-label="Back to school theme." tabindex="0">
             <h1>Picture Memory Game</h1>
-            <img id="home_img" src="assets/pictures/back-school-background.jpg" alt="An image with baack to school stationary.">
+                <img id="home_img" src="assets/pictures/back-school-background.jpg" alt="An image with baack to school stationary.">
         </section>  
         
         <!--ABOUT US SECTION-->
-        <section id="about" tabindex="0">
-            <div class="content_flow">
-                <article id="history">
-                    <h1 tabindex="0">Memory Game</h1>
+        <section class="content_flow" id="about" tabindex="0" >
+            <article id="history">
+                <h1 tabindex="0">Memory Game</h1>
                     <img class="game_info_img" src="assets/pictures/memory.jpg" alt="An image of the brain function.">
                     <h2 tabindex="0">Card Game</h2>
-                    <p tabindex="0">
-                        The original game is to be played as a round game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. This game is created from the same theory.
-                    </p>
-                    
-                    <p tabindex="0">
-                        The game can be played with any number of players or as a solitaire or patience game. It is a particularly good game for young children, though adults may find it challenging and stimulating as well. The scheme is often used in quiz shows <i>in fact, several game shows have used its name in their titles</i> and can be employed as an educational game. 
-                    </p>
+                        <p tabindex="0">
+                            The original game is to be played as a round game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. This game is created from the same theory.
+                        </p>
                         
-                    <p tabindex="0">
-                        Some of the names the game is know as including <b>Memory, Matching Pairs, Match Match, Match Up, Pelmanism, Pexeso</b> or simply <b>Pairs</b>. 
-                    </p>
-                </article>
+                        <p tabindex="0">
+                            The game can be played with any number of players or as a solitaire or patience game. It is a particularly good game for young children, though adults may find it challenging and stimulating as well. The scheme is often used in quiz shows <i>in fact, several game shows have used its name in their titles</i> and can be employed as an educational game. 
+                        </p>
+                            
+                        <p tabindex="0">
+                            Some of the names the game is know as including <b>Memory, Matching Pairs, Match Match, Match Up, Pelmanism, Pexeso</b> or simply <b>Pairs</b>. 
+                        </p>
+            </article>
 
-                <article id="rules" tabindex="0">
-                    <h2 tabindex="0">Game Rules</h2>
-                    <img class="game_info_img" src="assets/pictures/rules.jpg" atl="An image of checklist rules to follow.">
+            <article id="rules" tabindex="0">
+                <h2 tabindex="0">Game Rules</h2>
+                    <img class="game_info_img" src="assets/pictures/rules.jpg" alt="An image of checklist rules to follow.">
                     <ul>
                         <li tabindex="0">
                             The game will start with <b>4x4</b> cards to which the player will be given a number of moves to turn the cards and match them. 
@@ -92,10 +91,10 @@
                             In the beginning the player has an option to play alone, or with another player or with the computer.
                         </li>
                     </ul>
-                </article>
+            </article>
 
-                <article id="instructions" tabindex="0">
-                    <h2 tabindex="0">Tips On How To Play</h2>
+            <article id="instructions" tabindex="0">
+                <h2 tabindex="0">Tips On How To Play</h2>
                     <img class="game_info_img" src="assets/pictures/instruction.jpg" alt="An image of game guidelines">
                     <p tabindex="0">
                         The game theme revolves around "Back To School" them. If the players bares this in mind, it would be easy to remember the pictures flashed. 
@@ -115,18 +114,16 @@
                     <a href="#menu_icon" class="return_btn" aria-label="the icon displays the menu for navigation." tabindex="0">
                         <i class="fa-solid fa-house-chimney-crack" aria-hidden="true"></i>
                     </a>
-                </article>
-            </div>
+            </article>
         </section>
 
         <!--GAME SECTION-->
-        <section id="game" tabindex="0">
-            <div id="game_setup">
-                <div id="mode_setup" tabindex="0">
-                    <h2 tabindex="0">Game Mode Setup</h2>
+        <section id="game game_setup" tabindex="0">
+            <div id="mode_setup" tabindex="0">
+                <h2 tabindex="0">Game Mode Setup</h2>
                     <div>
                         <input type="radio" name="game_mode" value="single" id="single_player" aria-label="Single Player Mode" tabindex="0">
-                        <label for="single_player" checked>Play Alone</label>
+                        <label for="single_player">Play Alone</label>
                     <div>
                         <input type="radio" name="game_mode" value="computer" id="play_computer" aria-label="Play against Computer Mode" tabindex="0">
                         <label for="play_computer">Play with Computer</label>
@@ -136,9 +133,10 @@
                         <label for="one_more_player">Play with Another Player</label>
                     </div>
                     <button class="next_btn" aria-label="Next leads to Player Names Setup." tabindex="0">Next</button>
-                </div>
+            </div>
 
-                <div id="player_name_input"  tabindex="0">
+            <div id="player_name_input"  tabindex="0">
+                <h2 tabindex="0">Enter Player Names</h2>
                     <div id="player1_names"  tabindex="0">
                         <label for="player1_name" tabindex="0">Player 1 Name:</label>
                         <input type="text" id="player1_name" placeholder="Enter Player 1 Name" tabindex="0">
@@ -149,38 +147,41 @@
                         <input type="text" id="player2_name" placeholder="Enter Player 2 Name" tabindex="0">
                     </div>
                     <button class="next_btn" aria-label="Next leads to a Welcome Message." tabindex="0">Next</button>
-                </div>  
+            </div>  
 
-                <div id="welcome_msg"  tabindex="0">
-                    <h2 id="welcome"  tabindex="0"></h2>
+            <div id="welcome_msg"  tabindex="0">
+                <h2 id="welcome"  tabindex="0"></h2>
                     <h3  tabindex="0">Who will play first?</h3>
-                    <input type="radio" name="turn_selection" value="one" id="player1_turn" aria-label="Player 1 Turn Selection" tabindex="0">
-                    <label for="player1_turn" tabindex="0">Player 1</label>
-                    <input type="radio" name="turn_selection" value="two" id="player2_turn" aria-label="Player 2 Turn Selection" tabindex="0">
-                    <label for="player2_turn" tabindex="0">Player 2</label>
-                    <button class="next_btn" aria-label="Press to Start Game" tabindex="0">Start
-                        <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
-                    </button>
-                </div>
+                        <input type="radio" name="turn_selection" value="one" id="player1_turn" aria-label="Player 1 Turn Selection" tabindex="0">
+                        <label for="player1_turn" tabindex="0">Player 1</label>
+                        <input type="radio" name="turn_selection" value="two" id="player2_turn" aria-label="Player 2 Turn Selection" tabindex="0">
+                        <label for="player2_turn" tabindex="0">Player 2</label>
+                        <button class="next_btn" aria-label="Press to Start Game" tabindex="0">Start
+                            <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
+                        </button>
             </div>
 
-            <main id="game_info" class="main_content" tabindex="0">
+            <div id="game_info" tabindex="0">
                 <div id="game_status">
-                    <div id="current_turn" aria-live="polite" aria-label="Current Player Turn" tabindex="0">
-                        <i class="fa-solid fa-people-arrows" aria-hidden="true"></i> : Player 1</div>
-                    <span id="score" aria-label="Player Score" tabindex="0">Score: 0</span>
-                    <span id="moves" aria-label="Remaining Moves" tabindex="0">
-                        <i class="fa-solid fa-heart" aria-hidden="true"></i> : 20</span>
-                    <span id="hints" aria-label="Remaining Hints" tabindex="0"> 
+                    <div id="current_turn" aria-live="polite"  tabindex="0">
+                        <i class="fa-solid fa-people-arrows" aria-hidden="true"></i> : Player 1
+                    </div>
+                    <span id="score" tabindex="0">Score: 0
+                    </span>
+                    <span id="moves" tabindex="0">
+                        <i class="fa-solid fa-heart" aria-hidden="true"></i> : 20
+                    </span>
+                    <span id="hints" tabindex="0"> 
                         <i class="fa fa-lightbulb-o" aria-hidden="true"></i> : 3
                     </span>
                 </div>
+
                 <div id="playboard">
-                    <div id="results" visibility="hidden" tabindex="0">
-                        <div class="popup_win" aria-label="Congratulations!!! You won!" tabindex="0">
+                    <div id="results" style="display: none;" tabindex="0">
+                        <div class="popup_win" tabindex="0">
                             <i class="fa-regular fa-face-laugh-wink" aria-hidden="true"></i>
                         </div>
-                        <div class="popup_lose" aria-label="Sorry, try again!" tabindex="0">
+                        <div class="popup_lose" tabindex="0">
                             <i class="fa-regular fa-face-sad-tear" aria-hidden="true"></i>
                         </div>
                         <button class="next_btn" aria-label="Press to Continue the Game." tabindex="0">Start
@@ -190,6 +191,7 @@
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </button>
                     </div>
+                    
                     <div id="game_btn">
                         <button class="next_btn" aria-label="Press to Play the Game." tabindex="0">Start
                             <i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -198,32 +200,33 @@
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </button>
                     </div>
-                    <div id="game_board" class="grid" aria-label="Game Board" tabindex="0"></div> 
+                    
+                    <div id="game_board" class="grid" tabindex="0"></div> 
                 </div>
-            </main>
+            </div>
         </section>
 
         <!--CONTACT SECTION-->
         <section id="contact" tabindex="0">
             <h1 tabindex="0">Contacts</h1>
-            <form>
-                <fieldset class="shadow_setup" tabindex="0">
-                    <h2 class="form_heading" tabindex="0">Give us your feedback.</h2>
-                    <label class="mobile_label" for="names" tabindex="0">Names: </label><br>
-                    <input type="text" id="names" name="names" class="form_input" placeholder="James Smith" tabindex="0">
-                    <label class="mobile_label" for="email" tabindex="0">Email: </label><br>
-                    <input type="text" id="email" name="email" class="form_input" aria-describedby="emailHelp" placeholder="email@example.ie" tabindex="0">
-                    <label class="mobile_label" for="message_heading" tabindex="0">Message Heading:</label><br>
-                    <input class="msg_heading" type="text" id="message_heading" name="message_heading" class="form_input" tabindex="0">
-                    <textarea  id="feedback" name="feedback" maxlength="500" placeholder="What is on your mind..." tabindex="0"></textarea><br>
-                    <button class="form_btn shadow_setup" type="reset" value="Reset" tabindex="0">Reset</button>
-                    <button class="form_btn shadow_setup" type="submit" value="Submit" tabindex="0">Submit</button>
-                </fieldset>
-            </form>
+                <form>
+                    <fieldset class="shadow_setup" tabindex="0">
+                        <h2 class="form_heading" tabindex="0">Give us your feedback.</h2>
+                            <label class="mobile_label" for="names" tabindex="0">Names: </label><br>
+                            <input type="text" id="names" name="names" class="form_input" placeholder="James Smith" tabindex="0">
+                            <label class="mobile_label" for="email" tabindex="0">Email: </label><br>
+                            <input type="text" id="email" name="email" class="form_input" placeholder="email@example.ie" tabindex="0">
+                            <label class="mobile_label" for="message_heading" tabindex="0">Message Heading:</label><br>
+                            <input class="msg_heading" type="text" id="message_heading" name="message_heading" tabindex="0">
+                            <textarea  id="feedback" name="feedback" maxlength="500" placeholder="What is on your mind..." tabindex="0"></textarea><br>
+                        <button class="form_btn shadow_setup" type="reset" value="Reset" tabindex="0">Reset</button>
+                        <button class="form_btn shadow_setup" type="submit" value="Submit" tabindex="0">Submit</button>
+                    </fieldset>
+                </form>
         </section>
 
         <!--FOOTER WITH SOCIAL MEDIA ICONS-->
-        <footer role="contentinfo" tabindex="0">
+        <footer tabindex="0">
             <a href="https://www.facebook.com/login.php/" aria-label="Opens Faceboonk on an outside link in a new window." rel="noopener" target="_blank" tabindex="0">
                 <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
             </a>
