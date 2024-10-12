@@ -35,28 +35,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // GAME FUNCTIONS
+    // Radio selections variables 
     const gameModeDiv = document.getElementById('mode_setup');
-    const gameInfo = document.getElementById('game_info');
-    const playerNamesDiv = document.getElementById('player_name_input');
-    const playerOneNameInput = document.getElementById('player1_names');
-    const playerTwoNameInput = document.getElementById('player2_names');
-    const playerTwoDiv = document.getElementById('player2_names');
-    const gameStatus = document.getElementById('game_status');
-    const gameBoard = document.getElementById('game_board');
-    const welcomeMsg = document.getElementById('welcome_msg');
     const singlePlayerRadio = document.getElementById('single_player');
     const playComputerRadio = document.getElementById('play_computer');
     const oneMorePlayerRadio = document.getElementById('one_more_player');
-    
+    // Name input variables
+    const playerNamesDiv = document.getElementById('player_name_input');
+    const playerOneNameInput = document.getElementById('player1_name');
+    const playerTwoNameInput = document.getElementById('player2_name');
+    const playerTwoDiv = document.getElementById('player2_names');
+    // Welcome message variable
+    const welcomeMsgDiv = document.getElementById('welcome_msg');
+    // Game board variables
+    const gameInfo = document.getElementById('game_info');
+    const gameStatus = document.getElementById('game_status');
+    const gameBoard = document.getElementById('game_board');
+
+    // On section load content to be hidden
     playerNamesDiv.style.display = 'none';
-    welcomeMsg.style.display = 'none';
+    welcomeMsgDiv.style.display = 'none';
     gameInfo.style.display = 'none';
 
     let player1Name = "";
-    let gameMode = 'single'; // Default for single player
-    let player2Name = 'Computer'; // Default for playing with the computer
+    // Default for single player
+    let gameMode = 'single'; 
+    // Default for playing with the computer
+    let player2Name = 'Computer'; 
 
-    // NEXT BUTTON FUNCTIONS
+    // Player mode selection options
     document.querySelector('#mode_setup .next_btn').addEventListener('click', () => {
         if (singlePlayerRadio.checked) {
             gameMode = 'single';
@@ -68,40 +75,72 @@ document.addEventListener('DOMContentLoaded', () => {
             gameMode = 'another_player';
             playerTwoDiv.style.display = 'block';
         }
-        
+        // Hiding and displaying relevant content
         gameModeDiv.style.display = 'none';
         playerNamesDiv.style.display = 'block';
     });
 
+    // On click event 
     playerNamesDiv.querySelector('.next_btn').addEventListener('click', () => {
-        // Retrieve player names
-        player1Name = playerOneNameInput.value || 'Player One';
+        // Retrieve player names based on the player input
+        player1Name = playerOneNameInput.value.trim();
+        player2Name = playerTwoNameInput.value.trim();
+
+        if (!player1Name) {
+            alert("Enter a name for Player 1.");
+            return;
+        }
+
         if (gameMode === "another_player") {
-            player2Name = playerTwoNameInput.value || "Player Two"; 
-        } else if (gameMode == "single" || gameMode === "computer"){
+            if (!player2Name) {
+                alert("Enter a name for Player 2.");
+                return;
+            }
+            // Make sure the player input two different naames
+        if (player1Name.toLowerCase() === player2Name.toLowerCase()) {
+            alert("Player 1 and Player 2 cannot have the same name. Choose different names.");
+            return; 
+        }
+        } else if (gameMode === "single" || gameMode === "computer") {
             player2Name = "Computer";
         }
-       
-        playerNamesDiv.style.display = 'none';
-        welcomeMsg.style.display = 'block';
 
-        // Set default turn message
-
-        document.getElementById('welcome').textContent = `Welcome, ${player1Name} and ${player2Name}!`;
+        // Update welcome message with player names and set to the selected mode 
+        if (gameMode === 'single') {
+            document.getElementById('welcome').textContent = `Welcome, ${player1Name}!`;
+        } else if (gameMode === 'computer') {
+            document.getElementById('welcome').textContent = `Welcome, ${player1Name} vs Computer!`;
+        } else {
+            document.getElementById('welcome').textContent = `Welcome, ${player1Name} vs ${player2Name}!`;
+        }
         
+        playerNamesDiv.style.display = 'none';
+        welcomeMsgDiv.style.display = 'block';
+        
+        // If it is only one player playing skip everything
+        if (gameMode === 'single') {
+            welcomeMsgDiv.querySelector('.next_btn').style.display = 'block';
+            document.getElementById('many_playermsg').style.display = 'none';
+        }  else {
+            document.getElementById('many_playermsg').style.display = 'block'; 
+        }
+
     });
 
-    welcomeMsg.querySelector('.next_btn').addEventListener('click', () => {
-        const player1Turn = document.getElementById('player1_turn').checked; 
-
-        welcomeMsg.style.display = 'none';
+    welcomeMsgDiv.querySelector('.next_btn').addEventListener('click', () => {
+        if (gameMode !== 'single') {
+            const player1Turn = document.getElementById('player1_turn').checked;
+            const currentTurn = player1Turn ? player1Name : player2Name;
+            document.getElementById('current_turn').textContent = `${currentTurn}'s Turn`; 
+        } else {
+            document.getElementById('current_turn').textContent = `${player1Name}'s Playing`;
+        }
+    
+        welcomeMsgDiv.style.display = 'none';
         gameInfo.style.display = 'block';
 
-        const currentTurn = player1Turn ? player1Name : player2Name;
-        document.getElementById('current-turn').textContent = `Turn: ${player1Name}`;
-       
         // Initialize the game board
-        initGameBoard(); // to create game board initialising function
+        initGameBoard(); 
     });
 
     function initGameBoard(){

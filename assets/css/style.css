@@ -238,6 +238,12 @@ textarea:hover{
 
 
 /*GAME PAGE STYLING*/
+#game,
+#game div{
+    padding: 1rem;
+}
+
+
 button{
     border-radius: 0.30rem;
     margin-left: 2rem;

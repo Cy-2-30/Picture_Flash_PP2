@@ -150,22 +150,24 @@
                     <button class="next_btn" aria-label="Next leads to a Welcome Message." tabindex="0">Next</button>
             </div>  
 
-            <div id="welcome_msg"  tabindex="0">
-                <h2 id="welcome"  tabindex="0"></h2>
-                    <h3  tabindex="0">Who will play first?</h3>
-                        <input type="radio" name="turn_selection" value="one" id="player1_turn" aria-label="Player 1 Turn Selection" tabindex="0">
-                        <label for="player1_turn" tabindex="0">Player 1</label>
-                        <input type="radio" name="turn_selection" value="two" id="player2_turn" aria-label="Player 2 Turn Selection" tabindex="0">
-                        <label for="player2_turn" tabindex="0">Player 2</label>
-                        <button class="next_btn" aria-label="Press to Start Game" tabindex="0">Start
-                            <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
-                        </button>
+            <div id="welcome_msg" tabindex="0">
+                <h2 id="welcome" tabindex="0"></h2>
+                    <div id="many_playermsg" tabindex="0">
+                        <h3  tabindex="0">Who will play first?</h3>
+                            <input type="radio" name="turn_selection" value="one" id="player1_turn" aria-label="Player 1 Turn Selection" tabindex="0">
+                            <label for="player1_turn" tabindex="0">Player 1</label>
+                            <input type="radio" name="turn_selection" value="two" id="player2_turn" aria-label="Player 2 Turn Selection" tabindex="0">
+                            <label for="player2_turn" tabindex="0">Player 2</label>
+                    </div>
+                    <button class="next_btn" aria-label="Press to Start Game" tabindex="0">Start
+                        <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
+                    </button>
             </div>
 
             <div id="game_info" tabindex="0">
                 <div id="game_status">
                     <div id="current_turn" aria-live="polite"  tabindex="0">
-                        <i class="fa-solid fa-people-arrows" aria-hidden="true"></i> : Player 1
+                        <i class="fa-solid fa-people-arrows" aria-hidden="true"></i>
                     </div>
                     <span id="score" tabindex="0">Score: 0
                     </span>
@@ -197,7 +199,7 @@
                         <button class="next_btn" aria-label="Press to Play the Game." tabindex="0">Start
                             <i class="fa fa-play-circle" aria-hidden="true"></i>
                         </button>
-                        <button class="next_btn" aria-label="Press to Exit the Game." tabindex="0">Start
+                        <button class="next_btn" aria-label="Press to Exit the Game." tabindex="0">Exit
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </button>
                     </div>
