@@ -91,14 +91,15 @@ header{
 }
 
 img{
-    height: 50vh;
-    width: 90vw;
+    height: 30vh;
+    width: 85vw;
 }
 
 #home_img{
-    padding: 1rem;
+    padding: 1rem 1.8rem 1rem 1.5rem;
+    margin-top: 1.5rem;
     border-radius: 10rem;
-    box-shadow: 0 0 0.625rem hsla(0, 0%, 28%, 0.02);
+    height: 50vh;
 }
 
 h1{
@@ -130,6 +131,7 @@ footer{
 /*ABOUT PAGE STYLING*/
 .game_info_img{
     border-radius: 0.8rem;
+
 }
 
 .return_btn{
@@ -369,16 +371,18 @@ input[type="radio"]:checked::before {
 
 .grid {
     display: grid;
+    gap: 1rem;
+    margin: 0 auto;
 }
 
 .tile {
     background-color: #40406aff;
-    width: 20vw;
+    width: 50vw;
     height: 13vh;
     border: 0.12rem double #f5f5f5ff;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
@@ -386,4 +390,33 @@ input[type="radio"]:checked::before {
     background-color:  #e54a43ff;
     border: 0.1rem double #eedf3cff;
     box-shadow: 0 0.1rem, 0 0.1rem, 0 0.1rem, 0 0.1rem 0.3rem #474747ff;
+}
+
+
+/* Tablet */
+@media (min-width: 480px) and (max-width: 1024px) {
+    /*ABOUT SECTION*/
+
+    .return_btn{
+        margin-left: 25rem;
+        font-size: large;
+    }
+
+
+
+    
+    /*gAME SECTION*/
+    .tile {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+
+/* Desktop */
+@media (min-width: 1025px) {
+    .tile {
+        width: 100px;
+        height: 100px;
+    }
 }

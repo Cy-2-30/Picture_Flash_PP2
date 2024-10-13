@@ -40,14 +40,22 @@
         <!--LANDING SECTION--> 
         <section id="home" aria-label="Back to school theme." tabindex="0">
             <h1>Picture Memory Game</h1>
-                <img id="home_img" src="assets/pictures/back-school-background.jpg" alt="An image with baack to school stationary.">
+                <picture>
+                    <source media="(min-width: 800px)" srcset="assets/pictures/content/dektop/back-school-background.jpg" />
+                    <source media="(max-width: 799px)" srcset="assets/pictures/content/tablet/back-school-background.jpg"/>
+                    <img id="home_img" src="assets/pictures/content/mobile/back-school-background.jpg" alt="An image with back to school stationary.">
+                </picture>
+                
         </section>  
         
         <!--ABOUT US SECTION-->
         <section class="content_flow" id="about" tabindex="0" >
             <article id="history">
                 <h1 tabindex="0">Memory Game</h1>
-                    <img class="game_info_img" src="assets/pictures/memory.jpg" alt="An image of the brain function.">
+                    <picture>
+                        <source media="(min-width: 490px)" srcset="assets/pictures/content/tablet/memory.jpg"/>
+                        <img class="game_info_img" src="assets/pictures/content/mobile/memory.jpg" alt="An image of the brain function.">
+                    </picture>
                     <h2 tabindex="0">Card Game</h2>
                         <p tabindex="0">
                             The original game is to be played as a round game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. This game is created from the same theory.
@@ -64,7 +72,10 @@
 
             <article id="rules" tabindex="0">
                 <h2 tabindex="0">Game Rules</h2>
-                    <img class="game_info_img" src="assets/pictures/rules.jpg" alt="An image of checklist rules to follow.">
+                    <picture>
+                        <source media="(min-width: 490px)" srcset="assets/pictures/content/tablet/rules.png"/>
+                        <img class="game_info_img" src="assets/pictures/content/mobile/rules.png" alt="An image of the brain function.">
+                    </picture>
                     <ul>
                         <li tabindex="0">
                             The game will start with <b>4x4</b> cards to which the player will be given a number of moves to turn the cards and match them. 
@@ -95,7 +106,10 @@
 
             <article id="instructions" tabindex="0">
                 <h2 tabindex="0">Tips On How To Play</h2>
-                    <img class="game_info_img" src="assets/pictures/instruction.jpg" alt="An image of game guidelines">
+                <picture>
+                    <source media="(min-width: 490px)" srcset="assets/pictures/content/tablet/instruction.jpg"/>
+                    <img class="game_info_img" src="assets/pictures/content/mobile/instruction.jpg" alt="An image of the brain function.">
+                </picture>
                     <p tabindex="0">
                         The game theme revolves around "Back To School" them. If the players bares this in mind, it would be easy to remember the pictures flashed. 
                     </p>
@@ -163,7 +177,7 @@
                                 <label for="player2_turn" tabindex="0">Player 2</label>
                             </div>                            
                     </div>
-                    <button class="next_btn" aria-label="Press to Start Game" tabindex="0">Start</button>
+                    <button class="next_btn" aria-label="Press to to open Game" tabindex="0">Start</button>
             </div>
 
             <div id="game_info" tabindex="0">
@@ -203,11 +217,11 @@
                     </div>
                     
                     <div id="game_btn">
-                        <div role="button" class="next_btn game_button hint_btn" aria-roledescription="Press to get a hint." tabindex="0">
+                        <div class="hint_btn" role="button" class="next_btn game_button" aria-roledescription="Press to get a hint." tabindex="0">
                             <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
                             <span id="hints"></span>
                         </div>
-                        <button class="next_btn game_button" aria-label="Press to Play the Game." tabindex="0">
+                        <button id="play" class="next_btn game_button" aria-label="Press to Play the Game." tabindex="0">
                             <i class="fa fa-play-circle" aria-hidden="true"></i>
                         </button>
                         <button class="next_btn game_button" aria-label="Press to Exit the Game." tabindex="0">
