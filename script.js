@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
     dropdownMenu.addEventListener('click', (event) => {
-        if (event.target.tagName === 'A') {
+        event.preventDefault();
+        if (event.target.tagName.toLowerCase() === 'a') {
             const sectionId = event.target.getAttribute('href').substring(1);
 
             showSection(sectionId);
