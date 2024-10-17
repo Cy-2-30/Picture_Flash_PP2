@@ -193,7 +193,7 @@ h2{
 
 
 /*CONTACT PAGE STYLING*/
-.form_shadow_setup,
+form,
 #game_board{
     box-shadow: 0.1rem 0.2rem 0.2rem 0.1rem hsla(240, 25%, 33%, 1);
 }
@@ -203,13 +203,18 @@ h2{
     box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
 }
 
-fieldset{
+form{
     background-color: hsla(3, 76%, 58%, 0.5);
     border-radius: 0.3rem;
     border:hsla(3, 76%, 58%, 0.5);
     height: 60vh;
-    width: auto;
+    width: 85vw;
     padding: 0.8rem;
+    margin-left: 1rem;
+}
+
+fieldset{
+    border: none;
 }
 
 .form_heading{
@@ -227,7 +232,6 @@ button,
 #player_name_input input{
     margin: 0.3rem;
     padding: 0.2rem;
-    cursor: pointer;
 }
 
 .form_input,
@@ -250,7 +254,7 @@ textarea,
 textarea{
     border: 0.1rem solid hsla(240, 25%, 33%, 1);
     border-radius: 0.2rem;
-    height: 5rem;
+    height: 15rem;
     width: 75vw;
     margin-left: 0.8rem;
     padding-left: 0.5rem;
@@ -413,68 +417,95 @@ input[type="radio"]:checked::before {
 
 
 /* TABLET */
-@media (min-width: 480px) and (max-width: 1024px) {
+@media (min-width: 480px) {
     /* Landing page*/
     #home_img{
         margin-left: 2rem;
         border-radius: 9rem;
         height: 60vh;
     }
-    
+
     /*ABOUT SECTION*/
     article{
-        display: flex;
-        flex-direction: row;
-        justify-items: center;
         border: 0.05rem solid #40406aff;
         box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
-        width: 85vw;
+        width: 90vw;
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    #about{
         margin: 1rem;
     }
 
     .game_info_img{
-        width: 40vw;
-        height: 20vh;
-        margin-left: 0.2rem;
-        box-shadow: none;
-        border: 0.1rem dotted #474747ff;;
+        display: none;
     }
 
     article h2{
-        padding: 0.5rem;
-    }
-    
-    #brief_position{
-        margin-top: 0.1rem;
-        margin-left: 1rem;
+        font-size: 1.5rem;
+        padding-bottom: 0.5rem;
     }
 
-    #second_rules{
-        margin-top: 1.7rem;
-        margin-left: 0.5rem;
-    }
-    
-    #instruction_p{
-        margin-left: 1rem;
-        margin-top: 2.5rem;
+    #flexbox_rules_instructions{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
 
-    .return_btn a{
-        display: inline;
+    #flexbox_rules_instructions article{
+        width: 45vw;
+        height: 40vh;
+        overflow: scroll;
+    }
+
+    .rules_img{
+        display: block;
+        box-shadow: none;
+        width: 35vw;
+        height: 20vh;
+        margin: 0 0 0.5rem 0.5rem ;
+    }
+
+    #brief_position i{
+        font-size: inherit;
+        margin: 0;
     }
 
     .return_btn i{
-        margin-left: -15rem;
-        font-size: 1.5rem;
+        margin-left: -8rem;
+        font-size: 1.4rem;
         padding: 0.1rem; 
     }
+
     .return_btn i:hover{
         border-radius: 1.2rem;
         border: 0.3rem solid #eedf3cff;
     }
 
-    
+    /* CONTACT SECTION*/
+    .hide{
+        display: none;
+    }
 
+    .mobile_label{
+        display: inline-block;
+        width: 20vw;
+        margin-left: 1rem;
+    }
+
+    .form_input{
+        display: inline-block;
+        width: 35vw;
+    }
+
+    .msg_heading{
+        margin-bottom: 2rem;
+    }
+
+    .form_btn{
+        margin: 2rem 2rem 0 4rem;
+    }
 
     
     /*gAME SECTION*/
@@ -486,16 +517,220 @@ input[type="radio"]:checked::before {
 
 
 /* Desktop */
-@media (min-width: 990px) {
+@media (min-width: 780px) and (max-width: 1023px) {
+    #desktop_menu{
+        display: inline-block;
+    }
+
+    #desktop_menu{
+        background-color: #428b7bff;
+    }
+
+    header nav, a{
+        text-align: center;
+    }
+
+    #desktop_menu a{
+        color: #f5f5f5ff;
+        font-size: 1.8rem;
+        padding: 0;
+        margin-left: 4rem;
+    }
+
+    #desktop_menu a:hover{
+        border-bottom: 0.5rem solid #e54a43ff;
+        border-radius: 1rem;
+    }
+
+    #menu_icon,
+    #dropdown_menu{
+        visibility: hidden;
+    }
+
+    .fa-brands{
+        font-size: 1.5rem;
+    }
+
+    .fa-brands:hover{
+        border-radius: 0.5rem;
+    }
+
+    #desktop_menu{
+        display: inline-block;
+    }
+
+    #Menu_icon,
+    #dropdown_menu{
+        display: none;
+    }
+    
      /* Landing page*/
      #home_img{
-        border-radius: 7rem;
         height: 70vh;
         margin-left: 4rem;
     }
+
+    /* About page */
+    article{
+        width: 85vw;
+        margin: 2rem;
+        padding: 2rem;
+    }
+
+    .game_info_img{
+        width: 40vw;
+        height: 50vh;
+    }
+
+    article h2{
+        padding: 1rem;
+    }
+    
+    #brief_position{
+        margin-top: 4rem;
+        margin-left: 2rem;
+    }
+
+    #brief_p1{
+        margin-left: 2rem;
+        margin-right: -20rem;
+    }
+
+    #rules h2{
+        margin-left: 10rem;
+        margin-right: -13rem;
+    }
+
+    #rules_list{
+        margin-left: 3rem;
+        margin-right: -20rem;
+    }
+
+    #second_rules{
+        margin-top: 5rem;
+        margin-left: 2rem;
+    }
+
+    #instructions h2{
+        margin-left: 8rem;
+        margin-right: -20rem;
+    }
+    
+    #instruction_p{
+        margin-top: 4rem;
+    }
+
+    #instruction_p1{
+        margin-left: 22.5rem;
+        margin-right: -20rem;
+        margin-top: -9rem;
+    }
+
+    .return_btn i{
+        margin-top: 6rem;
+        margin-left: 0.5rem;
+    }
+    .return_btn i:hover{
+        border-radius: 1.2rem;
+        border: 0.3rem solid #eedf3cff;
+    }
+
+     div .return_btn:hover{
+        border: none;
+     }
+
+    
+
+     
+    
 
     .tile {
         width: 100px;
         height: 100px;
     }
+}
+
+
+@media (min-width: 1024px) {
+    /* About page */
+    #desktop_menu{
+        display: inline-block;
+    }
+
+    #desktop_menu{
+        background-color: #428b7bff;
+    }
+
+    header a{
+        text-align: center;
+    }
+
+    #desktop_menu a{
+        color: #f5f5f5ff;
+        font-size: 1.8rem;
+        padding: 0;
+        margin-left: 4rem;
+    }
+
+    #desktop_menu a:hover{
+        border-bottom: 0.5rem solid #e54a43ff;
+        border-radius: 1rem;
+    }
+
+    #menu_icon,
+    #dropdown_menu{
+        visibility: hidden;
+    }
+
+    .fa-brands{
+        font-size: 1.5rem;
+    }
+
+    .fa-brands:hover{
+        border-radius: 0.5rem;
+    }
+
+    article{
+        display: inline-block;
+        overflow: scroll;
+        width: 25vw;
+        box-shadow: 0.5rem  3rem 1rem  0.5rem hsla(240, 25%, 33%, 1);
+        height: 85vh;
+        margin-left: 2rem;
+    }
+
+    #about p,
+    #about li{
+        padding: 0.5rem;
+    }
+
+    h1{
+        font-size: 2.5rem;
+    }
+    
+    #brief_position{
+        margin-left: -0.1rem;
+    }
+
+    #second_rules{
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    #instruction_p{
+        margin-left: 0;
+        margin-top: 0;
+
+    }
+
+    .game_info_img{
+        width: 20vw;
+        height: 20vh;
+        margin-left: 2rem;
+    }
+
+    div .return_btn{
+        display: none;
+    }
+
 }

@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // MENU AND CONTENT DISPLAY FUNCTIONS 
     const sections = document.querySelectorAll('section');
+    const menuIcon = document.getElementById('menu_icon');
+    const dropdownMenu = document.getElementById('dropdown_menu');
+    const desktopMenu = document.getElementById('desktop_menu');
 
     // Hide all the content section on load 
     function hideAllSections() {
@@ -12,9 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllSections();
         document.getElementById(sectionId).style.display = 'block';
     }
-
-    const menuIcon = document.getElementById('menu_icon');
-    const dropdownMenu = document.getElementById('dropdown_menu');
 
     dropdownMenu.style.display = 'none';
 
@@ -31,6 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
             showSection(sectionId);
             dropdownMenu.style.display = 'none';
             menuIcon.style.display = 'block';
+        }
+    });
+
+    desktopMenu.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (event.target.tagName.toLowerCase() === 'a') {
+            const sectionId = event.target.getAttribute('href').substring(1);
+
+            showSection(sectionId);
+            dropdownMenu.style.display = 'none';
+            menuIcon.style.display = 'none';
         }
     });
 
