@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById(sectionId).style.display = 'block';
     }
 
+    hideAllSections();
+    showSection('home');
+
     dropdownMenu.style.display = 'none';
 
     menuIcon.addEventListener('click', () => {
