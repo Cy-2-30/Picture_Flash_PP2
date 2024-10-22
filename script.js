@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintButton = document.getElementById('hints');
     const movesDisplay = document.getElementById('moves');
     const timeDisplay = document.getElementById('time');
+    const quitGame = document.getElementById('exit');
     // After game window display variables
     const resultsDiv = document.getElementById('results');
     const popupLoseDiv = document.querySelector('.popup_lose');
@@ -198,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timerInterval);
         timerInterval = setInterval(() => {
             timeLeft++;
-            timeDisplay.textContent = ` : ${timeLeft}s`;
+            timeDisplay.textContent = ` ${timeLeft}s`;
         }, 1000);
     }
 
@@ -225,6 +226,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    function stopGame() {
+        clearInterval(timerInterval);
+        gameStarted = false; 
+
+        alert("The game has stopped. You cannot resume it.");
+    }
+
+    quitGame.addEventListener('click', () => {
+        if (gameStarted) {
+            const confirmExit = confirm("Are you sure you want to stop the game? You cannot resume once it's stopped.");
+        
+        if (confirmExit) {
+            stopGame();
+        }
+    } else {
+        alert("The game hasn't started yet.");
+    }
+});
 
     // When play button is clicked to start the game
     function resetGameStatus() {
