@@ -87,13 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let player2Name = 'Computer'; 
     // Stats variables
     let currentLevel = 1; 
+    let gridSize = 0; 
     let movesLeft = 0; 
     let totalScore = 0;
     let hintsLeft = 3;
     let matchedPairs = [];
     let flippedCards = [];
     let playerTime = 0;  
-    let totalTiles;
     let timerInterval;
 
     // Player mode selection options
@@ -175,6 +175,21 @@ document.addEventListener('DOMContentLoaded', () => {
         initGameBoard();
     });
 
+    // Moves are based on the grid size
+    const gridSizes = {
+        4: 20,
+        6: 42,
+        8: 72
+    }; 
+
+    // Shuffle cards before each game
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+            return array;
+    }
 
     // Set the timer on start of game and clear any time before game
     function startTimer() {
@@ -186,29 +201,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // Moves are based on the grid size
-    const gridSizes = {
-        4: 20,
-        6: 42,
-        8: 72
-    }; 
-    
-    // Shuffle cards before each game
-    function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-            return array;
+    playButton.addEventListener('click', () => {
+        resetGameStatus();
+        initGameBoard();
+        startTimer();
+    });
+
+    // When play button is clicked to start the game
+    function resetGameStatus() {
+       let gridSize = currentLevel
+        // Reset the values to start new game
+        movesLeft = gridSizes[gridSize];
+        totalScore = 0;
+        hintsLeft = 3;
+
+        score.textContent = `Score : ${totalScore}`;
+        movesDisplay.textContent  = ` ${movesLeft}`;
+        hintButton.textContent = `Hints: ${hintsLeft}`;
+        timeDisplay.textContent  = ' 0s'; 
     }
-    
+
     function initGameBoard(){
         // Grid size created based on game level 4x4, 6x6 and 8x8
-        const gridSize = currentLevel === 1 ? 4 : currentLevel === 2 ? 6 : 8;
+        gridSize = currentLevel === 1 ? 4 : currentLevel === 2 ? 6 : 8;
         movesLeft = currentLevel === 1 ? 8 : currentLevel === 2 ? 12 : 16;
         movesLeft = gridSizes[gridSize];
         
-        // Stats to be displayed at the start of the game
+        // Stats to be displayed at the display of gameboard
         score.textContent = `Score : ${totalScore}`; 
         movesDisplay.textContent = ` ${movesLeft}`;
         hintButton.textContent = ` : ${hintsLeft}`; 
@@ -240,23 +259,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     
         matchedPairs = 0; 
-        // Update  the game moves and hint
-        document.getElementById('moves').textContent = `Moves: ${movesLeft}`;
-        
-        // Start the timer
-        startTimer();  
     }
     
-    // // TESTING CARD PAIRS
-    // function generateCardPairs(numPairs) {
-    //     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    //     let cardValues = [];
+    // TESTING CARD PAIRS
+    function generateCardPairs(numPairs) {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let cardValues = [];
     
-    //     for (let i = 0; i < numPairs; i++) {
-    //         cardValues.push(letters[i], letters[i]); 
-    //     }
-    //     return cardValues;
-    // }
+        for (let i = 0; i < numPairs; i++) {
+            cardValues.push(letters[i], letters[i]); 
+        }
+        return cardValues;
+    }
     
     function handleTileClick(tile) {
         if (tile.textContent === '?') {
@@ -267,13 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('moves').textContent = `Moves: ${movesLeft}`;
         }
     }
-
-    // Onclick event for  "Play" button
-    playButton.addEventListener('click', () => {
-        flashTilesRandomly(() => {
-            initGameBoard();
-        });
-    });
 
     // Onclick event for  "Hint" button to flash the cards
     hintButton.addEventListener('click', () => {
@@ -296,14 +303,5 @@ document.addEventListener('DOMContentLoaded', () => {
     //         return 'desktop';
     //     }
     // }
-
-    // Shuffle cards before each game
-    function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
 
 });
