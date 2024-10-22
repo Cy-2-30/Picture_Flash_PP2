@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let flippedCards = [];
     let playerTime = 0;  
     let timerInterval;
+    let gameStarted = false;
 
     // Player mode selection options
     document.querySelector('#mode_setup .next_btn').addEventListener('click', () => {
@@ -201,10 +202,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
+    // Start the game on the click of play button
     playButton.addEventListener('click', () => {
+        gameStarted = true;
         resetGameStatus();
         initGameBoard();
         startTimer();
+    });
+
+     // Onclick event for  "Hint" button to flash the cards
+     hintButton.addEventListener('click', () => {
+        if (!gameStarted) {
+            alert("The game has not started yet! Press 'Play' to start.");
+        } else {
+            const confirmUseHint = confirm("Are you sure you want to use a hint? Only have 3 for whole game!");
+            if (confirmUseHint && hintsLeft > 0) {
+                hintsLeft--; 
+                hintButton.textContent = ` : ${hintsLeft}`;
+                flashCardsForTime(1000);
+            } else if (hintsLeft === 0) {
+                alert("No more hints available.");
+            }
+        }
     });
 
     // When play button is clicked to start the game
@@ -281,15 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('moves').textContent = `Moves: ${movesLeft}`;
         }
     }
-
-    // Onclick event for  "Hint" button to flash the cards
-    hintButton.addEventListener('click', () => {
-        if (hintsLeft > 0) {
-            hintsLeft--; 
-            hintButton.textContent = ` : ${hintsLeft}`;
-            flashCardsForTime(1000);
-        }
-    });
 
     // // Display image based on the viewport size
     // function getDeviceType() {
