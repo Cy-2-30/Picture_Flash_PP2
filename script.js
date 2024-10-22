@@ -312,6 +312,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function handleTileClick(tile) {
+        // No action for cards if the game has not started yet
+        if (!gameStarted) {
+            alert("Press 'Play' button, to start the game!");
+            return;
+        }
+
         if (tile.textContent === '?') {
             tile.textContent = tile.dataset.value;
             movesLeft--;
