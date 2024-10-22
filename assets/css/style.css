@@ -431,12 +431,21 @@ input[type="radio"]:checked::before {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
 .tile:hover{
     background-color:  #e54a43ff;
     border: 0.1rem double #eedf3cff;
     box-shadow: 0 0.1rem, 0 0.1rem, 0 0.1rem, 0 0.1rem 0.3rem #474747ff;
+
+}
+
+.tile.flipped{
+    transform: rotateY('180deg');
+    background-size: cover;
+    background-position: center;
 }
 
 
