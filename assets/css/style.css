@@ -41,6 +41,8 @@ a,
 input,
 textarea,
 .tile,
+.back,
+.front,
 .btn{
     cursor: pointer;
 }
@@ -56,7 +58,8 @@ ALL BOXES STYLES
 #desktop_menu,
 #contact,
 #about,
-section{
+section,
+#pause{
     display: none;
 }
 
@@ -324,6 +327,7 @@ GAME TO BE REMOVED LATER
 #game_btn{
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 button,
@@ -355,14 +359,6 @@ button,
 #game_btn i:hover{
     color: #eedf3cff;
 }
-
-/*Styling not applied to be fixed later!!!!
-NOT DOING IT ANY MORE, WILL LEAVE IT PLAIN
-input[type="radio"]:checked::before {
-    background-color: #40406aff;
-    border: 0.1rem solid #474747ff;
-    border-radius: 50%;
-  }*/
 
 #player_name_input input{
     background-color: transparent;
@@ -401,9 +397,20 @@ input[type="radio"]:checked::before {
     padding: 0 0 1rem 0;
 }
 
-.popup {
+#play, 
+#pause {
+    transition: opacity 0.3s ease;
+}
+
+.popup{
     font-size: 1.2rem;
     margin-bottom: 1rem;
+}
+
+#game_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #game_board{
@@ -414,39 +421,95 @@ input[type="radio"]:checked::before {
     max-width: 85rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
+    perspective: 62.5rem;
 }
 
-.grid {
+.grid{
     display: grid;
-    gap: 0.2rem;
+    gap: 0.5rem;
     margin: 0 auto;
 }
 
-.tile {
-    background-color: #40406aff;
-    width: 18vw;
-    height: 13vh;
-    border: 0.2rem double #f5f5f5ff;
+.tile,
+.tile .front,
+.tile .back{
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.6s;
+    justify-content: center; 
+    border-radius: 0.15rem;
+}
+
+.tile{
+    background-color: transparent;
+    position: relative;
+    box-shadow: 0 0.1rem, 0 0.1rem, 0 0.1rem, 0 0.3rem 0.3rem #40406aff;
+    width: 18vw;
+    height: 13vh;
+}
+
+.tile:hover{ 
+    transition: all 1s ease-out;
     transform-style: preserve-3d;
+    transform: rotateY(180deg);
 }
 
-.tile:hover{
-    background-color:  #e54a43ff;
-    border: 0.2rem double #eedf3cff;
-    box-shadow: 0 0.1rem, 0 0.1rem, 0 0.1rem, 0 0.1rem 0.3rem #474747ff;
+.tile .front,
+.tile .back{
+    position: absolute;
+    width: inherit;
+    height: inherit;
 }
 
-.tile.flipped{
+.tile .back{
+    background-color: #474747ff;
+    border: 0.1rem solid #f5f5f5ff;
+}
+
+.tile .front{
     background-color: #f5f5f5ff;
-    transform: rotateY('180deg');
-    background-size: cover;
-    background-position: center;
+    border: 0.1rem solid #40406aff;
 }
+
+.tile .front:hover{
+    border: 0.1rem solid #e54a43ff;
+}
+
+.tile .back:hover{
+    border: 0.1rem solid #eedf3cff;
+}
+
+.tile .back .flipped{
+    backface-visibility: hidden;
+    transform: rotateY(.5turn);
+}
+
+.tile .front .flipped{
+    backface-visibility: hidden;
+    transform: rotateY(.5turn);
+}
+
+.tile .back i:hover{
+    color: #eedf3cff;
+}
+
+.tile .front .wrong{
+    border: 0.2rem solid #e54a43ff;
+}
+
+.tile .front .correct{
+    border: 0.2rem solid #40406aff;
+}
+
+
+/* When the card is clicked motion
+.tile.flipped .front{
+    transform: rotateY(.5deg);
+}
+
+.tile.flipped .back{
+    transform: rotateY(.5deg); 
+}*/
+
 
 
 /*************************************************************************************
@@ -568,6 +631,17 @@ TABLET VIEWPORT TO BE REMOVED LATER
     GAME TO BE REMOVED LATER
     ************************************************************************************
     *gAME SECTION*/
+    #game_info{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #game_status,
+    #game_stats{
+        display: block;
+    }
+
     .tile {
         width: 75px;
         height: 75px;

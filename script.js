@@ -65,10 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameInfo = document.getElementById('game_info');
     const gameBoard = document.getElementById('game_board');
     const score = document.getElementById('score');
+    const timeDisplay = document.getElementById('time');
+    const movesDisplay = document.getElementById('moves');
+    // Game buttons variables
+    const playPauseButton = document.getElementById('playPause');
     const playButton = document.getElementById('play');
     const hintButton = document.getElementById('hints');
-    const movesDisplay = document.getElementById('moves');
-    const timeDisplay = document.getElementById('time');
+    const pauseButton = document.getElementById('pause');
     const quitGame = document.getElementById('exit');
     // After game window display variables
     const resultsDiv = document.getElementById('results');
@@ -94,9 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let hintsLeft = 3;
     let matchedPairs = [];
     let flippedCards = [];
-    let playerTime = 0;  
-    let timerInterval;
+    let timeLeft= 0;  //remove any time left variables
+    let timerInterval = null;
     let gameStarted = false;
+    let gamePaused = false;
 
     // Player mode selection options
     document.querySelector('#mode_setup .next_btn').addEventListener('click', () => {
@@ -195,7 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set the timer on start of game and clear any time before game
     function startTimer() {
-        let timeLeft = 0;
         clearInterval(timerInterval);
         timerInterval = setInterval(() => {
             timeLeft++;
@@ -203,12 +206,64 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // Start the game on the click of play button
-    playButton.addEventListener('click', () => {
-        gameStarted = true;
-        resetGameStatus();
-        initGameBoard();
+    function pauseTimer() {
+        clearInterval(timerInterval);
+    }
+
+    function resumeTimer() {
         startTimer();
+    }
+
+    function resetGameStatus() {
+        let gridSize = currentLevel; 
+    
+        movesLeft = gridSize === 4 ? 20 : gridSize === 6 ? 42 : 72;
+        totalScore = 0;
+        hintsLeft = 3;
+        matchedPairs = 0;
+    
+        // Stats to be displayed at the display of gameboard
+        score.textContent = `Score : ${totalScore}`; 
+        movesDisplay.textContent = ` ${movesLeft}`;
+        hintButton.textContent = ` : ${hintsLeft}`; 
+        timeDisplay.textContent = ` 0s`;
+
+    }
+
+    // Pause and play the game on the click of button
+    playPauseButton.addEventListener('click', () => {
+        if (!gameStarted || gamePaused) {
+            // Start or resume the game
+            if (!gamePaused) {
+                gameStarted = true;
+                resetGameStatus();
+                initGameBoard();
+                startTimer();
+                alert("Game started!");
+            } else if (gamePaused) {
+                gamePaused = false;
+                resumeTimer();
+                alert("Game resumed!");
+            }
+
+            // Swap icons
+            playButton.style.display = 'none';
+            pauseButton.style.display = 'block';
+
+            // Update accessibility attributes
+            playPauseButton.setAttribute('aria-label', 'Press to Play the Game');
+            } else {
+                gamePaused = true;
+                pauseTimer();
+                alert("Game paused! Press 'Resume' to continue.");
+
+                // Swap icons
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+
+                // Update accessibility attributes
+                playPauseButton.setAttribute('aria-label', 'Press to Pause the Game');
+            }
     });
 
      // Onclick event for  "Hint" button to flash the cards
@@ -238,40 +293,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (gameStarted) {
             const confirmExit = confirm("Are you sure you want to stop the game? You cannot resume once it's stopped.");
         
-        if (confirmExit) {
-            stopGame();
-        }
+            if (confirmExit) {
+                stopGame();
+                pauseButton.style.display = 'none';
+                playButton.style.display = 'block';
+            }
     } else {
         alert("The game hasn't started yet.");
     }
 });
 
-    // When play button is clicked to start the game
-    function resetGameStatus() {
-       let gridSize = currentLevel
-        // Reset the values to start new game
-        movesLeft = gridSizes[gridSize];
-        totalScore = 0;
-        hintsLeft = 3;
+    // // When play button is clicked to start the game
+    // function resetGameStatus() {
+    //    let gridSize = currentLevel
+    //     // Reset the values to start new game
+    //     movesLeft = gridSizes[gridSize];
+    //     totalScore = 0;
+    //     hintsLeft = 3;
 
-        score.textContent = `Score : ${totalScore}`;
-        movesDisplay.textContent  = ` ${movesLeft}`;
-        hintButton.textContent = `Hints: ${hintsLeft}`;
-        timeDisplay.textContent  = ' 0s'; 
-    }
+    //     score.textContent = `Score : ${totalScore}`;
+    //     movesDisplay.textContent  = ` ${movesLeft}`;
+    //     hintButton.textContent = `Hints: ${hintsLeft}`;
+    //     timeDisplay.textContent  = ' 0s'; 
+    // }
 
     function initGameBoard(){
         // Grid size created based on game level 4x4, 6x6 and 8x8
         gridSize = currentLevel === 1 ? 4 : currentLevel === 2 ? 6 : 8;
-        movesLeft = currentLevel === 1 ? 8 : currentLevel === 2 ? 12 : 16;
         movesLeft = gridSizes[gridSize];
         
-        // Stats to be displayed at the display of gameboard
-        score.textContent = `Score : ${totalScore}`; 
-        movesDisplay.textContent = ` ${movesLeft}`;
-        hintButton.textContent = ` : ${hintsLeft}`; 
-        timeDisplay.textContent = ` 0s`;
-
+    
         // Set the grid layout based on the game level
         gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`; 
     
@@ -284,20 +335,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardValues = generateCardPairs(totalTiles / 2);
         let shuffledCards = shuffle(cardValues);
     
-        // Create the tiles
+        // Creates the tiles
         shuffledCards.forEach(value => {
             const tile = document.createElement('div');
             tile.classList.add('tile');
             tile.dataset.value = value;
-    
+
+            // The card front display
+            const front = document.createElement('div');
+            front.id = 'front';
+            front.classList.add('front');
             // Hide the card value
-            tile.textContent = '?';  
+            tile.textContent = ''; 
+
+            // The card background image
+            const back = document.createElement('div');
+            back.classList.add('back');
+            const diamondIcon = document.createElement('i');
+            diamondIcon.classList.add('fa-solid', 'fa-diamond');
+            back.appendChild(diamondIcon); 
+
+            // Append both front and back to the tile
+            tile.appendChild(front);
+            tile.appendChild(back);
     
             tile.addEventListener('click', () => handleTileClick(tile));
             gameBoard.appendChild(tile)
         });
-    
-        matchedPairs = 0; 
     }
     
     // TESTING CARD PAIRS
@@ -312,21 +376,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function handleTileClick(tile) {
-        // No action for cards if the game has not started yet
-        if (!gameStarted) {
-            alert("Press 'Play' button, to start the game!");
+       // No action for cards if the game has not started yet 
+       if (!gameStarted || gamePaused) {
+            alert("The game is paused or hasn't started. Press 'Play' to continue.");
             return;
         }
 
-        if (tile.textContent === '?') {
-            tile.textContent = tile.dataset.value;
+        if (tile.classList.contains('flipped')) return;
+
+            tile.classList.add('flipped');
+
+        // Displays the front of the card
+        if (!tile.classList.contains('flipped')) {
+            tile.classList.add('flipped');
+            tile.querySelector('.front').textContent = tile.dataset.value;
             movesLeft--;
     
             // To check is there is any moves
-            document.getElementById('moves').textContent = `Moves: ${movesLeft}`;
+            document.getElementById('moves').textContent = ` ${movesLeft}`;
+            
+            // Check if there is still moves left
+            if (movesLeft <= 0) {
+                alert("No more moves left!");
+                stopGame();
+            }
+        
         }
     }
-
+    
     // // Display image based on the viewport size
     // function getDeviceType() {
     //     const width = window.innerWidth;
