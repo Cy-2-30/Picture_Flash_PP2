@@ -216,8 +216,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetGameStatus() {
         let gridSize = currentLevel; 
-    
-        movesLeft = gridSize === 4 ? 20 : gridSize === 6 ? 42 : 72;
+        // Grid size created based on game level 4x4, 6x6 and 8x8
+        gridSize = currentLevel === 1 ? 4 : currentLevel === 2 ? 6 : 8;
+        movesLeft = gridSizes[gridSize];
         totalScore = 0;
         hintsLeft = 3;
         matchedPairs = 0;
@@ -258,8 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Game paused! Press 'Resume' to continue.");
 
                 // Swap icons
-                playIcon.style.display = 'none';
-                pauseIcon.style.display = 'block';
+                playButton.style.display = 'block';
+                pauseButton.style.display = 'none';
 
                 // Update accessibility attributes
                 playPauseButton.setAttribute('aria-label', 'Press to Pause the Game');
@@ -328,7 +329,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
         //To clear out any content
         gameBoard.innerHTML = '';
-    
+        
+        resetGameStatus();
+
+
         const totalTiles = gridSize * gridSize;
 
         // There can only be 1 pair of cards per each grid board
@@ -361,6 +365,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
             tile.addEventListener('click', () => handleTileClick(tile));
             gameBoard.appendChild(tile)
+
+            score.textContent = `Score : ${totalScore}`; 
+            movesDisplay.textContent = ` ${movesLeft}`;
+            hintButton.textContent = ` : ${hintsLeft}`; 
+            timeDisplay.textContent = ` 0s`;
+ 
         });
     }
     
@@ -382,26 +392,27 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (tile.classList.contains('flipped')) return;
-
-            tile.classList.add('flipped');
-
-        // Displays the front of the card
-        if (!tile.classList.contains('flipped')) {
-            tile.classList.add('flipped');
-            tile.querySelector('.front').textContent = tile.dataset.value;
-            movesLeft--;
-    
-            // To check is there is any moves
-            document.getElementById('moves').textContent = ` ${movesLeft}`;
-            
-            // Check if there is still moves left
-            if (movesLeft <= 0) {
-                alert("No more moves left!");
-                stopGame();
-            }
-        
+        // Do nothing if this tile is already flipped
+        if (tile.classList.contains('flipped')) {
+            return;
         }
+
+        tile.classList.add('flipped');
+
+        // Show the card value on the front
+        const frontElement = tile.querySelector('.front');
+        frontElement.textContent = tile.dataset.value;
+        
+        // Update moves left and display it
+        movesLeft--;
+        movesDisplay.textContent = ` ${movesLeft}`;
+
+        //Check if there is still moves left
+        if (movesLeft <= 0) {
+            alert("No more moves left!");
+            stopGame();
+        }
+        
     }
     
     // // Display image based on the viewport size

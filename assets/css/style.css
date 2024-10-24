@@ -449,7 +449,7 @@ button,
 
 .tile:hover{ 
     transition: all 1s ease-out;
-    transform-style: preserve-3d;
+    /*transform-style: preserve-3d;*/
     transform: rotateY(180deg);
 }
 
@@ -458,16 +458,20 @@ button,
     position: absolute;
     width: inherit;
     height: inherit;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
 }
 
 .tile .back{
     background-color: #474747ff;
     border: 0.1rem solid #f5f5f5ff;
+    transform: rotateY(0deg);
 }
 
 .tile .front{
     background-color: #f5f5f5ff;
     border: 0.1rem solid #40406aff;
+    transform: rotateY(0deg);
 }
 
 .tile .front:hover{
@@ -478,14 +482,14 @@ button,
     border: 0.1rem solid #eedf3cff;
 }
 
-.tile .back .flipped{
+.tile.flipped .back{
     backface-visibility: hidden;
-    transform: rotateY(.5turn);
+    transform: rotateY(-180deg);
 }
 
-.tile .front .flipped{
+.tile.flipped .front{
     backface-visibility: hidden;
-    transform: rotateY(.5turn);
+    transform: rotateY(0deg);
 }
 
 .tile .back i:hover{
