@@ -449,8 +449,8 @@ button,
 
 .tile:hover{ 
     transition: all 1s ease-out;
-    /*transform-style: preserve-3d;*/
-    transform: rotateY(180deg);
+    /*transform-style: preserve-3d;
+    transform: rotateY(180deg);*/
 }
 
 .tile .front,
@@ -485,6 +485,7 @@ button,
 .tile.flipped .back{
     backface-visibility: hidden;
     transform: rotateY(-180deg);
+    transform-style: preserve-3d;
 }
 
 .tile.flipped .front{

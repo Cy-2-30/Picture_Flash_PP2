@@ -77,7 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsDiv = document.getElementById('results');
     const popupLoseDiv = document.querySelector('.popup_lose');
     const popupwinDiv = document.querySelector('.popup_win');
-
+    // Cards
+    //const tile = document.createElement('div');
+   // const tiles = document.querySelectorAll('.tile');
+    //const allTiles = document.querySelectorAll('.tile:not(.flipped)');
+    //const frontElement = tile.querySelector('.front');
     // On section load content to be hidden
     playerNamesDiv.style.display = 'none';
     welcomeMsgDiv.style.display = 'none';
@@ -97,8 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let hintsLeft = 3;
     let matchedPairs = [];
     let flippedCards = [];
-    let timeLeft= 0;  //remove any time left variables
+    let timeLeft = 0;  
+    let firstFlippedCard = null;
+    let secondFlippedCard = null;
     let timerInterval = null;
+    let flashInterval = null;
     let gameStarted = false;
     let gamePaused = false;
 
@@ -183,9 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Moves are based on the grid size
     const gridSizes = {
-        4: 20,
-        6: 42,
-        8: 72
+        4: 24,
+        6: 48,
+        8: 80
     }; 
 
     // Shuffle cards before each game
@@ -197,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return array;
     }
 
-    // Set the timer on start of game and clear any time before game
+    // Timer 
     function startTimer() {
         clearInterval(timerInterval);
         timerInterval = setInterval(() => {
@@ -206,14 +213,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
+    // Pause the timer 
     function pauseTimer() {
         clearInterval(timerInterval);
     }
 
+    // Resume timer
     function resumeTimer() {
         startTimer();
     }
 
+    // Update the game statistics for a new game
     function resetGameStatus() {
         let gridSize = currentLevel; 
         // Grid size created based on game level 4x4, 6x6 and 8x8
@@ -228,10 +238,66 @@ document.addEventListener('DOMContentLoaded', () => {
         movesDisplay.textContent = ` ${movesLeft}`;
         hintButton.textContent = ` : ${hintsLeft}`; 
         timeDisplay.textContent = ` 0s`;
-
     }
 
-    // Pause and play the game on the click of button
+    // Disable the click event when flashing cards
+    function disableTileClicks() {
+        const allTiles = document.querySelectorAll('.tile');
+        allTiles.forEach(tile => {
+            tile.style.pointerEvents = 'none';
+        });
+    }
+
+    // Activate the tiles event listener
+    function enableTileClicks() {
+        const allTiles = document.querySelectorAll('.tile');
+        allTiles.forEach(tile => {
+            tile.style.pointerEvents = 'auto';
+        });
+    }
+
+    // Flash all cards before game starts
+    function flashCardsForTime(time){
+        const allTiles = document.querySelectorAll('.tile');
+        const shuffledTiles = shuffle(Array.from(allTiles));
+        let flashCount = 0;
+
+        // Stop the click event
+        disableTileClicks(); 
+
+        flashInterval = setInterval(() => {
+            if (flashCount >= shuffledTiles.length * 3) {
+                clearInterval(flashInterval);
+                enableTileClicks();
+                return;
+            }
+
+            const currentTile = shuffledTiles[flashCount % shuffledTiles.length];
+            flipTile(currentTile);
+
+            setTimeout(() => {
+                unflipTile(currentTile);
+            }, 500);
+
+            flashCount++;
+        }, 500);
+    }
+
+    // Handles tiles unturned to display the value
+    function flipTile(tile) {
+        tile.classList.add('flipped');
+        const frontElement = tile.querySelector('.front');
+        frontElement.textContent = tile.dataset.value;
+    }
+
+    // Handles tiles turned upside down 
+    function unflipTile(tile) {
+        tile.classList.remove('flipped');
+        const frontElement = tile.querySelector('.front');
+        frontElement.textContent = ''; 
+    }
+
+    // Pause/Play the game on the click of a button
     playPauseButton.addEventListener('click', () => {
         if (!gameStarted || gamePaused) {
             // Start or resume the game
@@ -240,6 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 resetGameStatus();
                 initGameBoard();
                 startTimer();
+                flashCardsForTime();
                 alert("Game started!");
             } else if (gamePaused) {
                 gamePaused = false;
@@ -250,36 +317,54 @@ document.addEventListener('DOMContentLoaded', () => {
             // Swap icons
             playButton.style.display = 'none';
             pauseButton.style.display = 'block';
-
             // Update accessibility attributes
-            playPauseButton.setAttribute('aria-label', 'Press to Play the Game');
-            } else {
-                gamePaused = true;
-                pauseTimer();
-                alert("Game paused! Press 'Resume' to continue.");
+            playPauseButton.setAttribute('aria-label', 'Press to Play the Game');   
+        } else {
+            gamePaused = true;
+            pauseTimer();
+            alert("Game paused! Press 'Resume' to continue.");
 
-                // Swap icons
-                playButton.style.display = 'block';
-                pauseButton.style.display = 'none';
-
-                // Update accessibility attributes
-                playPauseButton.setAttribute('aria-label', 'Press to Pause the Game');
-            }
+            // Swap icons
+            playButton.style.display = 'block';
+            pauseButton.style.display = 'none';
+            // Update accessibility attributes
+            playPauseButton.setAttribute('aria-label', 'Press to Pause the Game');
+        }
     });
 
-     // Onclick event for  "Hint" button to flash the cards
-     hintButton.addEventListener('click', () => {
+    // Flash all for hint
+    function flashCardsForHint() {
+        const allUnflippedTiles = document.querySelectorAll('.tile:not(.flipped)');
+  
+        disableTileClicks();
+
+        allUnflippedTiles.forEach(tile => {
+            flipTile(tile);
+        });
+
+        setTimeout(() => {
+            allUnflippedTiles.forEach(tile => {
+                unflipTile(tile); 
+            });
+            enableTileClicks();
+        }, 2000);
+    }
+
+    // Onclick event for  "Hint" button to flash the cards
+    hintButton.addEventListener('click', () => {
         if (!gameStarted) {
             alert("The game has not started yet! Press 'Play' to start.");
         } else {
-            const confirmUseHint = confirm("Are you sure you want to use a hint? Only have 3 for whole game!");
-            if (confirmUseHint && hintsLeft > 0) {
-                hintsLeft--; 
-                hintButton.textContent = ` : ${hintsLeft}`;
-                flashCardsForTime(1000);
-            } else if (hintsLeft === 0) {
-                alert("No more hints available.");
-            }
+            if (hintsLeft > 0) {
+                const confirmUseHint = confirm("Are you sure you want to use a hint? Only have 3 for whole game!");
+                if (confirmUseHint && hintsLeft > 0) {
+                    hintsLeft--; 
+                    hintButton.textContent = ` ${hintsLeft}`;
+                    flashCardsForHint();
+                }
+                } else {
+                    alert("No more hints available.");
+                }
         }
     });
 
@@ -296,34 +381,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
             if (confirmExit) {
                 stopGame();
+                // Swap icons
                 pauseButton.style.display = 'none';
                 playButton.style.display = 'block';
+                // Update accessibility attributes
+                playPauseButton.setAttribute('aria-label', 'Press to Pause the Game');
             }
     } else {
         alert("The game hasn't started yet.");
     }
 });
 
-    // // When play button is clicked to start the game
-    // function resetGameStatus() {
-    //    let gridSize = currentLevel
-    //     // Reset the values to start new game
-    //     movesLeft = gridSizes[gridSize];
-    //     totalScore = 0;
-    //     hintsLeft = 3;
-
-    //     score.textContent = `Score : ${totalScore}`;
-    //     movesDisplay.textContent  = ` ${movesLeft}`;
-    //     hintButton.textContent = `Hints: ${hintsLeft}`;
-    //     timeDisplay.textContent  = ' 0s'; 
-    // }
-
     function initGameBoard(){
         // Grid size created based on game level 4x4, 6x6 and 8x8
         gridSize = currentLevel === 1 ? 4 : currentLevel === 2 ? 6 : 8;
         movesLeft = gridSizes[gridSize];
         
-    
         // Set the grid layout based on the game level
         gameBoard.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`; 
     
@@ -385,6 +458,31 @@ document.addEventListener('DOMContentLoaded', () => {
         return cardValues;
     }
     
+    function checkForMatch() {
+        if (firstFlippedCard.dataset.value === secondFlippedCard.dataset.value) {
+            totalScore++;
+            score.textContent = `Score: ${totalScore}`;
+            matchedPairs++;
+            //movesLeft--;
+
+            // If all pairs are matched
+            if (matchedPairs === (gridSize * gridSize) / 2) {
+                alert("You've matched all pairs! Game over.");
+                stopGame();
+            }
+
+            firstFlippedCard = null;
+            secondFlippedCard = null;
+        } else {
+            setTimeout(() => {
+                firstFlippedCard.classList.remove('flipped');
+                secondFlippedCard.classList.remove('flipped');
+                firstFlippedCard = null;
+                secondFlippedCard = null;
+            }, 1000);
+        }
+    }
+
     function handleTileClick(tile) {
        // No action for cards if the game has not started yet 
        if (!gameStarted || gamePaused) {
@@ -397,12 +495,15 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        tile.classList.add('flipped');
-
-        // Show the card value on the front
-        const frontElement = tile.querySelector('.front');
-        frontElement.textContent = tile.dataset.value;
+        flipTile(tile);
         
+        if (!firstFlippedCard) {
+            firstFlippedCard = tile;
+        } else {
+            secondFlippedCard = tile;
+            checkForMatch();
+        }
+
         // Update moves left and display it
         movesLeft--;
         movesDisplay.textContent = ` ${movesLeft}`;
@@ -411,9 +512,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (movesLeft <= 0) {
             alert("No more moves left!");
             stopGame();
-        }
-        
+        }   
     }
+
+    
+
+   
     
     // // Display image based on the viewport size
     // function getDeviceType() {
