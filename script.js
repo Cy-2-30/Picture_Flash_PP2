@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const quitGame = document.getElementById('exit');
     // After game window display variables
     const resultsDiv = document.getElementById('results');
-    const popupLoseDiv = document.querySelector('.popup_lose');
-    const popupwinDiv = document.querySelector('.popup_win');
+    const popupLose = document.querySelector('.popup_lose');
+    const popupWin = document.querySelector('.popup_win');
     // Cards
     //const tile = document.createElement('div');
    // const tiles = document.querySelectorAll('.tile');
@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let flashInterval = null;
     let gameStarted = false;
     let gamePaused = false;
+    //let flashCount = 0;
 
     // Player mode selection options
     document.querySelector('#mode_setup .next_btn').addEventListener('click', () => {
@@ -335,19 +336,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Flash all for hint
     function flashCardsForHint() {
         const allUnflippedTiles = document.querySelectorAll('.tile:not(.flipped)');
-  
+        if (allUnflippedTiles.length === 0) return; 
+        
+        const shuffledUnflippedTiles = shuffle(Array.from(allUnflippedTiles)); 
+        let flashCount = 0;
+
         disableTileClicks();
 
-        allUnflippedTiles.forEach(tile => {
-            flipTile(tile);
-        });
+        // allUnflippedTiles.forEach(tile => {
+        //     flipTile(tile);
+        // });
 
-        setTimeout(() => {
-            allUnflippedTiles.forEach(tile => {
-                unflipTile(tile); 
-            });
-            enableTileClicks();
-        }, 2000);
+        const hintFlashInterval = setInterval(() => {
+            if (flashCount >= shuffledUnflippedTiles.length * 3) {
+                clearInterval(hintFlashInterval);
+                enableTileClicks();
+                return;
+            }
+
+            const currentTile = shuffledUnflippedTiles[flashCount % shuffledUnflippedTiles.length];
+            flipTile(currentTile);
+        
+            setTimeout(() => {
+                unflipTile(currentTile);
+            }, 500);
+
+                flashCount++;
+        }, 500);
+
+        // setTimeout(() => {
+        //     allUnflippedTiles.forEach(tile => {
+        //         unflipTile(tile); 
+        //     });
+        //     enableTileClicks();
+        // }, 500);
     }
 
     // Onclick event for  "Hint" button to flash the cards
@@ -359,8 +381,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const confirmUseHint = confirm("Are you sure you want to use a hint? Only have 3 for whole game!");
                 if (confirmUseHint && hintsLeft > 0) {
                     hintsLeft--; 
-                    hintButton.textContent = ` ${hintsLeft}`;
                     flashCardsForHint();
+
+                    hintButton.textContent = ` : ${hintsLeft}`;
+                    
                 }
                 } else {
                     alert("No more hints available.");
@@ -468,6 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // If all pairs are matched
             if (matchedPairs === (gridSize * gridSize) / 2) {
                 alert("You've matched all pairs! Game over.");
+                showResults('win');
                 stopGame();
             }
 
@@ -510,11 +535,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //Check if there is still moves left
         if (movesLeft <= 0) {
-            alert("No more moves left!");
+            if (matchedPairs === (gridSize * gridSize) / 2) {
+                showResults('win');
+            } else {
+                showResults('lose');
+            }
             stopGame();
         }   
     }
 
+    function showResults(result) {
+        if (result === 'win') {
+            popupWin.style.display = 'block';
+            popupLose.style.display = 'none';
+            alert("Congratulations! You've matched all pairs and won the game!");
+        } else {
+            popupWin.style.display = 'none';
+            popupLose.style.display = 'block';
+            alert("Game Over! You've run out of moves.");
+        }
+    
+        resultsDiv.style.display = 'block'; 
+        resultsDiv.focus()
+    }
     
 
    

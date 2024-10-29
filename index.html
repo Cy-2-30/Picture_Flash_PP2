@@ -212,7 +212,7 @@
                         </div>
                         <div id="game_stats">
                             <div>
-                                <span id="score" tabindex="0">Score :</span>
+                                <span id="score" tabindex="0">Score : </span>
                             </div>
                             <div>
                                 <i class="fa-solid fa-heart" aria-hidden="true"> : </i>
@@ -225,19 +225,41 @@
                         </div>
                     </div>
 
-                    <div id="playboard">
-                        <div id="results" style="display: none;" tabindex="0">
-                            <div class="popup_win" tabindex="0"></div>
-                            <div class="popup_lose" tabindex="0"></div>
-                            <div id="scoresboard" tabindex="0">
-                                <h2 tabindex="0">Scoreboard</h2>
+                    <div id="playboard" tabindex="0">
+                        <div id="results">
+                            <div class="popup popup_win" tabindex="0">
+                                <h2 class="message" tabindex="0">Congratulations!</h2>
+                                <p tabindex="0">Press Play to continue to the next Level or Exit to Quit the game.</p>
                             </div>
-                            <button class="next_btn game_button" aria-label="Press to Continue the Game." tabindex="0">
-                                <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
-                            </button>
-                            <button class="next_btn game_button" aria-label="Press to Exit the Game." tabindex="0">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                            </button>
+                            
+                            <div class="popup popup_lose" tabindex="0">
+                                <h2 class="message" tabindex="0">Sorry, try again!</h2>
+                                <p tabindex="0">Press Exit to start the game or go to the game window.</p>
+                            </div>
+                            
+                            <div id="scoresboard">
+                                <h2 tabindex="0">Scoreboard</h2>
+                                <table tabindex="0">
+                                    <tr tabindex="0">
+                                        <th tabindex="0">Name</th>
+                                        <th class="player_name"></th>
+                                    </tr>
+                                    <tr tabindex="0">
+                                        <td tabindex="0">Time</td>
+                                        <td class="time" tabindex="0"></td>
+                                    </tr>
+                                    <tr tabindex="0">
+                                        <td tabindex="0">Score</td>
+                                        <td class="score" tabindex="0"></td>  
+                                    </tr>
+                                </table>
+                                <button class="next_btn game_button" aria-label="Press to Continue the Game." tabindex="0">
+                                    <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
+                                </button>
+                                <button class="next_btn game_button" aria-label="Press to Exit the Game." tabindex="0">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                </button>
+                            </div>
                         </div>
 
                         <div id="game_btn">
@@ -308,5 +330,11 @@
             
         <!--JS GAME INTERACTION SCRIPT-->
         <script src="script.js"></script> 
+
+        <!--JS WIN POP UP WONDOW LOGIC -->
+        <script src="win-popup.js"></script>
+
+         <!--JS LOSE POP UP WONDOW LOGIC -->
+         <script src="lose-popup.js"></script>
     </body>
 </html>
