@@ -73,10 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintButton = document.getElementById('hints');
     const pauseButton = document.getElementById('pause');
     const quitGame = document.getElementById('exit');
-    // After game window display variables
-    const resultsDiv = document.getElementById('results');
-    const popupLose = document.querySelector('.popup_lose');
-    const popupWin = document.querySelector('.popup_win');
     // Cards
     //const tile = document.createElement('div');
    // const tiles = document.querySelectorAll('.tile');

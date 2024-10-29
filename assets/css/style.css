@@ -522,21 +522,19 @@ button,
     padding: 1rem;
 }
 
+#results h2{
+    margin-bottom: 1rem;
+}
+
 .popup{
     background-color: transparent;
-}
-
-.popup_win{
-
-}
-
-.popup_lose{
-    
+    height: 20vh;
 }
 
 table{
     border: 0.3rem solid #428b7bff;
     border-radius: 0.4rem;
+    width: 15rem;
 }
 
 th,
@@ -547,6 +545,66 @@ td{
     width: fit-content;
     padding: 0.3rem;
 }
+
+/* GAME RESULTS*/
+.popup_lose {
+    position: relative;
+     /* To leave space for the message */
+    height: 20vh;
+}
+
+.icon{
+    position: absolute;
+    font-size: 2.5rem;
+    top: 0;
+    color: #e54a43ff;
+    /* Initially invisible */
+    opacity: 0; 
+    animation: fall 5s cubic-bezier(0.5, 0.05, 0.1, 0.3);
+    /* Keep the icon at the end position */
+    animation-fill-mode: forwards; 
+}
+
+/* Animation to make the icons fall and bounce */
+@keyframes fall {
+    0% {
+      top: -50px;
+      transform: translateY(0);
+      /* Invisible at the very top */
+      opacity: 0; 
+    }
+    10% {
+       /* Become visible after starting the fall */
+      opacity: 1; 
+    }
+    50% {
+      top: 80vh;
+      transform: translateY(0);
+    }
+    75% {
+      top: 70vh;
+       /* First bounce */
+      transform: translateY(-30px);
+    }
+    85% {
+      top: 80vh;
+      transform: translateY(0);
+    }
+    92% {
+      top: 75vh;
+        /* Second bounce */
+      transform: translateY(-15px);
+    }
+    100% {
+      top: 80vh;
+      transform: translateY(0);
+    }
+  }
+
+.message {
+    background-color: #eedf3cff;
+  }
+
 
 
 /*************************************************************************************
