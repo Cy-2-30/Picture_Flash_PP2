@@ -32,4 +32,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ANIMATION SET UP FOR THE FIREWORDKS
+    function createFirework() {
+        // Loop to generate and append 1000 fireworks
+        for (let i = 0; i < 1000; i++) {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            popupWin.appendChild(firework);
+        }
+    }
+
+    function showWinPopup() {
+        popupWin.style.display = 'block';
+        createFirework(); 
+    }
+    
+    showWinPopup();
+
+    function showLosePopup() {
+        popupLose.style.display = 'block';
+    }
+    
+    showLosePopup();
+
 });
