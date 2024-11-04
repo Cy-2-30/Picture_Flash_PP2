@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // MENU AND CONTENT DISPLAY FUNCTIONS 
+    // Menu display variables
     const sections = document.querySelectorAll('section');
     const menuIcon = document.getElementById('menu_icon');
     const dropdownMenu = document.getElementById('dropdown_menu');
@@ -61,27 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const playerTwoDiv = document.getElementById('player2_names');
     // Welcome message variable
     const welcomeMsgDiv = document.getElementById('welcome_msg');
-    // Game board variables
-    const gameInfo = document.getElementById('game_info');
-    const gameBoard = document.getElementById('game_board');
-    const score = document.getElementById('score');
-    const timeDisplay = document.getElementById('time');
-    const movesDisplay = document.getElementById('moves');
-    // Game buttons variables
-    const playPauseButton = document.getElementById('playPause');
-    const playButton = document.getElementById('play');
-    const hintButton = document.getElementById('hints');
-    const pauseButton = document.getElementById('pause');
-    const quitGame = document.getElementById('exit');
-    // Cards
-    //const tile = document.createElement('div');
-   // const tiles = document.querySelectorAll('.tile');
-    //const allTiles = document.querySelectorAll('.tile:not(.flipped)');
-    //const frontElement = tile.querySelector('.front');
-    // On section load content to be hidden
+    
+    // Div display variables
     playerNamesDiv.style.display = 'none';
     welcomeMsgDiv.style.display = 'none';
-    gameInfo.style.display = 'none';
 
     let playerTurnText = document.getElementById('current_turn');
     let player1Name = "";
@@ -89,22 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameMode = 'single'; 
     // Default for playing with the computer
     let player2Name = 'Computer'; 
-    // Stats variables
-    let currentLevel = 1; 
-    let gridSize = 0; 
-    let movesLeft = 0; 
-    let totalScore = 0;
-    let hintsLeft = 3;
-    let matchedPairs = [];
-    let flippedCards = [];
-    let timeLeft = 0;  
-    let firstFlippedCard = null;
-    let secondFlippedCard = null;
-    let timerInterval = null;
-    let flashInterval = null;
-    let gameStarted = false;
-    let gamePaused = false;
-    //let flashCount = 0;
 
     // Player mode selection options
     document.querySelector('#mode_setup .next_btn').addEventListener('click', () => {
@@ -185,12 +153,55 @@ document.addEventListener('DOMContentLoaded', () => {
         initGameBoard();
     });
 
+
+    // Game board variables
+    const gameInfo = document.getElementById('game_info');
+    const gameBoard = document.getElementById('game_board');
+    const score = document.getElementById('score');
+    const timeDisplay = document.getElementById('time');
+    const movesDisplay = document.getElementById('moves');
+    // Game buttons variables
+    const gameButtons = document.getElementById('game_btn');
+    const playPauseButton = document.getElementById('playPause');
+    const playButton = document.getElementById('play');
+    const hintButton = document.getElementById('hints');
+    const pauseButton = document.getElementById('pause');
+    const quitGame = document.getElementById('exit');
+
+    gameInfo.style.display = 'none';
+   // gameButtons.style.display = 'block';
+    //gameBoard.style.display = 'block';
+    
+    // Cards
+    //const tile = document.createElement('div');
+   // const tiles = document.querySelectorAll('.tile');
+    //const allTiles = document.querySelectorAll('.tile:not(.flipped)');
+    //const frontElement = tile.querySelector('.front');
+    // On section load content to be hidden
+
     // Moves are based on the grid size
     const gridSizes = {
         4: 24,
         6: 48,
         8: 80
     }; 
+
+    // Stats variables
+    let currentLevel = 1; 
+    let gridSize = 0; 
+    let movesLeft = 0; 
+    let totalScore = 0;
+    let hintsLeft = 3;
+    let matchedPairs = [];
+    let flippedCards = [];
+    let timeLeft = 0;  
+    let firstFlippedCard = null;
+    let secondFlippedCard = null;
+    let timerInterval = null;
+    let flashInterval = null;
+    let gameStarted = false;
+    let gamePaused = false;
+    //let flashCount = 0;
 
     // Shuffle cards before each game
     function shuffle(array) {
@@ -245,6 +256,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function disableAllInteractions() {
+        playPauseButton.disabled = true;
+        hintButton.disabled = true;
+        quitGame.disabled = true;
+        disableTileClicks(); 
+
+        playPauseButton.style.pointerEvents = 'none';
+        hintButton.style.pointerEvents = 'none';
+        quitGame.style.pointerEvents = 'none';
+    }
+
     // Activate the tiles event listener
     function enableTileClicks() {
         const allTiles = document.querySelectorAll('.tile');
@@ -253,19 +275,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function enableAllInteractions() {
+        playPauseButton.disabled = false;
+        hintButton.disabled = hintsLeft > 0;
+        quitGame.disabled = false;
+        enableTileClicks();  
+
+        playPauseButton.style.pointerEvents = 'auto';
+        hintButton.style.pointerEvents = 'auto';
+        quitGame.style.pointerEvents = 'auto';
+    }
+
     // Flash all cards before game starts
     function flashCardsForTime(time){
+        // Stop the click event
+        disableAllInteractions(); 
+
         const allTiles = document.querySelectorAll('.tile');
         const shuffledTiles = shuffle(Array.from(allTiles));
         let flashCount = 0;
 
-        // Stop the click event
-        disableTileClicks(); 
-
         flashInterval = setInterval(() => {
             if (flashCount >= shuffledTiles.length * 3) {
                 clearInterval(flashInterval);
-                enableTileClicks();
+                // Enable interactions after flashing 
+                enableAllInteractions();
                 return;
             }
 
@@ -331,13 +365,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Flash all for hint
     function flashCardsForHint() {
+        if (!gameStarted) return alert("The game hasn't started yet!");
+
+        disableAllInteractions();
         const allUnflippedTiles = document.querySelectorAll('.tile:not(.flipped)');
         if (allUnflippedTiles.length === 0) return; 
-        
+
         const shuffledUnflippedTiles = shuffle(Array.from(allUnflippedTiles)); 
         let flashCount = 0;
-
-        disableTileClicks();
 
         // allUnflippedTiles.forEach(tile => {
         //     flipTile(tile);
@@ -346,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hintFlashInterval = setInterval(() => {
             if (flashCount >= shuffledUnflippedTiles.length * 3) {
                 clearInterval(hintFlashInterval);
-                enableTileClicks();
+                enableAllInteractions();
                 return;
             }
 
@@ -540,20 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }   
     }
 
-    function showResults(result) {
-        if (result === 'win') {
-            popupWin.style.display = 'block';
-            popupLose.style.display = 'none';
-            alert("Congratulations! You've matched all pairs and won the game!");
-        } else {
-            popupWin.style.display = 'none';
-            popupLose.style.display = 'block';
-            alert("Game Over! You've run out of moves.");
-        }
-    
-        resultsDiv.style.display = 'block'; 
-        resultsDiv.focus()
-    }
+  
     
 
    
@@ -571,4 +593,123 @@ document.addEventListener('DOMContentLoaded', () => {
     //     }
     // }
 
+
+    // ANIMATION SET UP FOR THE FALLING SAD FACE
+    // Results game window display variables
+    const gameStatus = document.getElementById('game_status');
+    const resultsDiv = document.getElementById('results');
+    const ScoreTable = document.getElementById('scoresboard');
+    const popupLose = document.querySelector('.popup_lose');
+    const popupWin = document.querySelector('.popup_win');
+    const message = document.querySelector('.message');
+    const exitGame = document.getElementById('quit');
+    const nextLevel = document.getElementById('continue');
+    // Number of sad faces falling
+    const iconCount = 1000;
+    const delayBetweenIcons = 0.3; 
+
+    function createFallingIcon(index) {
+    const icon = document.createElement('i');
+    icon.classList.add('fa-regular', 'fa-face-sad-tear', 'icon');
+
+    // Randomize the starting position along the X-axis
+    const randomX = Math.random() * window.innerWidth;
+    icon.style.left = `${randomX}px`;
+
+    // Add an animation delay to each icon based on its index
+    icon.style.animationDelay = `${index * delayBetweenIcons}s`;
+
+    popupLose.appendChild(icon);
+    }
+
+    // Create 1000 falling icons with delays
+    for (let i = 0; i < iconCount; i++) {
+    createFallingIcon(i);
+    }
+
+
+    // ANIMATION SET UP FOR THE FIREWORDKS
+    function createFirework() {
+        // Loop to generate and append 1000 fireworks
+        for (let i = 0; i < 1000; i++) {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            popupWin.appendChild(firework);
+        }
+    }
+
+    function hideEndGameElements(){
+        gameStatus.style.display = 'none';
+        gameButtons.style.display = 'none';
+        gameBoard.style.display = 'none';
+    }
+
+
+   
+
+
+    const playerName = document.querySelector('.player_name');
+    const time = document.querySelector('.complete_time');
+    const finalScore = document.querySelector('.final_score');
+
+    let player = {
+        name: "", 
+        time: "00:00",     
+        score: 0         
+    };
+
+    function updateScoreboard(player) {
+        // Update the table with player's data
+        playerName.textContent = player.name;
+        time.textContent = player.time;
+        finalScore.textContent = player.score;
+    }
+
+    function showResults(result) {
+        hideEndGameElements();
+
+        ScoreTable.style.display = 'block';
+
+        if (result === 'win') {
+            popupWin.style.display = 'block';
+            popupLose.style.display = 'none';
+            alert("Congratulations! You've matched all pairs and won the game!");
+        } else {
+            popupWin.style.display = 'none';
+            popupLose.style.display = 'block';
+            alert("Game Over! You've run out of moves.");
+        }
+    
+        resultsDiv.style.display = 'block'; 
+        resultsDiv.focus()
+    }
+
+    function showWinPopup() {
+        // gameButtons.style.display = 'none';
+         //gameBoard.style.display = 'none';
+         createFirework(); 
+         updateScoreboard(player);
+         popupWin.style.display = 'block';
+     }
+     
+     showWinPopup();
+ 
+     function showLosePopup() {
+        // gameButtons.style.display = 'none';
+        // gameBoard.style.display = 'none';
+         createFallingIcon();
+         updateScoreboard(player);
+         popupLose.style.display = 'block';
+     }
+     
+     showLosePopup();
+
+    function endGame(results){
+        player.time = "1:20";
+        player.score = 10;
+
+        updateScoreboard();
+
+        showResults(results);
+    }
 });

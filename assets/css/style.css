@@ -517,9 +517,10 @@ button,
 }*/
 
 #results{
-    display: block;
-    background-color: hsla(240, 25%, 33%, 0.1);
-    padding: 1rem;
+    display: none;
+    background-color: transparent;
+    width: 100vw;
+    height: 100vh;
 }
 
 #results h2{
@@ -551,7 +552,7 @@ Sad face */
 .popup_lose {
     position: relative;
      /* To leave space for the message */
-    height: 20vh;
+    height: inherit;
 }
 
 .icon{
@@ -604,13 +605,15 @@ Sad face */
 
 .message {
     background-color: #eedf3cff;
+    z-index: 1;
   }
-
 
 /* Fireworks*/
 .popup_win{
+    margin-left: -1rem;
+    width: 100vw;
+    height: 40vh;
     position: relative;
-    overflow: hidden;
     background: linear-gradient(#474747ff, #40406aff), #0a0a0aff;
     overflow: hidden;
 }
@@ -626,7 +629,7 @@ Sad face */
         opacity: 1;
     } 
     50% { 
-        width: 0.5vmin; 
+        width: 5vmin; 
         opacity: 1; } 
     100% { 
         width: var(--finalSize); 
@@ -637,9 +640,9 @@ Sad face */
 .firework::before,
 .firework::after
   {
-    --initialSize: 0.5vmin;
+    --initialSize: 1vmin;
     --finalSize: 45vmin;
-    --particleSize: 0.2vmin;
+    --particleSize: 0.3vmin;
     --color1: #eedf3cff;
     --color2: #428b7bff;
     --color3: #e54a43ff;
