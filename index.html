@@ -27,28 +27,28 @@
                     
                     <!-- Mobile Dropdown Menu (hidden initially, shown on small screens) -->
                     <div id="dropdown_menu">
-                        <a href="#home" aria-label="Link to landing page" tabindex="0">Home</a>
-                        <a href="#about" aria-label="Link to about us page" tabindex="0">About Us</a>
-                        <a href="#game" aria-label="Link to game page" tabindex="0">Game</a>
-                        <a href="#contact" aria-label="Link to contact page" tabindex="0">Contact Us</a>            
+                        <a href="#home" aria-label="Link to Home page" tabindex="0">Home</a>
+                        <a href="#about" aria-label="Link to About us page" tabindex="0">About Us</a>
+                        <a href="#game" aria-label="Link to Game page" tabindex="0">Game</a>
+                        <a href="#contact" aria-label="Link to Contact page" tabindex="0">Contact Us</a>            
                     </div>
 
                     <!-- Desktop Menu (visible on larger screens) -->
                     <div id="desktop_menu">
-                        <a href="#home" aria-label="Link to landing page" tabindex="0">Home</a>
-                        <a href="#about" aria-label="Link to about us page" tabindex="0">About Us</a>
-                        <a href="#game" aria-label="Link to game page" tabindex="0">Game</a>
-                        <a href="#contact" aria-label="Link to contact page" tabindex="0">Contact Us</a>
+                        <a href="#home" aria-label="Link to Home page" tabindex="0">Home</a>
+                        <a href="#about" aria-label="Link to About us page" tabindex="0">About Us</a>
+                        <a href="#game" aria-label="Link to Game page" tabindex="0">Game</a>
+                        <a href="#contact" aria-label="Link to Contact page" tabindex="0">Contact Us</a>
                     </div>
                 </nav>
             </header>
 
             <!--LANDING SECTION--> 
             <section id="home" aria-label="Back to school theme." tabindex="0">
-                <h1>Picture Memory Game</h1>
+                <h1 id="game_title">Picture Memory Game</h1>
                     <picture>
                         <source media="(min-width: 780px)" srcset="assets/pictures/content/dektop/back-school-background.jpg">
-                        <source media="(max-width: 781px)" srcset="assets/pictures/content/tablet/back-school-background.jpg">
+                        <source media="(min-width: 320px)" srcset="assets/pictures/content/tablet/back-school-background.jpg">
                         <img id="home_img" src="assets/pictures/content/mobile/back-school-background.jpg" alt="An image with back to school stationary.">
                     </picture>
                     
@@ -61,7 +61,7 @@
                     <article id="history">
                         <div>
                             <picture>
-                                <source media="(min-width: 490px)" srcset="assets/pictures/content/tablet/memory.jpg">
+                                <source media="(min-width: 900px)" srcset="assets/pictures/content/tablet/memory.jpg">
                                 <img class="game_info_img" src="assets/pictures/content/mobile/memory.jpg" alt="An image of the brain function.">
                             </picture>
                         </div>       
@@ -81,15 +81,15 @@
 
                     <div id="flexbox_rules_instructions">
                         <article id="rules" tabindex="0">
-                            <div>
+                            <div id="first_rules_div">
                                 <h2 tabindex="0">Game Rules</h2>
                                     <picture>
-                                        <source media="(min-width: 490px)" srcset="assets/pictures/content/tablet/rules.png">
+                                        <source media="(min-width: 900px)" srcset="assets/pictures/content/tablet/rules.png">
                                         <img class="game_info_img rules_img" src="assets/pictures/content/mobile/rules.png" alt="An image of the brain function.">
                                     </picture>    
                             </div>
 
-                            <di>
+                            <div>
                                 <ul id="second_rules">
                                     <li tabindex="0">
                                         The game will start with <b>4x4</b> cards to which the player will be given a number of moves to turn the cards and match them. 
@@ -116,15 +116,14 @@
                                         In the beginning the player has an option to play alone, or with another player or with the computer.
                                     </li>
                                 </ul>
-                            </di>
-                            
+                            </div>
                         </article>
 
                         <article id="instructions" tabindex="0">
                             <div>
                                 <h2 tabindex="0">Tips On How To Play</h2>
                                     <picture>
-                                        <source media="(min-width: 490px)" srcset="assets/pictures/content/tablet/instruction.jpg">
+                                        <source media="(min-width: 900px)" srcset="assets/pictures/content/tablet/instruction.jpg">
                                         <img class="game_info_img" src="assets/pictures/content/mobile/instruction.jpg" alt="An image of the brain function.">
                                     </picture>
                             </div>
@@ -203,7 +202,7 @@
                         </div>
                         <button class="next_btn" aria-label="Press to to open Game" tabindex="0">Start</button>
                 </div>
-
+                
                 <div id="game_info" tabindex="0">
                     <div id="game_status">
                         <div id="game_heading">

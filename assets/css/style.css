@@ -1,23 +1,3 @@
-/* CSS HEX 
---maize: #eedf3cff;
---viridian: #428b7bff;
---vermilion: #e54a43ff;
---outer-space: #474747ff;
---delft-blue: #40406aff;
---white-smoke: #f5f5f5ff;
---night: #0a0a0aff;
- 
-CSS HSL 
---maize: hsla(55, 84%, 58%, 1);
---viridian: hsla(167, 36%, 40%, 1);
---vermilion: hsla(3, 76%, 58%, 1);
---outer-space: hsla(0, 0%, 28%, 1);
---delft-blue: hsla(240, 25%, 33%, 1);
---white-smoke: hsla(0, 0%, 96%, 1);
---night: hsla(0, 0%, 4%, 1);
-*************************************************************************************
-COLOR CHOICE TO BE REMOVED LATER
-************************************************************************************/
 /* UNIVERSAL */
 *{
     font-size: 16px;
@@ -51,10 +31,8 @@ a{
     text-decoration: none;
 }
 
-/*************************************************************************************
-ALL BOXES STYLES
-************************************************************************************
-* Container */
+
+/* Container */
 #desktop_menu,
 #contact,
 #about,
@@ -68,10 +46,8 @@ section,
     display: block;
 }
 
-/*************************************************************************************
-MENU  REMOVED LATER
-************************************************************************************
-* Menu */
+
+/* Menu */
 #menu_icon{
     padding-left: 0.5rem; 
 }
@@ -105,11 +81,9 @@ header{
 }
 
 
-/*************************************************************************************
-FOOTER TO BE REMOVED LATER
-************************************************************************************* 
-Footer */
+/*Footer */
 footer{
+    position: relative;
     background-color: #474747ff;
     display: flex;
     justify-content: space-around;
@@ -129,14 +103,12 @@ footer{
 }
 
 
-/*************************************************************************************
-BUTTONS TO BE REMOVED LATER
-************************************************************************************
-* Buttons */
+/* Buttons */
 .return_btn{
     color: #0a0a0aff;
     margin-left: 16rem;
 }
+
 .return_btn:hover{
     color: #e54a43ff;
     border: 0.2rem solid #eedf3cff;
@@ -147,10 +119,7 @@ BUTTONS TO BE REMOVED LATER
 
 
 
-/*************************************************************************************
-LANDING TO BE REMOVED LATER
-************************************************************************************
-*LANDING PAGE STYLING*/
+/*HOME PAGE STYLING*/
 img{
     height: 50vh;
     width: 85vw;
@@ -167,15 +136,16 @@ h1{
     font-size: 1.90rem;
     text-align: center;
     padding: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+}
+
+h2{
+    margin-bottom: 1rem;
 }
 
 
 
-/*************************************************************************************
-ABOUT TO BE REMOVED LATER
-************************************************************************************
-*ABOUT PAGE STYLING*/
+/* ABOUT PAGE STYLING*/
 .game_info_img{
     border-radius: 0.8rem;
     box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
@@ -205,17 +175,14 @@ h2{
     text-align: center;
 }
 
-
 #rules ul {
     list-style-type: circle;
     padding-inline-start: 1rem;
 }
 
 
-/*************************************************************************************
-CONTACT TO BE REMOVED LATER
-************************************************************************************
-*CONTACT PAGE STYLING*/
+
+/* CONTACT PAGE STYLING*/
 form,
 #game_board{
     box-shadow: 0.1rem 0.2rem 0.2rem 0.1rem hsla(240, 25%, 33%, 1);
@@ -308,10 +275,14 @@ textarea:hover,
 }
 
 
-/*************************************************************************************
-GAME TO BE REMOVED LATER
-************************************************************************************
-*GAME PAGE STYLING*/
+
+/* GAME PAGE STYLING*/
+#game #mode_setup,
+#game #player_name_input,
+#game #welcome_msg{
+    margin-top: 3rem;
+}
+
 #game,
 #mode_setup div,
 #player_name_input div,
@@ -322,6 +293,10 @@ GAME TO BE REMOVED LATER
 
 #many_playermsg h3{
     padding-right: 3rem;
+}
+
+#game_stats{
+    margin: 2rem 1rem 0 1rem;
 }
 
 #game_btn{
@@ -450,8 +425,6 @@ button,
 
 .tile:hover{ 
     transition: all 1s ease-out;
-    /*transform-style: preserve-3d;
-    transform: rotateY(180deg);*/
 }
 
 .tile .front,
@@ -506,16 +479,6 @@ button,
     border: 0.2rem solid #40406aff;
 }
 
-
-/* When the card is clicked motion
-.tile.flipped .front{
-    transform: rotateY(.5deg);
-}
-
-.tile.flipped .back{
-    transform: rotateY(.5deg); 
-}*/
-
 #results{
     display: none;
     background-color: transparent;
@@ -547,11 +510,11 @@ td{
     padding: 0.3rem;
 }
 
+
 /* GAME RESULTS
 Sad face */
 .popup_lose {
     position: relative;
-     /* To leave space for the message */
     height: inherit;
 }
 
@@ -560,10 +523,8 @@ Sad face */
     font-size: 2.5rem;
     top: 0;
     color: #e54a43ff;
-    /* Initially invisible */
     opacity: 0; 
     animation: fall 5s cubic-bezier(0.5, 0.05, 0.1, 0.3);
-    /* Keep the icon at the end position */
     animation-fill-mode: forwards; 
 }
 
@@ -572,11 +533,9 @@ Sad face */
     0% {
       top: -50px;
       transform: translateY(0);
-      /* Invisible at the very top */
       opacity: 0; 
     }
     10% {
-       /* Become visible after starting the fall */
       opacity: 1; 
     }
     50% {
@@ -585,7 +544,6 @@ Sad face */
     }
     75% {
       top: 70vh;
-       /* First bounce */
       transform: translateY(-30px);
     }
     85% {
@@ -594,7 +552,6 @@ Sad face */
     }
     92% {
       top: 75vh;
-        /* Second bounce */
       transform: translateY(-15px);
     }
     100% {
@@ -607,6 +564,7 @@ Sad face */
     background-color: #eedf3cff;
     z-index: 1;
   }
+
 
 /* Fireworks*/
 .popup_win{
@@ -673,7 +631,7 @@ Sad face */
       radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
       radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
       
-      /* bottom right */
+      /* Bottom right */
       radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
       radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
       radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
@@ -681,7 +639,7 @@ Sad face */
       radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 55% 80%,
       radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 70% 77%,
       
-      /* bottom left */
+      /* Bottom left */
       radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 22% 90%,
       radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 45% 90%,
       radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 70%,
@@ -690,7 +648,7 @@ Sad face */
       radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 28% 77%,
       radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 13% 72%,
       
-      /* top left */
+      /* Top left */
       radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 80% 10%,
       radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 95% 14%,
       radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 90% 23%,
@@ -699,7 +657,7 @@ Sad face */
       radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 77% 37%,
       radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 60% 7%,
       
-      /* top right */
+      /* Top right */
       radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 22% 14%,
       radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 45% 20%,
       radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 34%,
@@ -716,18 +674,14 @@ Sad face */
     --x: -50%;
     --y: -50%;
     --initialY: -50%;
-  /*   transform: translate(-20vmin, -2vmin) rotate(40deg) scale(1.3) rotateY(40deg); */
     transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
-  /*   animation: fireworkPseudo 2s infinite; */
   }
   
   .firework::after {
     --x: -50%;
     --y: -50%;
     --initialY: -50%;
-  /*   transform: translate(44vmin, -50%) rotate(170deg) scale(1.15) rotateY(-30deg); */
     transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg);
-  /*   animation: fireworkPseudo 2s infinite; */
   }
   
   .firework:nth-child(2) {
@@ -770,26 +724,19 @@ Sad face */
   }
 
 
-/*************************************************************************************
-TABLET VIEWPORT TO BE REMOVED LATER
-************************************************************************************
-* TABLET */
+
+
+/* TABLET */
 @media (min-width: 480px) {
-    
-    /*************************************************************************************
-    LANDING TO BE REMOVED LATER
-    ************************************************************************************
-    * Landing page*/
+    /* Home page*/
     #home_img{
         margin-left: 2rem;
         border-radius: 9rem;
         height: 60vh;
     }
 
-    /*************************************************************************************
-    ABOUT TO BE REMOVED LATER
-    ************************************************************************************
-    *ABOUT SECTION*/
+
+    /* ABOUT SECTION*/
     article{
         border: 0.05rem solid #40406aff;
         box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
@@ -847,10 +794,8 @@ TABLET VIEWPORT TO BE REMOVED LATER
         border: 0.3rem solid #eedf3cff;
     }
 
-    /*************************************************************************************
-    CONTACT TO BE REMOVED LATER
-    ************************************************************************************
-    * CONTACT SECTION*/
+
+    /* CONTACT SECTION*/
     #contact h2{
         margin-bottom: 1rem;
     }
@@ -885,32 +830,38 @@ TABLET VIEWPORT TO BE REMOVED LATER
     }
 
     
-    /*************************************************************************************
-    GAME TO BE REMOVED LATER
-    ************************************************************************************
-    *gAME SECTION*/
+    /*GAME SECTION*/
     #game_info{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
     }
 
-    #game_status,
-    #game_stats{
-        display: block;
+    #game_btn div{
+        width: 3.2rem;
+        height: 1.9rem;
+        padding: 0.8rem 0.1rem 0.001rem 0.5rem;
+    }
+    
+    #game_btn button{
+        width: 4rem;
+        height: 3rem;
+    }
+      
+    #game_btn i{
+        font-size: large;
     }
 
     .tile {
-        width: 75px;
-        height: 75px;
+        width: 7rem;
+        height: 10rem;
     }
 }
 
 
-/*************************************************************************************
-TABLET TO DESKTOP TO BE REMOVED LATER
-************************************************************************************
-* TABLET TO DESKTOP */
+
+
+/* TABLET TO DESKTOP */
 @media (min-width: 780px) {
     section,
     #about{
@@ -920,36 +871,40 @@ TABLET TO DESKTOP TO BE REMOVED LATER
     #side_menu{
         display: flex;
         flex-direction: row;
-        height: 100vh;
+        justify-content: space-between;
     }
 
-    /*************************************************************************************
-    COLOR CHOICE TO BE REMOVED LATER
-    ************************************************************************************
-    * Landing page*/
+
+    /* Home page*/
     #side_menu header{
         max-width: 30vw;
+        background-color: transparent;
+        margin-top: 3rem;
     }
 
     #side_menu #home{
         max-width: 70vw;
+        max-height: max-content;
     }
 
     header #desktop_menu a{
         display: flex;
         flex-direction: column;
+        border-bottom: 1rem solid #428b7bff;
+        color: #0a0a0aff;
+        border-radius: 1rem;
+        height: 5vh;
+        padding-top: 2rem;
     }
 
     #desktop_menu{
-        display: block;
-        margin-top: 3rem;
+        display: block; 
     }
 
     #desktop_menu a{
         color: #f5f5f5ff;
         font-size: 2rem;
         text-align: center;
-        padding: 3rem 1rem 3rem 2rem;
         width: 25vw;
     }
 
@@ -979,23 +934,30 @@ TABLET TO DESKTOP TO BE REMOVED LATER
     #dropdown_menu{
         display: none;
     }
+
+    #game_title{
+        margin-top: 3rem;
+    }
     
-     #home_img{
-        width: 50vw;
-        height: 50vh;
-        margin: 8rem 0 0 3rem;
+    #home_img{
+        border-radius: 5rem;
+        width: 60vw;
+        height: 60vh;
+        margin: 2rem 3rem 0 0;
+    }
+
+    footer{        
+        margin-top: auto;
+        width: 100vw;
     }
 
 
-    /*************************************************************************************
-    ABOUT TO BE REMOVED LATER
-    ************************************************************************************
-    * About page */
+    /* About page */
     .game_info_img{
         display: block;
         box-shadow: none;
-        width: 25vw;
-        height: 20vh;
+        width: 28vw;
+        height: 22vh;
         margin: 2rem 1rem;
     }
 
@@ -1004,18 +966,27 @@ TABLET TO DESKTOP TO BE REMOVED LATER
         flex-direction: column;
     }
 
+    h2{
+        margin-bottom: 0;
+    }
+
     article{
         display: flex;
         flex-direction: row;
         justify-content: center;
         box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
         margin: 1rem;
-        width: 60vw;
+        width: 65vw;
         height: 30vh;
     }
 
+    #history{
+        height: fit-content;
+    }
+
     #brief_position,
-    #second_rules{
+    #second_rules,
+    #instruction_p{
         overflow: scroll;
     }
 
@@ -1027,20 +998,14 @@ TABLET TO DESKTOP TO BE REMOVED LATER
     #flexbox_rules_instructions{
         display: flex;
         flex-direction: column;
-        box-shadow: none;
-        margin: 0;
-        padding: 0;
+        width: 70vw;
     }
 
     #flexbox_rules_instructions article{
         box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
         margin: 1rem;
-        width: 60vw;
+        width: 65vw;
         height: 30vh;
-    }
-
-    #flexbox_rules_instructions #instructions p{
-        margin-top: 0.5rem;
     }
 
     #hide_return_btn{
@@ -1056,24 +1021,21 @@ TABLET TO DESKTOP TO BE REMOVED LATER
         flex-direction: row-reverse;
     }
 
-    article h2{
-        padding: 1rem; 
-    }
-
     #flexbox_rules_instructions #instruction_p{
-        margin: 0.5rem 0.3rem 0.2rem 0.5rem;
-        height: 27vh;
-        overflow: scroll;
+        height: 30vh;
+        margin: 1rem 0.4rem 0.5rem 1rem;
     }
 
 
-    /*************************************************************************************
-    CONTACT TO BE REMOVED LATER
-     ************************************************************************************/
+    /* Contact Styling*/
+    #contact h1{
+        margin-top: 3rem;
+    }
 
     form{
         padding: 1.5rem;
         width: 58vw;
+        margin: 3rem 3rem 0 0;
     }
 
     .form_input{
@@ -1090,29 +1052,87 @@ TABLET TO DESKTOP TO BE REMOVED LATER
     }
 
      
-     /*************************************************************************************
-    GAME TO BE REMOVED LATER
-     ************************************************************************************/
+     /* Game Styling */
+    #game #mode_setup,
+    #game #player_name_input,
+    #game #welcome_msg,
+    #game #game_info{
+        margin: 3rem 20rem 0 3rem;
+    }
+
+    #game_info{
+        margin: 3rem 0 0 3rem;
+    }
+    
 
     .tile {
-        width: 100px;
-        height: 100px;
+        width: 6rem;
+        height: 10rem;
+    }
+}
+
+
+
+
+/* LARGE DESKTOP*/
+@media (min-width: 1024px) {
+    #home h1{
+        margin-top: 4rem;
+    }
+
+    /* Home Page*/
+    #home_img{
+        width: 65vw;
+        margin: 2rem 4rem 0 0;
+    }
+
+
+    /* About Page*/
+    #box article,
+    #flexbox_rules_instructions article{
+        height: 34vh;
+        width: 60vw;
+        margin-left: 3rem;
+    }
+
+    .game_info_img{
+        height: 30vh;
+        margin-top: 1rem;
+    }
+
+    #flexbox_rules_instructions article img{
+        height: 28vh;
+        margin-top: 0;
+        overflow: hidden;
+    }
+
+    #flexbox_rules_instructions article{
+        height: fit-content;
+    }
+
+    #flexbox_rules_instructions ul{
+        height: 33vh;
+        overflow: scroll;
+    }
+
+    #flexbox_rules_instructions #instruction_p{
+        height: fit-content;
+        margin-top: 2rem;
+    }
+
+    #flexbox_rules_instructions article img{
+        margin: 1rem;
     }
 
 
 
-}
-
-/*************************************************************************************
-DESKTOP TO BIG MONITORS TO BE REMOVED LATER
-************************************************************************************/
-@media (min-width: 1024px) {
-    /*************************************************************************************
-    CONTACT TO BE REMOVED LATER
-     ************************************************************************************/
+    /* Contact Styling*/
+    #contact h1{
+        margin-top: 8rem;
+    }
 
      form{
-        margin-left: 3rem;
+        margin-left: 4rem;
     }
 
     .form_input{
@@ -1129,5 +1149,34 @@ DESKTOP TO BIG MONITORS TO BE REMOVED LATER
         padding: 0.5rem
     }
 
+    /* Game Styling*/
+    #game_info{
+        margin: 5rem 0 0 6rem;
+    }
+    
+    #game_info{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 
+    #game_btn div{
+        width: 4rem;
+        height: 2.3rem;
+        padding: 1rem 0.2rem 0.5rem 1rem;
+    }
+    
+    #game_btn button{
+        width: 5rem;
+        height: 4rem;
+    }
+      
+    #game_btn i{
+        font-size: x-large;
+    }
+
+    .tile {
+        width: 10rem;
+        height: 14rem;
+    }
 }
