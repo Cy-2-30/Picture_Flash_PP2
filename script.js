@@ -118,11 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update welcome message with player names and set to the selected mode 
         if (gameMode === 'single') {
-            document.getElementById('welcome').textContent = `Welcome, ${player1Name} to Memory Game!`;
+            playerTurnText.textContent = `Welcome, ${player1Name} to Memory Game!`;
         } else if (gameMode === 'computer') {
-            document.getElementById('welcome').textContent = `Welcome, ${player1Name} vs Computer to Memory Game!`;
+            playerTurnText.textContent = `Welcome, ${player1Name} vs Computer to Memory Game!`;
         } else {
-            document.getElementById('welcome').textContent = `Welcome, ${player1Name} vs ${player2Name} to Memory Game!`;
+            playerTurnText.textContent = `Welcome, ${player1Name} vs ${player2Name} to Memory Game!`;
         }
         
         playerNamesDiv.style.display = 'none';

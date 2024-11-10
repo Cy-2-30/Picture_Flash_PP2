@@ -483,7 +483,8 @@ button,
     display: none;
     background-color: transparent;
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
+    padding: 1rem;
 }
 
 #results h2{
@@ -498,9 +499,9 @@ button,
 table{
     border: 0.3rem solid #428b7bff;
     border-radius: 0.4rem;
-    width: 15rem;
+    width: 70vw;
 }
-
+ 
 th,
 td{
     background-color: hsla(240, 25%, 33%, 0.4);
@@ -510,13 +511,24 @@ td{
     padding: 0.3rem;
 }
 
+.message{
+    background-color: #eedf3cff;
+    font-weight: bolder;
+    z-index: -1;
+    width: 80vw;
+    padding: 1rem;
+  }
+
+#scoresboard{
+    margin: 2rem;
+}
 
 /* GAME RESULTS
-Sad face */
-.popup_lose {
-    position: relative;
+FALLING SAD FACE ANIMATION  */
+/* .popup_lose {
+   position: relative;
     height: inherit;
-}
+}*/
 
 .icon{
     position: absolute;
@@ -560,13 +572,9 @@ Sad face */
     }
   }
 
-.message {
-    background-color: #eedf3cff;
-    z-index: 1;
-  }
 
 
-/* Fireworks*/
+/* FIREWORKS ANIMATION*/
 .popup_win{
     margin-left: -1rem;
     width: 100vw;
@@ -738,7 +746,7 @@ Sad face */
 
     /* ABOUT SECTION*/
     article{
-        border: 0.05rem solid #40406aff;
+        border: 0.001rem solid #40406aff;
         box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
         width: 90vw;
         margin: 0.5rem;
@@ -853,8 +861,8 @@ Sad face */
     }
 
     .tile {
-        width: 7rem;
-        height: 10rem;
+        width: 15vw;
+        height: 15vh;
     }
 }
 
@@ -863,6 +871,7 @@ Sad face */
 
 /* TABLET TO DESKTOP */
 @media (min-width: 780px) {
+    /* Menu Changes*/
     section,
     #about{
         display: none;
@@ -877,7 +886,6 @@ Sad face */
 
     /* Home page*/
     #side_menu header{
-        max-width: 30vw;
         background-color: transparent;
         margin-top: 3rem;
     }
@@ -953,35 +961,41 @@ Sad face */
 
 
     /* About page */
-    .game_info_img{
-        display: block;
-        box-shadow: none;
-        width: 28vw;
-        height: 22vh;
-        margin: 2rem 1rem;
-    }
-
     #about{
         display: flex;
         flex-direction: column;
     }
+    
+    .game_info_img{
+        display: block;
+        box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
+        width: 28vw;
+        height: 30vh;
+        margin: 3rem 1rem 0 0.5rem;
+    }
 
-    h2{
-        margin-bottom: 0;
+    #brief_position h2,
+    #instructions h2,
+    #first_rules_div h2{
+        margin-bottom: 1rem;
     }
 
     article{
         display: flex;
         flex-direction: row;
         justify-content: center;
-        box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
-        margin: 1rem;
+        box-shadow: none;
+        border: none;
         width: 65vw;
-        height: 30vh;
+        height: 35vh;
+        margin: 1rem 1rem 3rem 2rem;
     }
 
     #history{
-        height: fit-content;
+        height: 38vh;
+        width: 70vw;
+        margin: 1rem 0 2rem 0;
+        padding: 0;
     }
 
     #brief_position,
@@ -990,30 +1004,23 @@ Sad face */
         overflow: scroll;
     }
 
-    #second_rules{
-        margin: 1.4rem 0.2rem 0.01rem 0;
-        height: 28vh;
+    #brief_position{
+        width: 34vw;
+        height: 35vh;
+        margin: 0 0.5rem 0 1.5rem;
     }
 
     #flexbox_rules_instructions{
         display: flex;
         flex-direction: column;
         width: 70vw;
+        padding: 0;
     }
 
     #flexbox_rules_instructions article{
-        box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem hsla(240, 25%, 33%, 1);
-        margin: 1rem;
-        width: 65vw;
-        height: 30vh;
-    }
-
-    #hide_return_btn{
-        visibility: hidden;
-    }
-
-    #history{
-        height: 25vh;
+        margin: 0 0 3rem 0;
+        width: 70vw;
+        height: 38vh;
     }
 
     #flexbox_rules_instructions #rules{
@@ -1021,9 +1028,21 @@ Sad face */
         flex-direction: row-reverse;
     }
 
-    #flexbox_rules_instructions #instruction_p{
+    #flexbox_rules_instructions .game_info_img{
+        margin-top: 0;
+    }
+
+    #second_rules{
+        margin: 3rem 1.5rem 0.5rem 0.3rem;
         height: 30vh;
-        margin: 1rem 0.4rem 0.5rem 1rem;
+    }
+
+    #hide_return_btn{
+        visibility: hidden;
+    }
+
+    #flexbox_rules_instructions #instruction_p{
+        margin: 3.4rem 1rem 0 1.5rem;
     }
 
 
@@ -1057,17 +1076,16 @@ Sad face */
     #game #player_name_input,
     #game #welcome_msg,
     #game #game_info{
-        margin: 3rem 20rem 0 3rem;
+        margin: 8rem 15rem 0 3rem;
     }
 
-    #game_info{
-        margin: 3rem 0 0 3rem;
+    #game #game_info{
+        margin: 1rem 5rem 0 3rem;
     }
     
-
     .tile {
-        width: 6rem;
-        height: 10rem;
+        width: 10vw;
+        height: 12vh;
     }
 }
 
@@ -1076,63 +1094,39 @@ Sad face */
 
 /* LARGE DESKTOP*/
 @media (min-width: 1024px) {
+    /* Home page*/
+    #side_menu header a{
+        width: 20vw;
+    }
+
     #home h1{
         margin-top: 4rem;
     }
 
-    /* Home Page*/
     #home_img{
         width: 65vw;
-        margin: 2rem 4rem 0 0;
     }
 
 
     /* About Page*/
     #box article,
     #flexbox_rules_instructions article{
-        height: 34vh;
-        width: 60vw;
-        margin-left: 3rem;
+        height: 40vh;
+    
     }
-
-    .game_info_img{
-        height: 30vh;
-        margin-top: 1rem;
-    }
-
-    #flexbox_rules_instructions article img{
-        height: 28vh;
-        margin-top: 0;
-        overflow: hidden;
-    }
-
-    #flexbox_rules_instructions article{
-        height: fit-content;
-    }
-
-    #flexbox_rules_instructions ul{
-        height: 33vh;
-        overflow: scroll;
-    }
-
-    #flexbox_rules_instructions #instruction_p{
-        height: fit-content;
-        margin-top: 2rem;
-    }
-
-    #flexbox_rules_instructions article img{
-        margin: 1rem;
-    }
-
 
 
     /* Contact Styling*/
     #contact h1{
-        margin-top: 8rem;
+        margin-top: 2rem;
     }
 
      form{
         margin-left: 4rem;
+    }
+
+    fieldset{
+        padding: 1rem;
     }
 
     .form_input{
@@ -1149,9 +1143,17 @@ Sad face */
         padding: 0.5rem
     }
 
+
     /* Game Styling*/
-    #game_info{
-        margin: 5rem 0 0 6rem;
+    #game #mode_setup,
+    #game #player_name_input,
+    #game #welcome_msg,
+    #game #game_info{
+        margin: 2rem 25rem 0 0;
+    }
+
+    #game #game_info{
+        margin: 2rem 13rem 0 0;
     }
     
     #game_info{
@@ -1173,10 +1175,5 @@ Sad face */
       
     #game_btn i{
         font-size: x-large;
-    }
-
-    .tile {
-        width: 10rem;
-        height: 14rem;
     }
 }
