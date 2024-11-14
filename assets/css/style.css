@@ -33,11 +33,12 @@ a{
 
 
 /* Container */
-#desktop_menu,
 #contact,
 #about,
 section,
-#pause{
+main,
+#pause,
+#desktop_menu{
     display: none;
 }
 
@@ -83,10 +84,9 @@ header{
 
 /*Footer */
 footer{
-    position: relative;
-    background-color: #474747ff;
     display: flex;
     justify-content: space-around;
+    background-color: #474747ff;
     margin-top: auto;
     padding: 1rem;
 }
@@ -207,8 +207,12 @@ fieldset{
     border: none;
 }
 
-.form_heading{
-    padding-bottom: 0.5rem; 
+legend{
+    font-size: larger;
+    font-weight: bold;
+    text-indent: 10dvw;
+    padding: 1rem;
+    margin-bottom: 2rem;
 }
 
 .mobile_label{
@@ -525,11 +529,6 @@ td{
 
 /* GAME RESULTS
 FALLING SAD FACE ANIMATION  */
-/* .popup_lose {
-   position: relative;
-    height: inherit;
-}*/
-
 .icon{
     position: absolute;
     font-size: 2.5rem;
@@ -872,8 +871,11 @@ FALLING SAD FACE ANIMATION  */
 /* TABLET TO DESKTOP */
 @media (min-width: 780px) {
     /* Menu Changes*/
-    section,
-    #about{
+    main,
+    #about,
+    #contact,
+    #menu_icon,
+    #dropdown_menu{
         display: none;
     }
 
@@ -881,39 +883,41 @@ FALLING SAD FACE ANIMATION  */
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        width: fit-content;
+        height: fit-content;
+        margin: auto;
     }
 
 
     /* Home page*/
-    #side_menu header{
+    header{
         background-color: transparent;
         margin-top: 3rem;
+        width: 30vw;
+        height: 70vh;
+        margin: auto;
     }
 
-    #side_menu #home{
+    #home{
         max-width: 70vw;
         max-height: max-content;
     }
 
-    header #desktop_menu a{
-        display: flex;
-        flex-direction: column;
-        border-bottom: 1rem solid #428b7bff;
-        color: #0a0a0aff;
-        border-radius: 1rem;
-        height: 5vh;
-        padding-top: 2rem;
-    }
-
     #desktop_menu{
-        display: block; 
+        display: block;
     }
 
     #desktop_menu a{
-        color: #f5f5f5ff;
+        display: block;
+        background-color: transparent;
+        color: #0a0a0a;
         font-size: 2rem;
         text-align: center;
-        width: 25vw;
+        border-bottom: 1rem solid #40406aff;
+        border-radius: 1rem;
+        width: 22vw;
+        height: 6vh;
+        padding: 1rem;
     }
 
     #desktop_menu a:hover{
@@ -925,22 +929,12 @@ FALLING SAD FACE ANIMATION  */
         box-shadow: 0.2rem  0.3rem 0.2rem  0.1rem inset hsla(240, 25%, 33%, 1);
     }
 
-    #menu_icon,
-    #dropdown_menu{
-        visibility: hidden;
-    }
-
     .fa-brands{
         font-size: 1.5rem;
     }
   
     .fa-brands:hover{
         border-radius: 0.5rem;
-    }
-
-    #Menu_icon,
-    #dropdown_menu{
-        display: none;
     }
 
     #game_title{
@@ -1076,7 +1070,7 @@ FALLING SAD FACE ANIMATION  */
     #game #player_name_input,
     #game #welcome_msg,
     #game #game_info{
-        margin: 8rem 15rem 0 3rem;
+        margin: 2rem;
     }
 
     #game #game_info{
@@ -1095,7 +1089,7 @@ FALLING SAD FACE ANIMATION  */
 /* LARGE DESKTOP*/
 @media (min-width: 1024px) {
     /* Home page*/
-    #side_menu header a{
+    header a{
         width: 20vw;
     }
 

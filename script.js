@@ -1,53 +1,57 @@
 document.addEventListener('DOMContentLoaded', () => {
     // MENU AND CONTENT DISPLAY FUNCTIONS 
     // Menu display variables
-    const sections = document.querySelectorAll('section');
+    const landingSection = document.getElementById('home');
+    const aboutSection = document.getElementById('about');
+    const gameSection = document.getElementById('game');
+    const formSection = document.getElementById('contact');
+    const sections = [landingSection, aboutSection, gameSection, formSection];
     const menuIcon = document.getElementById('menu_icon');
     const dropdownMenu = document.getElementById('dropdown_menu');
-    const desktopMenu = document.getElementById('desktop_menu');
-
+     const desktopMenu = document.getElementById('desktop_menu');
+    
     // Hide all the content section on load 
     function hideAllSections() {
         sections.forEach(section => section.style.display = 'none');
     }
-
+    
     // Only display the relevant called section by ID based on the click event
     function showSection(sectionId) {
         hideAllSections();
         document.getElementById(sectionId).style.display = 'block';
     }
-
-    hideAllSections();
-    showSection('home');
-
-    dropdownMenu.style.display = 'none';
-
-    menuIcon.addEventListener('click', () => {
-        dropdownMenu.style.display = 'block';
-        menuIcon.style.display = 'none';
-      });
-
-    dropdownMenu.addEventListener('click', (event) => {
-        event.preventDefault();
-        if (event.target.tagName.toLowerCase() === 'a') {
-            const sectionId = event.target.getAttribute('href').substring(1);
-
-            showSection(sectionId);
-            dropdownMenu.style.display = 'none';
-            menuIcon.style.display = 'block';
-        }
-    });
-
-    desktopMenu.addEventListener('click', (event) => {
-        event.preventDefault();
-        if (event.target.tagName.toLowerCase() === 'a') {
-            const sectionId = event.target.getAttribute('href').substring(1);
-
-            showSection(sectionId);
-            dropdownMenu.style.display = 'none';
+    
+        hideAllSections();
+        showSection('home');
+    
+        dropdownMenu.style.display = 'none';
+    
+        menuIcon.addEventListener('click', () => {
+            dropdownMenu.style.display = 'block';
             menuIcon.style.display = 'none';
-        }
-    });
+          });
+    
+        dropdownMenu.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (event.target.tagName.toLowerCase() === 'a') {
+                const sectionId = event.target.getAttribute('href').substring(1);
+    
+                showSection(sectionId);
+                dropdownMenu.style.display = 'none';
+                menuIcon.style.display = 'block';
+            }
+        });
+    
+        desktopMenu.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (event.target.tagName.toLowerCase() === 'a') {
+                const sectionId = event.target.getAttribute('href').substring(1);
+    
+                showSection(sectionId);
+                dropdownMenu.style.display = 'none';
+                menuIcon.style.display = 'none';
+            }
+        });
 
 
     // Radio selections variables 
@@ -62,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const playerTwoDiv = document.getElementById('player2_names');
     // Welcome message variable
     const welcomeMsgDiv = document.getElementById('welcome_msg');
-    
+    const welcomeMessage = document.getElementById('welcome');
     // Div display variables
     playerNamesDiv.style.display = 'none';
     welcomeMsgDiv.style.display = 'none';
@@ -118,11 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update welcome message with player names and set to the selected mode 
         if (gameMode === 'single') {
-            playerTurnText.textContent = `Welcome, ${player1Name} to Memory Game!`;
+            welcomeMessage.textContent = `Welcome ${player1Name},  to Memory Game!`;
         } else if (gameMode === 'computer') {
-            playerTurnText.textContent = `Welcome, ${player1Name} vs Computer to Memory Game!`;
+            welcomeMessage.textContent = `Welcome ${player1Name} vs Computer, to Memory Game!`;
         } else {
-            playerTurnText.textContent = `Welcome, ${player1Name} vs ${player2Name} to Memory Game!`;
+            welcomeMessage.textContent = `Welcome ${player1Name} vs ${player2Name}, to Memory Game!`;
         }
         
         playerNamesDiv.style.display = 'none';
@@ -142,9 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (gameMode !== 'single') {
             const player1Turn = document.getElementById('player1_turn').checked;
             const currentTurn = player1Turn ? player1Name : player2Name;
-            document.getElementById('current_turn').textContent = `${currentTurn}'s Turn`; 
+            playerTurnText.textContent = `${currentTurn}'s Turn`; 
         } else {
-            document.getElementById('current_turn').textContent = `${player1Name}'s Playing`;
+            playerTurnText.textContent = `${player1Name}'s Playing`;
         }
     
         welcomeMsgDiv.style.display = 'none';
@@ -601,7 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ScoreTable = document.getElementById('scoresboard');
     const popupLose = document.querySelector('.popup_lose');
     const popupWin = document.querySelector('.popup_win');
-    const message = document.querySelector('.message');
+    const messageDiv = document.querySelector('.message');
     const exitGame = document.getElementById('quit');
     const nextLevel = document.getElementById('continue');
     // Number of sad faces falling
