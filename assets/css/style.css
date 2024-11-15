@@ -452,6 +452,11 @@ button,
     transform: rotateY(0deg);
 }
 
+.card-image{
+    width: 15vw;
+    height: 10vh;
+}
+
 .tile .front:hover{
     border: 0.1rem solid #e54a43ff;
 }
@@ -1081,6 +1086,11 @@ FALLING SAD FACE ANIMATION  */
         width: 10vw;
         height: 12vh;
     }
+
+    .card-image{
+        width: 8vw;
+        height: 10vh;
+    }
 }
 
 
@@ -1170,4 +1180,5 @@ FALLING SAD FACE ANIMATION  */
     #game_btn i{
         font-size: x-large;
     }
+    
 }

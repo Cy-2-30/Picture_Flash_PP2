@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     welcomeMsgDiv.style.display = 'none';
 
     let playerTurnText = document.getElementById('current_turn');
+   // let currentPlayer = player1;
     let player1Name = "";
     // Default for single player
     let gameMode = 'single'; 
@@ -106,6 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+      //  player1.name = player1Name // Set player name to pull the data 
+
         if (gameMode === "another_player") {
             if (!player2Name) {
                 alert("Enter a name for Player 2.");
@@ -116,10 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Player 1 and Player 2 cannot have the same name. Choose different names.");
                 return; 
             }
+           // player2.name = player2Name;  // Set player name to pull the data 
         } else if (gameMode === "single" || gameMode === "computer") {
             player2Name = "Computer";
         }
-
+        
         // Update welcome message with player names and set to the selected mode 
         if (gameMode === 'single') {
             welcomeMessage.textContent = `Welcome ${player1Name},  to Memory Game!`;
@@ -140,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('many_playermsg').style.display = 'block'; 
         }
 
+      //  updateDisplayStats();
     });
 
     welcomeMsgDiv.querySelector('.next_btn').addEventListener('click', () => {
@@ -322,14 +327,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function flipTile(tile) {
         tile.classList.add('flipped');
         const frontElement = tile.querySelector('.front');
-        frontElement.textContent = tile.dataset.value;
+        const img = frontElement.querySelector('.card-image');
+        //frontElement.textContent = tile.dataset.value;
+        img.style.visibility = 'visible';
     }
 
     // Handles tiles turned upside down 
     function unflipTile(tile) {
         tile.classList.remove('flipped');
         const frontElement = tile.querySelector('.front');
-        frontElement.textContent = ''; 
+        //frontElement.textContent = ''; 
+        const img = frontElement.querySelector('.card-image');
+        img.style.visibility = 'hidden'; 
     }
 
     // Pause/Play the game on the click of a button
@@ -399,12 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 flashCount++;
         }, 500);
 
-        // setTimeout(() => {
-        //     allUnflippedTiles.forEach(tile => {
-        //         unflipTile(tile); 
-        //     });
-        //     enableTileClicks();
-        // }, 500);
     }
 
     // Onclick event for  "Hint" button to flash the cards
@@ -461,28 +464,29 @@ document.addEventListener('DOMContentLoaded', () => {
     
         //To clear out any content
         gameBoard.innerHTML = '';
-        
         resetGameStatus();
 
-
         const totalTiles = gridSize * gridSize;
-
         // There can only be 1 pair of cards per each grid board
         const cardValues = generateCardPairs(totalTiles / 2);
         let shuffledCards = shuffle(cardValues);
     
         // Creates the tiles
-        shuffledCards.forEach(value => {
+        shuffledCards.forEach(imagePath => {
             const tile = document.createElement('div');
             tile.classList.add('tile');
-            tile.dataset.value = value;
+            tile.dataset.value = imagePath;
 
-            // The card front display
+            // The card image front
             const front = document.createElement('div');
-            front.id = 'front';
             front.classList.add('front');
-            // Hide the card value
-            tile.textContent = ''; 
+
+
+            const img = document.createElement('img');
+            img.src = imagePath;
+            img.classList.add('card-image');
+            img.style.visibility = 'hidden';
+            front.appendChild(img);
 
             // The card background image
             const back = document.createElement('div');
@@ -502,23 +506,36 @@ document.addEventListener('DOMContentLoaded', () => {
             movesDisplay.textContent = ` ${movesLeft}`;
             hintButton.textContent = ` : ${hintsLeft}`; 
             timeDisplay.textContent = ` 0s`;
- 
         });
     }
     
     // TESTING CARD PAIRS
     function generateCardPairs(numPairs) {
-        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        let cardValues = [];
-    
-        for (let i = 0; i < numPairs; i++) {
-            cardValues.push(letters[i], letters[i]); 
+        let cardImages = [];
+
+        let imgPrefix;
+
+        if (window.innerWidth <= 550) {
+            imgPrefix = 'assets/pictures/4x4/mobile/img';
+        } else if(window.innerWidth <= 950) {
+            imgPrefix = 'assets/pictures/4x4/tablet/img';
+        } else {
+            imgPrefix = 'assets/pictures/4x4/desktop/img';
         }
-        return cardValues;
+        
+        for (let i = 1; i <= numPairs; i++) {
+            let imagePath = `${imgPrefix}${i}.png`;
+            cardImages.push(imagePath, imagePath); 
+        }
+        // Shuffle the cards radomly
+        return cardImages.sort(() => 0.5 - Math.random());
     }
     
     function checkForMatch() {
-        if (firstFlippedCard.dataset.value === secondFlippedCard.dataset.value) {
+      const firstImg = firstFlippedCard.querySelector('.card-image').src;
+      const secondImg = secondFlippedCard.querySelector('.card-image').src;
+        
+        if (firstImg === secondImg) {
             totalScore++;
             score.textContent = `Score: ${totalScore}`;
             matchedPairs++;
@@ -535,6 +552,8 @@ document.addEventListener('DOMContentLoaded', () => {
             secondFlippedCard = null;
         } else {
             setTimeout(() => {
+                firstFlippedCard.querySelector('.card-image').style.visibility = 'hidden';
+                secondFlippedCard.querySelector('.card-image').style.visibility = 'hidden';
                 firstFlippedCard.classList.remove('flipped');
                 secondFlippedCard.classList.remove('flipped');
                 firstFlippedCard = null;
@@ -544,6 +563,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleTileClick(tile) {
+        const img = tile.querySelector('.card-image');
+
        // No action for cards if the game has not started yet 
        if (!gameStarted || gamePaused) {
             alert("The game is paused or hasn't started. Press 'Play' to continue.");
@@ -557,11 +578,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         flipTile(tile);
         
-        if (!firstFlippedCard) {
-            firstFlippedCard = tile;
-        } else {
-            secondFlippedCard = tile;
-            checkForMatch();
+        if (!firstFlippedCard || !secondFlippedCard) {
+           // img.style.visibility = 'visible';
+            tile.classList.add('flipped');
+
+            if (!firstFlippedCard) {
+                firstFlippedCard = tile;
+            } else {
+                secondFlippedCard = tile;
+                checkForMatch();
+            }
         }
 
         // Update moves left and display it
@@ -579,25 +605,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }   
     }
 
-  
-    
-
-   
-    
-    // // Display image based on the viewport size
-    // function getDeviceType() {
-    //     const width = window.innerWidth;
-    
-    //     if (width <= 768) {
-    //         return 'mobile';
-    //     } else if (width > 768 && width <= 1024) {
-    //         return 'tablet';
-    //     } else {
-    //         return 'desktop';
-    //     }
-    // }
-
-
     // ANIMATION SET UP FOR THE FALLING SAD FACE
     // Results game window display variables
     const gameStatus = document.getElementById('game_status');
@@ -605,7 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ScoreTable = document.getElementById('scoresboard');
     const popupLose = document.querySelector('.popup_lose');
     const popupWin = document.querySelector('.popup_win');
-    const messageDiv = document.querySelector('.message');
+    const message = document.querySelector('.message');
     const exitGame = document.getElementById('quit');
     const nextLevel = document.getElementById('continue');
     // Number of sad faces falling
@@ -613,22 +620,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const delayBetweenIcons = 0.3; 
 
     function createFallingIcon(index) {
-    const icon = document.createElement('i');
-    icon.classList.add('fa-regular', 'fa-face-sad-tear', 'icon');
+        const icon = document.createElement('i');
+        icon.classList.add('fa-regular', 'fa-face-sad-tear', 'icon');
 
-    // Randomize the starting position along the X-axis
-    const randomX = Math.random() * window.innerWidth;
-    icon.style.left = `${randomX}px`;
+        // Randomize the starting position along the X-axis
+        const randomX = Math.random() * window.innerWidth;
+        icon.style.left = `${randomX}px`;
 
-    // Add an animation delay to each icon based on its index
-    icon.style.animationDelay = `${index * delayBetweenIcons}s`;
+        // Add an animation delay to each icon based on its index
+        icon.style.animationDelay = `${index * delayBetweenIcons}s`;
 
-    popupLose.appendChild(icon);
+        popupLose.appendChild(icon);
     }
 
     // Create 1000 falling icons with delays
     for (let i = 0; i < iconCount; i++) {
-    createFallingIcon(i);
+        createFallingIcon(i);
     }
 
 
@@ -647,10 +654,10 @@ document.addEventListener('DOMContentLoaded', () => {
         gameButtons.style.display = 'none';
         gameBoard.style.display = 'none';
     }
+    
 
-
-   
-
+    
+    
 
     const playerName = document.querySelector('.player_name');
     const time = document.querySelector('.complete_time');
@@ -668,6 +675,9 @@ document.addEventListener('DOMContentLoaded', () => {
         time.textContent = player.time;
         finalScore.textContent = player.score;
     }
+
+
+
 
     function showResults(result) {
         hideEndGameElements();
@@ -688,32 +698,38 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsDiv.focus()
     }
 
-    function showWinPopup() {
-        // gameButtons.style.display = 'none';
-         //gameBoard.style.display = 'none';
-         createFirework(); 
-         updateScoreboard(player);
-         popupWin.style.display = 'block';
-     }
+    // function showWinPopup() {
+    //     // gameButtons.style.display = 'none';
+    //      //gameBoard.style.display = 'none';
+    //      createFirework(); 
+    //      updateScoreboard(player);
+    //      popupWin.style.display = 'block';
+    //  }
      
-     showWinPopup();
+    //  showWinPopup();
  
-     function showLosePopup() {
-        // gameButtons.style.display = 'none';
-        // gameBoard.style.display = 'none';
-         createFallingIcon();
-         updateScoreboard(player);
-         popupLose.style.display = 'block';
-     }
+    // function showLosePopup() {
+    //     // gameButtons.style.display = 'none';
+    //     // gameBoard.style.display = 'none';
+    //     createFallingIcon();
+    //     updateScoreboard(player);
+    //     popupLose.style.display = 'block';
+    //  }
      
-     showLosePopup();
+    //  showLosePopup();
 
-    function endGame(results){
-        player.time = "1:20";
-        player.score = 10;
+    // function endGame(results){
+    //     // player.time = "1:20";
+    //     // player.score = 10;
 
-        updateScoreboard();
+    //     const playerName = document.querySelector('.player_name');
+    //     const time = document.querySelector('.complete_time');
+    //     const finalScore = document.querySelector('.final_score');
 
-        showResults(results);
-    }
+    //     // updateScoreboard();
+    //     // showResults(results);
+    //     playerName.textContent = currentPlayer.name;
+    //     time.textContent = currentPlayer.time;
+    //     finalScore.textContent = currentPlayer.score;
+    // }
 });
