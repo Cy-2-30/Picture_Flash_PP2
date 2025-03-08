@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Dieketseng Lebuli">
+        <meta name="description" content="Picture Flash Memory Game">
+        <meta name="keywords" content="Games, Memory Game, Picture Flash">
+        <!--GOOGLE FONTS-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
+        <!--EXTERNAL STYLING-->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <title>Picture Flash Memory Game</title>
+    </head>
+    
+    <body>
+        <div id="side_menu">
+            <!--MENU-->
+            <header>
+                <nav>
+                    <!-- Mobile Menu Icon -->
+                    <div id="menu_icon" tabindex="0">
+                        <i class="fa fa-bars fa-3x" aria-hidden="true"></i>
+                    </div>
+                    
+                    <!-- Mobile Dropdown Menu (hidden initially, shown on small screens) -->
+                    <div id="dropdown_menu">
+                        <a href="#home" aria-label="Link to Home page" tabindex="0">Home</a>
+                        <a href="#about" aria-label="Link to About us page" tabindex="0">About Us</a>
+                        <a href="#game" aria-label="Link to Game page" tabindex="0">Game</a>
+                        <a href="#contact" aria-label="Link to Contact page" tabindex="0">Contact Us</a>            
+                    </div>
+
+                    <!-- Desktop Menu (visible on larger screens) -->
+                    <div id="desktop_menu">
+                        <a href="#home" aria-label="Link to Home page" tabindex="0">Home</a>
+                        <a href="#about" aria-label="Link to About us page" tabindex="0">About Us</a>
+                        <a href="#game" aria-label="Link to Game page" tabindex="0">Game</a>
+                        <a href="#contact" aria-label="Link to Contact page" tabindex="0">Contact Us</a>
+                    </div>
+                </nav>
+            </header>
+
+            <!--LANDING SECTION--> 
+            <section id="home" aria-label="Back to school theme." tabindex="0">
+                <h1 id="game_title">Picture Memory Game</h1>
+                    <picture>
+                        <source media="(min-width: 780px)" srcset="assets/pictures/content/dektop/back-school-background.jpg">
+                        <source media="(min-width: 320px)" srcset="assets/pictures/content/tablet/back-school-background.jpg">
+                        <img id="home_img" src="assets/pictures/content/mobile/back-school-background.jpg" alt="An image with back to school stationary.">
+                    </picture>
+                    
+            </section>  
+            
+            <!--ABOUT US SECTION-->
+            <section class="content_flow" id="about" tabindex="0" >
+                <h1 tabindex="0">Memory Game</h1>
+                <div id="box">
+                    <article id="history">
+                        <div>
+                            <picture>
+                                <source media="(min-width: 900px)" srcset="assets/pictures/content/tablet/memory.jpg">
+                                <img class="game_info_img" src="assets/pictures/content/mobile/memory.jpg" alt="An image of the brain function.">
+                            </picture>
+                        </div>       
+                        <div id="brief_position">   
+                            <h2 tabindex="0">Card Game</h2>
+                                <p tabindex="0">
+                                    The original game is to be played as a round game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards. This game is created from the same theory.
+                                </p>
+                                <p tabindex="0">
+                                    The game can be played with any number of players or as a solitaire or patience game. It is a particularly good game for young children, though adults may find it challenging and stimulating as well. The scheme is often used in quiz shows <i>in fact, several game shows have used its name in their titles</i> and can be employed as an educational game. 
+                                </p>  
+                                <p tabindex="0">
+                                    Some of the names the game is know as including <b>Memory, Matching Pairs, Match Match, Match Up, Pelmanism, Pexeso</b> or simply <b>Pairs</b>. 
+                                </p>
+                        </div>
+                    </article>
+
+                    <div id="flexbox_rules_instructions">
+                        <article id="rules" tabindex="0">
+                            <div id="first_rules_div">
+                                <h2 tabindex="0">Game Rules</h2>
+                                    <picture>
+                                        <source media="(min-width: 900px)" srcset="assets/pictures/content/tablet/rules.png">
+                                        <img class="game_info_img rules_img" src="assets/pictures/content/mobile/rules.png" alt="An image of the brain function.">
+                                    </picture>    
+                            </div>
+
+                            <div>
+                                <ul id="second_rules">
+                                    <li tabindex="0">
+                                        The game will start with <b>4x4</b> cards to which the player will be given a number of moves to turn the cards and match them. 
+                                    </li>
+                                    <li tabindex="0">
+                                        The player would have to turn all the cards within the given moves, if fails to do so it will be game over when moves reach reach 0. 
+                                    </li>
+                                    <li tabindex="0">
+                                        The player can choose to quit the game at any point. 
+                                    </li>
+                                    <li tabindex="0">
+                                        However, should the player turn all the cards within the allocated moves, any remaining moves will be counted as 1 point each towards the score.
+                                    </li>
+                                    <li tabindex="0">
+                                        For each pair the player manages to match, 1 point will be allocated to the player.
+                                    </li>
+                                    <li tabindex="0">
+                                        For each successful completed level the player would be lead to the next game at the end of each completed round. 
+                                    </li>
+                                    <li tabindex="0">
+                                        The game difficulty will increase with progress.
+                                    </li>
+                                    <li tabindex="0">
+                                        In the beginning the player has an option to play alone, or with another player or with the computer.
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <article id="instructions" tabindex="0">
+                            <div>
+                                <h2 tabindex="0">Tips On How To Play</h2>
+                                    <picture>
+                                        <source media="(min-width: 900px)" srcset="assets/pictures/content/tablet/instruction.jpg">
+                                        <img class="game_info_img" src="assets/pictures/content/mobile/instruction.jpg" alt="An image of the brain function.">
+                                    </picture>
+                            </div>
+
+                            <div id="instruction_p">
+                                <p id="instruction_p1" tabindex="0">
+                                        The game theme revolves around "Back To School" them. If the players bares this in mind, it would be easy to remember the pictures flashed. 
+                                    </p>
+                                <p tabindex="0">
+                                    The player gets 3 hints throughout the whole game. The hints will flash the cards again to the player, however it should be used wisely. 
+                                </p>
+
+                                <p tabindex="0">
+                                    Each picture would have a different background color and this could be used as a hint. 
+                                </p>
+                                    
+                                <p tabindex="0">
+                                    The player can try to turn the cards as quick as possible, while the memory is still fresh. The longer you wait, the more you might forget.
+                                </p>
+                                <div id="hide_return_btn">
+                                    <a href="#menu_icon" class="return_btn" aria-label="the icon displays the menu for navigation." tabindex="0">
+                                        <i class="fa-solid fa-house-chimney-crack" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>    
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!--GAME SECTION-->
+            <main id="game" tabindex="0">
+                <div id="mode_setup" tabindex="0">
+                    <h2 tabindex="0">Game Mode Setup</h2>
+                        <div>
+                            <input type="radio" name="game_mode" value="single" id="single_player" aria-label="Single Player Mode" tabindex="0">
+                            <label for="single_player">Play Alone</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="game_mode" value="computer" id="play_computer" aria-label="Play against Computer Mode" tabindex="0">
+                            <label for="play_computer">Play with Computer</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="game_mode" value="another_player" id="one_more_player" aria-label="Play with Another Player Mode" tabindex="0">
+                            <label for="one_more_player">Play with Another Player</label>
+                        </div>
+                        <button class="next_btn" aria-label="Next leads to Player Names Setup." tabindex="0">Next</button>
+                </div>
+
+                <div id="player_name_input"  tabindex="0">
+                    <h2 tabindex="0">Enter Player Names</h2>
+                        <div id="player1_names"  tabindex="0">
+                            <label for="player1_name" tabindex="0">Player 1 Name:</label>
+                            <input type="text" id="player1_name" placeholder="Enter Player 1 Name" tabindex="0">
+                        </div>
+
+                        <div id="player2_names" style="display: none;"  tabindex="0">
+                            <label for="player2_name" tabindex="0">Player 2 Name:</label>
+                            <input type="text" id="player2_name" placeholder="Enter Player 2 Name" tabindex="0">
+                        </div>
+                        <button class="next_btn" aria-label="Next leads to a Welcome Message." tabindex="0">Next</button>
+                </div>  
+
+                <div id="welcome_msg" tabindex="0">
+                    <h2 id="welcome" tabindex="0"></h2>
+                        <div id="many_playermsg" tabindex="0">
+                            <h3 tabindex="0">Who will play first?</h3>
+                                <div>
+                                    <input type="radio" name="turn_selection" value="one" id="player1_turn" aria-label="Player 1 Turn Selection" tabindex="0">
+                                    <label for="player1_turn" tabindex="0">Player 1</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="turn_selection" value="two" id="player2_turn" aria-label="Player 2 Turn Selection" tabindex="0">
+                                    <label for="player2_turn" tabindex="0">Player 2</label>
+                                </div>                            
+                        </div>
+                        <button class="next_btn" aria-label="Press to to open Game" tabindex="0">Start</button>
+                </div>
+                
+                <div id="game_info" tabindex="0">
+                    <div id="game_status">
+                        <div id="game_heading">
+                            <i class="fa-solid fa-people-arrows" aria-hidden="true"> : </i>
+                            <span id="current_turn" aria-live="polite"  tabindex="0"></span>
+                        </div>
+                        <div id="game_stats">
+                            <div>
+                                <span id="score" tabindex="0">Score : </span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-heart" aria-hidden="true"> : </i>
+                                <span id="moves" tabindex="0"></span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-hourglass-start" aria-hidden="true"> : </i>
+                                <span id="time" tabindex="0"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="playboard" tabindex="0">
+                        <div id="results">
+                            <div class="popup popup_win" tabindex="0">
+                                <h2 class="message" tabindex="0">Congratulations!</h2>
+                                <p tabindex="0">Press Play to continue to the next Level or Exit to Quit the game.</p>
+                            </div>
+                            
+                            <div class="popup popup_lose" tabindex="0">
+                                <h2 class="message" tabindex="0">Sorry, try again!</h2>
+                                <p tabindex="0">Press Exit to start the game or go to the game window.</p>
+                            </div>
+                            
+                            <div id="scoresboard">
+                                <h2 tabindex="0">Scoreboard</h2>
+                                <table tabindex="0">
+                                    <tr tabindex="0">
+                                        <th tabindex="0">Name</th>
+                                        <th class="player_name"></th>
+                                    </tr>
+                                    <tr tabindex="0">
+                                        <td tabindex="0">Time</td>
+                                        <td class="complete_time" tabindex="0"></td>
+                                    </tr>
+                                    <tr tabindex="0">
+                                        <td tabindex="0">Score</td>
+                                        <td class="final_score" tabindex="0"></td>  
+                                    </tr>
+                                </table>
+                                <button id="continue" class="next_btn game_button" aria-label="Press to Continue the Game." tabindex="0">
+                                    <i class="fa-regular fa-circle-play" aria-hidden="true"></i>
+                                </button>
+                                <button id="quit" class="next_btn game_button" aria-label="Press to Exit the Game." tabindex="0">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="game_btn">
+                            <div class="hint_btn next_btn game_button" role="button" aria-roledescription="Press to get a hint." tabindex="0">
+                                <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                                <span id="hints"></span>
+                            </div>
+                            <button id="playPause" class="next_btn game_button" aria-label="Press to Play the Game." tabindex="0">
+                                <i id="play" class="fa fa-play-circle" aria-hidden="true"></i>
+                            <!--<button id="pause" class="next_btn game_button" aria-label="Press to Pause the Game." tabindex="0">-->
+                                <i id="pause" class="fa fa-regular fa-circle-pause" aria-hidden="true"></i>
+                            </button>
+                            <button id="exit" class="next_btn game_button" aria-label="Press to Exit the Game." tabindex="0">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                            
+                        <div id="game_board" class="grid" tabindex="0"></div> 
+                    </div>
+                </div>
+            </main>
+
+            <!--CONTACT SECTION-->
+            <section id="contact" tabindex="0">
+                <h1 tabindex="0">Contacts</h1>
+                    <form action="" method="post">
+                        <fieldset class="form_shadow_setup" tabindex="0">
+                            <legend class="form_heading" tabindex="0">Give us your feedback.</legend>
+                                <label class="mobile_label" for="names" tabindex="0">Names: </label><br class="hide">
+                                <input type="text" id="names" name="names" class="form_input" placeholder="James Smith" tabindex="0">
+                                <label class="mobile_label" for="email" tabindex="0">Email: </label><br class="hide">
+                                <input type="text" id="email" name="email" class="form_input" placeholder="email@example.ie" tabindex="0">
+                                <label class="mobile_label msg_headinglbl" for="message_heading" tabindex="0">Message Heading:</label><br class="hide">
+                                <input class="msg_heading form_input" type="text" id="message_heading" name="message_heading" tabindex="0">
+                                <textarea  id="feedback" name="feedback" maxlength="500" placeholder="What is on your mind..." tabindex="0"></textarea><br>
+                        </fieldset>
+                        <button class="form_btn shadow_setup" type="reset" value="Reset" tabindex="0">Reset</button>
+                        <button class="form_btn shadow_setup" type="submit" value="Submit" tabindex="0">Submit</button>
+                    </form>
+            </section>
+        </div>
+        
+
+        <!--FOOTER WITH SOCIAL MEDIA ICONS-->
+        <footer tabindex="0">
+            <a href="https://www.facebook.com/login.php/" aria-label="Opens Faceboonk on an outside link in a new window." rel="noopener" target="_blank" tabindex="0">
+                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/" aria-label="Opens instagram on an outside link in a new window." rel="noopener" target="_blank" tabindex="0">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.youtube.com/" aria-label="Opens youtube on an outside link in a new window." rel="noopener" target="_blank" tabindex="0">
+                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.twitch.tv/" aria-label="Opens twitch on an outside link in a new window." rel="noopener" target="_blank" tabindex="0">
+                <i class="fa-brands fa-twitch" aria-hidden="true"></i>
+            </a>
+            <a href="https://x.com/?lang=en" aria-label="Opens twitter on an outside link in a new window." rel="noopener" target="_blank" tabindex="0">
+                <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="https://slack.com/intl/en-ie/" aria-label="Opens slack on an outside link in a new window." rel="noopener" target="_blank" tabindex="0">
+                <i class="fa-brands fa-slack" aria-hidden="true"></i>
+            </a>
+        </footer>
+    
+        <!--JS FONTAWESOME ICONS SCRIPT-->
+        <script src="https://kit.fontawesome.com/5804c3bb85.js" crossorigin="anonymous"></script>
+            
+        <!--JS GAME INTERACTION SCRIPT-->
+        <script src="script.js"></script> 
+    </body>
+</html>
